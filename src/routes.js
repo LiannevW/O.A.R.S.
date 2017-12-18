@@ -4,7 +4,7 @@ import TrainingsContainer from './containers/TrainingsContainer'
 import Training from './containers/TrainingsContainer'
 import Boatpage from './containers/BoatPage'
 import RowersContainer from './containers/RowersContainer'
-import RowerProfile from './containers/Rower'
+import RowerProfile from './containers/RowerProfile'
 import ShipsContainer from './containers/ShipsContainer'
 import ShipPage from './containers/ShipPage'
 

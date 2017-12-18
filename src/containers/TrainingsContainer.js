@@ -1,11 +1,11 @@
 import React, { PureComponent } from 'react'
+import PropTypes from 'prop-types'
 
 export class TrainingsContainer extends PureComponent {
 
   static propTypes = {
 
     training: PropTypes.shape({
-      boat: PropTypes.arrayOf(boatShape),
       startDate: PropTypes.string.isRequired,
       endDate: PropTypes.date.isRequired,
       startTime: PropTypes.date.isRequired,
@@ -21,4 +21,4 @@ export class TrainingsContainer extends PureComponent {
   }
 }
 
-export default Training
+export default TrainingsContainer
