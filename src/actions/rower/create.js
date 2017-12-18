@@ -1,3 +1,4 @@
+import API from '../../api/client'
 import {
   APP_LOADING,
   APP_DONE_LOADING,
@@ -5,12 +6,15 @@ import {
   LOAD_SUCCESS
 } from '../loading'
 
+export const ROWER_CREATED = 'ROWER_CREATED'
+
+const api = new API()
 
 export const createRower = () => {
   return dispatch => {
       dispatch({ type: APP_LOADING })
 
-          api.post('/rowers')
+          api.post('/rowers', {})
             .then(() => {
               dispatch({ type: ROWER_CREATED })
 
