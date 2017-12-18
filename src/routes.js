@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import { Route } from 'react-router-dom'
-import TrainingsContainer from
-import Training from
-import Boatpage from
-import rowersContainer from
-import rowerProfile from
-import shipsContainer from
-import shipPage from
+import TrainingsContainer from './containers/TrainingsContainer'
+import Training from './containers/TrainingsContainer'
+import Boatpage from './containers/BoatPage'
+import RowersContainer from './containers/RowersContainer'
+import RowerProfile from './containers/Rower'
+import ShipsContainer from './containers/ShipsContainer'
+import ShipPage from './containers/ShipPage'
 
 export default class Routes extends Component {
   render() {
@@ -15,10 +15,10 @@ export default class Routes extends Component {
         <Route exact path="/" component={TrainingsContainer} />
         <Route path="/training/:trainingId" component={Training} />
         <Route path="/boats-path/:trainingId/:boatId" component={Boatpage} />
-        <Route path="/rowers" component={rowersContainer} />
-        <Route path="/rowers/:rowerId" component={rowerProfile} />
-        <Route path="/ships" component={shipsContainer} />
-        <Route path="/ships/:shipsId" component={shipPage} />
+        <Route path="/rowers" component={RowersContainer} />
+        <Route path="/rowers/:rowerId" component={RowerProfile} />
+        <Route path="/ships" component={ShipsContainer} />
+        <Route path="/ships/:shipsId" component={ShipPage} />
       </div>
     )
   }

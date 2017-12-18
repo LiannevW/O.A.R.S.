@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react'
 
-export class TrainingContainer extends PureComponent {
+export class TrainingsContainer extends PureComponent {
 
   static propTypes = {
 
@@ -13,3 +13,12 @@ export class TrainingContainer extends PureComponent {
 
       })
   }
+
+  render() {
+    return (
+      <h1>{ this.props.content }</h1>
+    )
+  }
+}
+
+export default Training
