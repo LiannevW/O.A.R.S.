@@ -10,6 +10,6 @@ export class TrainingContainer extends PureComponent {
       endDate: PropTypes.date.isRequired,
       startTime: PropTypes.date.isRequired,
       duration: PropTypes.number.isRequired,
-    
+
       })
   }
