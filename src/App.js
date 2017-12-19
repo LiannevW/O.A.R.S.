@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import muiTheme from './assets/theme'
-// import Navigation from './components/Navigation'
+import NavBar from './components/Navigation'
 import Routes from './routes'
 
 class App extends Component {
@@ -18,6 +18,7 @@ class App extends Component {
     return (
       <MuiThemeProvider muiTheme={muiTheme}>
         <div className="App">
+          <NavBar />
           <Routes />
         </div>
       </MuiThemeProvider>

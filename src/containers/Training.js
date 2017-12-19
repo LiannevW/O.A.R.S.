@@ -1,9 +1,10 @@
 import React, { PureComponent } from 'react'
+import PropTypes from 'prop-types'
 
 class Training extends PureComponent {
   render() {
     return (
-      <h1>{ this.props.content }</h1>
+      <h1> Training view </h1>
     )
   }
 }
