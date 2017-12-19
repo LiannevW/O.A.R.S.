@@ -24,7 +24,7 @@ class App extends Component {
         <div className="App">
           <Navigation />
           <Routes />
-          <TrainingsContainer trainings={trainings} />
+
         </div>
       </MuiThemeProvider>
     )
@@ -32,3 +32,5 @@ class App extends Component {
 }
 
 export default App
+
+// <TrainingsContainer trainings={trainings} />

@@ -7,6 +7,7 @@ import StarBorder from 'material-ui/svg-icons/toggle/star-border';
 import googleMaps from '../img/googleMaps.png'
 import fetchTrainings from '../actions/training/fetch'
 import { connect } from 'react-redux'
+
 const styles = {
 root: {
   display: 'flex',
@@ -19,37 +20,37 @@ gridList: {
   overflowY: 'auto',
 },
 };
-const trainingsData =
-[
-  {
-    id: "abc1",
-    userId: "",
-    startDate: "011217",
-    startTime: "130623,20",
-    duration:"",
-    boats: "['Jesse','Kyriakos','Veranika','Json']",
-    img: {googleMaps}
-  },
-  {
-    id: "abc2",
-    userId: "",
-    startDate: "031217",
-    startTime: "160821,04",
-    duration:"",
-    boats: "['x','y','z']",
-    img: {googleMaps}
-
-  },
-  {
-    id: "abc3",
-    userId: "",
-    startDate: "181217",
-    startTime: "090145,12",
-    duration:"",
-    boats: "['boat1','boat2','boat3','boat4']",
-    img: { googleMaps }
-  },
-]
+// const trainingsData =
+// [
+//   {
+//     id: "abc1",
+//     userId: "",
+//     startDate: "011217",
+//     startTime: "130623,20",
+//     duration:"",
+//     boats: "['Jesse','Kyriakos','Veranika','Json']",
+//     img: {googleMaps}
+//   },
+//   {
+//     id: "abc2",
+//     userId: "",
+//     startDate: "031217",
+//     startTime: "160821,04",
+//     duration:"",
+//     boats: "['x','y','z']",
+//     img: {googleMaps}
+//
+//   },
+//   {
+//     id: "abc3",
+//     userId: "",
+//     startDate: "181217",
+//     startTime: "090145,12",
+//     duration:"",
+//     boats: "['boat1','boat2','boat3','boat4']",
+//     img: { googleMaps }
+//   },
+// ]
 
 export class TrainingsContainer extends PureComponent {
   componentWillMount()
@@ -63,7 +64,7 @@ export class TrainingsContainer extends PureComponent {
             style={styles.gridList}
           >
             <Subheader>Training</Subheader>
-            {trainingsData.map((training) =>
+            {trainings.map((training) =>
               <GridTile
                 key={training.id}
                 title={training.startDate}
