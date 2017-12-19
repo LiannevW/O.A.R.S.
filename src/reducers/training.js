@@ -1,5 +1,8 @@
-// import trainings from  '../fixtures/trainings'
+import { FETCHED_TRAININGS, FETCHED_ONE_TRAINING } from '../actions/training'
 
-// export default (state = trainings, action) => {
-//   return state
-// }
+export default (state = [], { type, payload } = {}) => {
+  switch(type) {
+    case  FETCHED_TRAININGS:
+      return [ ...payload ]
+    }
+  }
