@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Route } from 'react-router-dom'
-import TrainingsContainer from './containers/TrainingsContainer'
+// import TrainingsContainer from './containers/TrainingsContainer'
 import Training from './containers/TrainingsContainer'
 import Boatpage from './containers/BoatPage'
 import RowersContainer from './containers/RowersContainer'
@@ -9,10 +9,10 @@ import ShipsContainer from './containers/ShipsContainer'
 import ShipPage from './containers/ShipPage'
 
 export default class Routes extends Component {
+
   render() {
     return (
       <div>
-        <Route exact path="/" component={TrainingsContainer} />
         <Route path="/training/:trainingId" component={Training} />
         <Route path="/boats-path/:trainingId/:boatId" component={Boatpage} />
         <Route path="/rowers" component={RowersContainer} />
@@ -23,3 +23,5 @@ export default class Routes extends Component {
     )
   }
 }
+
+  // <Route exact path="/" component={TrainingsContainer} />
