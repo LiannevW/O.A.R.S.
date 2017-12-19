@@ -1,33 +1,32 @@
 import React, { PureComponent } from 'react'
-import { FETCHED_TRAININGS } from '../actions/training'
 import { connect } from 'react-redux'
-import PropTypes from 'prop-types'
-
+import { push } from 'react-router-redux'
+import Training from './Training.js'
+import {fetchTrainings} from '../actions/training/fetch'
 
 export class TrainingsContainer extends PureComponent {
-  static propTypes = {
-        startdate: PropTypes.string,
-        starttime: PropTypes.DATE,
-        duration: PropTypes.TIME
-  }
 
   componentWillMount() {
-    this.props.FETCHED_TRAININGS()
-  }
+     this.props.fetchTrainings()
+   }
+
+   renderTraining = (training, index) => {
+      return <Training
+        key={index} { ...training } />
+    }
 
   render() {
     const { trainings } = this.props
 
-   console.log(this.props)
     return (
-        <div>
-          {this.props.startdate}
-        </div>
+        <main>
+          {trainings.map(this.renderTraining)}
+        </main>
+
       )
     }
 }
 
 const mapStateToProps = ({ trainings }) => ({ trainings })
 
-
-export default connect(mapStateToProps, {FETCHED_TRAININGS})(TrainingsContainer)
+export default connect(mapStateToProps, {fetchTrainings, push})(TrainingsContainer)

@@ -11,7 +11,7 @@ export const FETCHED_ONE_TRAINING = 'FETCHED_ONE_TRAINING'
 
 const api = new API()
 
-export default () => {
+export const fetchTrainings = () => {
   return dispatch => {
     dispatch({ type: APP_LOADING })
 
