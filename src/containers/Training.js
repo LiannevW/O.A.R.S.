@@ -15,6 +15,7 @@ class Training extends PureComponent {
 
     return (
       <h1>{ startDate }</h1>
+
     )
   }
 }
