@@ -18,7 +18,7 @@ export default () => {
     .then((res) => {
       dispatch({ type: APP_DONE_LOADING })
       dispatch({ type: LOAD_SUCCESS })
-
+      console.log(res)
       dispatch({
         type: FETCHED_TRAININGS,
         payload: res.body
@@ -42,7 +42,7 @@ export const fetchOneTraining = (trainingsId) => {
     .then((res) => {
       dispatch({ type: APP_DONE_LOADING })
       dispatch({ type: LOAD_SUCCESS })
-
+      console.log(res)
       dispatch({
         type: FETCHED_ONE_TRAINING,
         payload: res.body
