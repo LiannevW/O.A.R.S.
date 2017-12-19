@@ -1,6 +1,6 @@
 import request from 'superagent'
 
-export default class ApiClient {
+export default class API {
 
   constructor(host, options = {}) {
    this.host = host || 'http://localhost:3030'
