@@ -35,11 +35,11 @@ export const fetchTrainings = () => {
   }
 }
 
-export const fetchOneTraining = (trainingsId) => {
+export const fetchOneTraining = (trainingId) => {
   return dispatch => {
     dispatch({ type: APP_LOADING })
 
-  api.get(`trainings/${trainingsId}`)
+  api.get(`/trainings/${trainingId}`)
     .then((res) => {
       dispatch({ type: APP_DONE_LOADING })
       dispatch({ type: LOAD_SUCCESS })
