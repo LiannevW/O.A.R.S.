@@ -6,6 +6,5 @@ export {
   fetchTrainings,
   fetchOneTraining,
   FETCHED_TRAININGS,
-
-  FETCHED_ONE_TRAINING,
+  FETCHED_ONE_TRAINING
 }

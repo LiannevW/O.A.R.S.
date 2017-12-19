@@ -1,23 +1,24 @@
-import React, { PureComponent } from 'react'
-import PropTypes from 'prop-types'
-
-class Training extends PureComponent {
-  static propTypes = {
-        startDate: PropTypes.string,
-        startTime: PropTypes.date,
-        duration: PropTypes.number,
-        boats: PropTypes.array
-
-  }
-
-  render() {
-    const { startDate } = this.props
-
-    return (
-      <h1>{ startDate }</h1>
-
-    )
-  }
-}
-
-export default Training
+// import React, { PureComponent } from 'react'
+// import PropTypes from 'prop-types'
+// // import { Link } from 'react-router-dom'
+//
+// class Training extends PureComponent {
+//   static propTypes = {
+//         startdate: PropTypes.string,
+//         starttime: PropTypes.number,
+//         duration: PropTypes.number,
+//         boats: PropTypes.string
+//   }
+//
+//   render() {
+//     const { startdate, starttime, duration, boats } = this.props
+//
+//     return (
+//       <div>
+//         <p> Training date: {startdate}> </p>
+//       </div>
+//     )
+//   }
+// }
+//
+// export default Training

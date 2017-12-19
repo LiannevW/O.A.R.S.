@@ -5,6 +5,7 @@ import {
   LOAD_SUCCESS
 } from '../loading'
 import API from '../../api/client'
+
 export const FETCHED_TRAININGS = 'FETCHED_TRAININGS'
 export const FETCHED_ONE_TRAINING = 'FETCHED_ONE_TRAINING'
 
@@ -14,7 +15,7 @@ export default () => {
   return dispatch => {
     dispatch({ type: APP_LOADING })
 
-  api.get('trainings')
+  api.get('/trainings')
     .then((res) => {
       dispatch({ type: APP_DONE_LOADING })
       dispatch({ type: LOAD_SUCCESS })
