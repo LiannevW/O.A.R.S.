@@ -1,24 +1,22 @@
 import React, { PureComponent } from 'react'
-// import PropTypes from 'prop-types'
+import Training from './Training'
 
 export class TrainingsContainer extends PureComponent {
 
-  // static propTypes = {
-
-    // training: PropTypes.shape({
-    //   startDate: PropTypes.string.isRequired,
-    //   endDate: PropTypes.date.isRequired,
-    //   startTime: PropTypes.date.isRequired,
-    //   duration: PropTypes.number.isRequired,
-
-      // })
-  // }
+  renderTraining(training, index) {
+    return (
+      <Training key={index} {...training} />
+    )
+  }
 
   render() {
+    const { trainings } = this.props
+
     return (
-      <h1>{ this.props.content }</h1>
+      <h1>{trainings.map(this.renderTraining)}</h1>
     )
   }
 }
+
 
 export default TrainingsContainer
