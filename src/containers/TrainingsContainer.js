@@ -5,6 +5,8 @@ import IconButton from 'material-ui/IconButton';
 import Subheader from 'material-ui/Subheader';
 import StarBorder from 'material-ui/svg-icons/toggle/star-border';
 import googleMaps from '../img/googleMaps.png'
+import fetchTrainings from '../actions/training/fetch'
+import { connect } from 'react-redux'
 const styles = {
 root: {
   display: 'flex',
@@ -50,7 +52,8 @@ const trainingsData =
 ]
 
 export class TrainingsContainer extends PureComponent {
-
+  componentWillMount()
+    { this.props.fetchTrainings() }
   render() {
     return (
 
@@ -75,4 +78,7 @@ export class TrainingsContainer extends PureComponent {
       )
     }
 }
-export default TrainingsContainer
+const mapStateToProps = ({ trainings }) => ({ trainings})
+const mapDispatchToProps = { fetchTrainings }
+
+export default connect(mapStateToProps, mapDispatchToProps)(TrainingsContainer)
