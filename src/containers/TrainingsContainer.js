@@ -2,7 +2,6 @@ import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import { push } from 'react-router-redux'
 import {GridList, GridTile} from 'material-ui/GridList';
-import Training from './Training.js'
 import {fetchTrainings} from '../actions/training/fetch'
 import IconButton from 'material-ui/IconButton';
 import Subheader from 'material-ui/Subheader';
@@ -28,10 +27,7 @@ export class TrainingsContainer extends PureComponent {
      this.props.fetchTrainings()
    }
 
-   renderTraining = (training, index) => {
-      return <Training
-        key={index} { ...training } />
-    }
+   linkToTraining = trainingId => event => this.props.push(`/trainings/${trainingId}`)
 
   render() {
     const { trainings } = this.props
@@ -49,8 +45,10 @@ export class TrainingsContainer extends PureComponent {
               title={training.startdate}
               subtitle={<span>Start Time: <b>{training.starttime}</b></span>}
               actionIcon={<IconButton><StarBorder color="white" /></IconButton>}
+              onClick= {this.linkToTraining(training.id)}
+
             >
-              <img src={ googleMaps } />
+              <img src={googleMaps } />
             </GridTile>
           )}
         </GridList>
