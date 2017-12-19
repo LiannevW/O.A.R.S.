@@ -5,5 +5,5 @@ import rower from './rower'
 export default {
   loading,
   loadError,
-  rower
+  rower,
 }
