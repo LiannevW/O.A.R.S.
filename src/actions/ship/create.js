@@ -10,11 +10,11 @@ export const SHIP_CREATED = 'SHIP_CREATED'
 
 const api = new API()
 
-export const createShip = () => {
+export const createShip = (ship) => {
   return dispatch => {
       dispatch({ type: APP_LOADING })
 
-          api.post('/ships', {})
+          api.post('/ships', ship)
             .then(() => {
               dispatch({ type: SHIP_CREATED })
 

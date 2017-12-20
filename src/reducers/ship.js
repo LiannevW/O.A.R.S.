@@ -1,5 +1,5 @@
-import { FETCHED_SHIPS } from '../actions/ships'
-import { SHIP_CREATED } from '../actions/rower'
+import { FETCHED_SHIPS } from '../actions/ship'
+import { SHIP_CREATED } from '../actions/ship'
 
 export default (state = [], { type, payload } = {}) => {
   switch(type) {
