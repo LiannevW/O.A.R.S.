@@ -5,40 +5,47 @@ import { connect } from 'react-redux'
 import { fetchOneTraining } from '../actions/training/fetch'
 // import { Link } from 'react-router-dom'
 
+
 class Training extends PureComponent {
   static propTypes = {
-        startdate: PropTypes.string,
-        starttime: PropTypes.number,
-        duration: PropTypes.number,
-  }
+      fetchOneTraining: PropTypes.func.isRequired,
+      Training: PropTypes.shape({
+        boat: PropTypes.array,
+        startdate: PropTypes.string.isRequired,
+        starttime: PropTypes.string.isRequired,
+        duration: PropTypes.string.isRequired,
+
+        })
+    }
 
   componentWillMount() {
      const { trainingId } = this.props.match.params
+
+     const { training, fetchOneTraining } = this.props
       { this.props.fetchOneTraining(trainingId) }
 }
 
-
   render() {
 
-    const { training } = this.props
+    const training = this.props
+    if (!training) return null
+    console.log(training)
+  return (
 
-    return (
-<p> hallo </p>
-
-      // <div>
-      // <p> {training.id}  </p>
-      // <p> {training.startdate} </p>
+      <h1> {training.startdate} </h1>
       // <p> {training.starttime} </p>
       // <p> {training.duration} </p>
-      // </div>
+
     )
   }
 }
 const mapStateToProps = ({ trainings }, { match }) => {
-const training = trainings.filter((t) => (t.id === match.params.training.id))[0]
-return {
-  training
+  const training = trainings.filter((t) => (t.id === match.params.trainingsId))[0]
+
+  return {
+    training
+  }
 }
-}
+
 
 export default connect(mapStateToProps, { fetchOneTraining, push  })(Training)
