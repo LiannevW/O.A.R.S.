@@ -27,5 +27,3 @@ export default class Routes extends Component {
     )
   }
 }
-
-   <Route exact path="/" component={TrainingsContainer} />

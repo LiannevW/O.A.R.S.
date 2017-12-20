@@ -1,12 +1,31 @@
 import React, { PureComponent } from 'react'
-import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+import { push } from 'react-router-redux'
+import { fetchRowers } from '../actions/rower/fetch'
+import RowersEditor from './RowersEditor'
 
 class RowersContainer extends PureComponent {
+
+  componentWillMount() {
+    this.props.fetchRowers()
+  }
+
   render() {
-    return (
-      <h1> Rowers overview</h1>
-    )
+
+      return (
+        <div>
+          <header>
+             <RowersEditor />
+          </header>
+          <main>
+              {this.props.rowers.map((rower) =>
+                <p>{rower.firstname}</p>
+              )}
+          </main>
+        </div>
+      )
   }
 }
 
-export default RowersContainer
+const mapStateToProps = ({ rowers }) => ({ rowers })
+export default connect (mapStateToProps, {fetchRowers, push}) (RowersContainer)
