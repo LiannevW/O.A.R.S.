@@ -7,21 +7,16 @@ const api = new API()
 
 export default (user) => {
   return dispatch => {
-    api.post('/sessions', { ...user })
+    api.post('/login', { ...user })
       .then((res) => {
-        api.storeToken(res.body.token)
 
-        api.get('/login')
-          .then((res) => {
             dispatch({
               type: USER_SIGNED_IN,
-              payload: res.body
+              payload: res.body.token
             })
 
             dispatch(push('/'))
           })
           .catch((err) => console.error(err))
-      })
-      .catch((err) => console.error(err))
   }
 }
