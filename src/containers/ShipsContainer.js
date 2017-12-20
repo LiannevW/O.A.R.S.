@@ -1,12 +1,33 @@
 import React, { PureComponent } from 'react'
-import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+import { push } from 'react-router-redux'
+import { fetchShips } from '../actions/ship/fetch'
+import ShipsEditor from './ShipsEditor'
+
 
 class ShipsContainer extends PureComponent {
+
+  componentWillMount() {
+    this.props.fetchShips()
+  }
+
   render() {
+    console.log(this.props.ships)
+
     return (
-      <h1> Ship Overview </h1>
+      <div>
+      <header>
+        <ShipsEditor/>
+      </header>
+      <main>
+        {this.props.ships.map((ship) =>
+          <p>{ship.name}</p>
+        )}
+      </main>
+      </div>
     )
   }
 }
 
-export default ShipsContainer
+const mapStateToProps = ({ ships }) => ({ ships })
+export default connect (mapStateToProps, {fetchShips, push}) (ShipsContainer)

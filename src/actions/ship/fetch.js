@@ -15,7 +15,7 @@ export const fetchShips= () => {
   return dispatch => {
     dispatch({ type: APP_LOADING })
 
-  api.get('/rowers')
+  api.get('/ships')
     .then((res) => {
       dispatch({ type: APP_DONE_LOADING })
       dispatch({ type: LOAD_SUCCESS })

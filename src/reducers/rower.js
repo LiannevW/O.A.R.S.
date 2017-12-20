@@ -8,7 +8,7 @@ export default (state = [], { type, payload } = {}) => {
 
     case ROWER_CREATED:
       const newRower = {...payload}
-      return [newRower].concat(state)
+        return [newRower].concat(state)
 
     default:
      return state
