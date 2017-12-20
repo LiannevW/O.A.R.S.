@@ -1,13 +1,23 @@
 import request from 'superagent'
 
-export default class API {
+export default class API{
+  defaultOptions = {
+    tokenStorageKey: 'studentApiJWT'
+  }
 
   constructor(host, options = {}) {
-   this.host = host || 'http://localhost:3030'
-
+    this.host = host || 'http://localhost:3030'
     this.options = { ...this.defaultOptions, ...options }
   }
 
+  // GET path
+  //
+  // Example:
+  //  api.get('/students')
+  //    .then(res => console.log(res.body))
+  //    .catch(err => console.log(err))
+  //
+  // Returns: Promise
   get(path) {
     return request
       .get(this.createUrl(path))
@@ -35,11 +45,14 @@ export default class API {
       .send(data)
   }
 
-
   delete(path) {
     return request
       .delete(this.createUrl(path))
       .set(this.headers())
+  }
+
+  signOut() {
+    localStorage.removeItem(this.options.tokenStorageKey)
   }
 
   headers() {
@@ -47,11 +60,27 @@ export default class API {
       Accept: 'application/json'
     }
 
+    if (this.isAuthenticated()) {
+      headers.Authorization = `Bearer ${this.getToken()}`
+    }
+
     return headers
   }
 
+  isAuthenticated() {
+    return !!this.getToken()
+  }
+
+  // Create a full URL to our API, including the host and path
   createUrl(path) {
     return [this.host, path].join('')
   }
 
+  getToken() {
+    return localStorage.getItem(this.options.tokenStorageKey)
+  }
+
+  storeToken(token) {
+    localStorage.setItem(this.options.tokenStorageKey, token)
+  }
 }
