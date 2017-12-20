@@ -5,6 +5,10 @@ import MyChart from './component/mychart';
 import './App.css';
 import MyMap from './component/mymap';
 
+Number.prototype.toRadians = function() {
+  return this * Math.PI / 180;
+}
+
 class App extends Component {
   constructor(props){
     super(props);
@@ -26,6 +30,23 @@ class App extends Component {
     this.readingExcel = this.readingExcel.bind(this);
   }
 
+  calculateDistance(lat1,lat2,lon1,lon2){
+   var R = 6371e3; // metres
+   var f1 = lat1.toRadians();
+   var f2 = lat2.toRadians();
+   var Df = (lat2-lat1).toRadians();
+   var Dl = (lon2-lon1).toRadians();
+
+   var a = Math.sin(Df/2) * Math.sin(Df/2) +
+         Math.cos(f1) * Math.cos(f2) *
+         Math.sin(Dl/2) * Math.sin(Dl/2);
+   var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+
+   var d = (R * c) / 1000;
+  //  console.log(d);
+   return d;
+ }
+
   readingExcel(){
     var fileToRead = document.getElementById('file').files[0];
     const reader = new FileReader();
@@ -35,12 +56,18 @@ class App extends Component {
         const wsname = wb.SheetNames[0];
         const ws = wb.Sheets[wsname];
         const data = XLSX.utils.sheet_to_json(ws, {header:1});
+        var j = 1;
+      for (var i=1;i<data.length-1;i++){
+          j++;
+        if (this.calculateDistance(Number.parseFloat(data[i][3]),Number.parseFloat(data[j][3]),Number.parseFloat(data[i][4]),Number.parseFloat(data[j][4])) > 0)
+          {break;}
+      }
         var temp = [];
         var tempMap = [];
         var center = {};
-        for(var i=1;i<data.length;i++){
+        for(i;i<data.length;i++){
           temp.push({
-            x: data[i][0],
+            x: (data[i][0]) / 60000,
             y: data[i][5]
           });
           tempMap.push({

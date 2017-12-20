@@ -13,7 +13,7 @@ class MyChart extends Component {
         <LineChart
               hidePoints ="true"
               xMin = {0}
-              xLabel = "time"
+              xLabel = "time in mins"
               yLabel = "velocity"
               width={1000}
               height={400}

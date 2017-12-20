@@ -6,15 +6,15 @@ import { withScriptjs, withGoogleMap, GoogleMap, Marker,Polyline } from "react-g
 const MyMapComponent = compose(
   withProps({
     googleMapURL: "https://maps.googleapis.com/maps/api/js?key=AIzaSyCxdzcNWr4OGeOg8kFOcNfBB2Rt6tJCfFI&v=3.exp&libraries=geometry,drawing,places",
-    loadingElement: <div style={{ height: `100%` }} />,
-    containerElement: <div style={{ height: `400px` }} />,
+    loadingElement: <div style={{ height: `100%`, top: '50%', left: '50%' }} />,
+    containerElement: <div style={{ height: `400px`, width: '400px' }} />,
       mapElement: <div style={{ height: `100%` }} />,
   }),
   withScriptjs,
   withGoogleMap
 )((props) =>
   <GoogleMap
-    defaultZoom={3}
+    defaultZoom={12}
     defaultCenter={props.MapCenter}
   >
     <Polyline
