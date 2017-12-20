@@ -10,6 +10,8 @@ class RowersContainer extends PureComponent {
     this.props.fetchRowers()
   }
 
+  linkToOneRower = rowerId => event => this.props.push(`/rowers-path/${rowerId}`);
+
   render() {
 
       return (
@@ -18,9 +20,11 @@ class RowersContainer extends PureComponent {
              <RowersEditor />
           </header>
           <main>
+            <div>
               {this.props.rowers.map((rower) =>
-                <p>{rower.firstname}</p>
+                  <p onClick={this.linkToOneRower(rower.id)}>{rower.firstname}</p>
               )}
+            </div>
           </main>
         </div>
       )

@@ -19,9 +19,9 @@ export default class Routes extends Component {
         <Route path="/trainings/:trainingId" component={Training} />
         <Route path="/boats-path/:trainingId/:boatId" component={Boatpage} />
         <Route path="/rowers" component={RowersContainer} />
-        <Route path="/rowers/:rowerId" component={RowerProfile} />
+        <Route path="/rowers-path/:rowerId" component={RowerProfile} />
         <Route path="/ships" component={ShipsContainer} />
-        <Route path="/ships/:shipsId" component={ShipPage} />
+        <Route path="/ships-path/:shipsId" component={ShipPage} />
       </div>
     )
   }
