@@ -11,6 +11,8 @@ class ShipsContainer extends PureComponent {
     this.props.fetchShips()
   }
 
+linktToOneShip = shipId => event => this.props.push(`/ships-path/${shipId}`);
+
   render() {
     console.log(this.props.ships)
 
@@ -21,7 +23,7 @@ class ShipsContainer extends PureComponent {
       </header>
       <main>
         {this.props.ships.map((ship) =>
-          <p>{ship.name}</p>
+          <p onClick={this.linktToOneShip(ship.id)}>{ship.name}</p>
         )}
       </main>
       </div>
