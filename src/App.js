@@ -3,8 +3,6 @@ import PropTypes from 'prop-types'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import muiTheme from './assets/theme'
 import Navigation from './components/Navigation'
-import TrainingsContainer from './containers/TrainingsContainer'
-import trainings from './fixtures/trainings'
 import Routes from './routes'
 
 

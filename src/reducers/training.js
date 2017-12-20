@@ -1,4 +1,4 @@
-import { FETCHED_TRAININGS, FETCHED_ONE_TRAINING } from '../actions/training'
+import { FETCHED_TRAININGS, FETCHED_ONE_TRAINING } from '../actions/training/fetch'
 
 export default (state = [], { type, payload } = {}) => {
   switch(type) {
@@ -7,6 +7,7 @@ export default (state = [], { type, payload } = {}) => {
 
       case FETCHED_ONE_TRAINING :
            const trainingIds = state.map(t => t.id)
+
           if (trainingIds.indexOf(payload.id) < 0) {
             return [{ ...payload }].concat(state)
          }
@@ -16,6 +17,7 @@ export default (state = [], { type, payload } = {}) => {
              return { ...payload }
            }
          return training
+
        })
 
     default:

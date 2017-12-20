@@ -1,13 +1,15 @@
 import React, {Component} from 'react';
 import {Nav, Navbar, NavItem, NavDropdown, MenuItem} from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/css/bootstrap-theme.css'
 
 class Navigation extends Component {
   render() {
     return (
-  <Navbar >
+  <Navbar bsStyle= 'default' fixedTop >
     <Navbar.Header>
       <Navbar.Brand>
-        <a href="#">React-Bootstrap</a>
+
       </Navbar.Brand>
       <Navbar.Toggle />
     </Navbar.Header>
