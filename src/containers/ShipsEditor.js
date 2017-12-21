@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
-import { createShip } from '../actions/ships'
+import { createShip } from '../actions/ships/create'
 import './ShipsEditor.css'
 
 class ShipsEditor extends PureComponent {
