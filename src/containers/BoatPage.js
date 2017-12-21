@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { fetchOneTraining } from '../actions/trainings/fetch'
 import { fetchRowers } from '../actions/rowers/fetch'
 import { fetchShips} from '../actions/ships/fetch'
-//import './BoatPage.css'
+import './BoatPage.css'
 import PropTypes from 'prop-types'
 
 class BoatPage extends PureComponent {
@@ -29,11 +29,25 @@ class BoatPage extends PureComponent {
 
     return (
       <div>
+
+class BoatPage extends PureComponent {
+  componentWillMount() {
+
+    const { trainingId } = this.props.match.params
+      { this.props.fetchOneTraining(trainingId) }
+
+}
+  render() {
+    const { training } = this.props
+
+    return (
+
           <div className='training-info'>
              <h1> {training.startdate } </h1>
             <span>  <h2> {training.starttime} </h2>
                   <h2> {training.duration} </h2> </span>
             </div>
+
             <div className='rower-info'>
             {rowers.map((rower) =>
                <h1> {rower.firstname } {rower.lastname } </h1>
@@ -47,7 +61,6 @@ class BoatPage extends PureComponent {
               )}
                 </div>
               </div>
-
     )
   }
 }
