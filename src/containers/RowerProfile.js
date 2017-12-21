@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 class RowersProfile extends PureComponent {
   render() {
     return (
-      <h1> Rower Profile</h1>
+      <h1>Get trainings of this rower</h1>
     )
   }
 }
