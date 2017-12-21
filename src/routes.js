@@ -8,7 +8,7 @@ import RowersContainer from './containers/RowersContainer'
 import RowerProfile from './containers/RowerProfile'
 import ShipsContainer from './containers/ShipsContainer'
 import ShipPage from './containers/ShipPage'
-import LogIn from './log-in/log-in.js'
+import LogIn from './log-in/log-in'
 
 export default class Routes extends Component {
 

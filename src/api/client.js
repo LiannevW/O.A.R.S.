@@ -9,7 +9,9 @@ export default class API{
     this.host = host || 'http://localhost:3030'
     this.options = { ...this.defaultOptions, ...options }
   }
-
+  logOut() {
+    this.removeToken();
+  }
   // GET path
   //
   // Example:
@@ -51,9 +53,9 @@ export default class API{
       .set(this.headers())
   }
 
-  signOut() {
-    localStorage.removeItem(this.options.tokenStorageKey)
-  }
+  //signOut() {
+    //localStorage.removeItem(this.options.tokenStorageKey)
+  //}
 
   headers() {
     let headers = {
@@ -83,4 +85,7 @@ export default class API{
   storeToken(token) {
     localStorage.setItem(this.options.tokenStorageKey, token)
   }
+  removeToken() {
+		localStorage.removeItem(this.options.tokenStorageKey);
+	}
 }
