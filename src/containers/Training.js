@@ -6,7 +6,7 @@ import { fetchOneTraining } from '../actions/trainings/fetch'
 import {GridList, GridTile} from 'material-ui/GridList';
 import IconButton from 'material-ui/IconButton';
 import googleMaps from '../img/googleMaps.png'
-
+import './Training.css'
 import StarBorder from 'material-ui/svg-icons/toggle/star-border';
 // import { Link } from 'react-router-dom'
 
@@ -44,7 +44,7 @@ class Training extends PureComponent {
       { this.props.fetchOneTraining(trainingId) }
 
 }
-
+    //link to Boatpage
     linkToBoat = ( trainingId, boatNumber ) => event => this.props.push(`/boats-path/${trainingId}/${boatNumber}`)
 
   render() {
@@ -53,7 +53,8 @@ class Training extends PureComponent {
 
   const { training } = this.props
   if (!training) return null
-  console.log(training)
+
+  // assing names and number to boat
   const boatData = [
   {
     boatName: training.boat_1_name,
@@ -76,7 +77,7 @@ class Training extends PureComponent {
 console.log(boatData)
   return (
 
-<div>
+<div className= "training-info">
     <div>
        <h1> {training.startdate } </h1>
         <h2> {training.starttime} </h2>
@@ -108,7 +109,7 @@ console.log(boatData)
   }
 }
 
-
+//filter training from trainers
 const mapStateToProps = ({ trainings }, { match }) => {
 const training = trainings.filter((t) => (t.id === +match.params.trainingId))[0]
 
