@@ -3,11 +3,13 @@ import PropTypes from 'prop-types'
 import { push } from 'react-router-redux'
 import { connect } from 'react-redux'
 import { fetchOneTraining } from '../actions/trainings/fetch'
+
 import {GridList, GridTile} from 'material-ui/GridList';
 import IconButton from 'material-ui/IconButton';
 import googleMaps from '../img/googleMaps.png'
 
 import StarBorder from 'material-ui/svg-icons/toggle/star-border';
+
 // import { Link } from 'react-router-dom'
 
 const styles = {
