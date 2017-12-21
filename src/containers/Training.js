@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { push } from 'react-router-redux'
 import { connect } from 'react-redux'
-import { fetchOneTraining } from '../actions/training/fetch'
+import { fetchOneTraining } from '../actions/trainings/fetch'
 // import { Link } from 'react-router-dom'
 
 

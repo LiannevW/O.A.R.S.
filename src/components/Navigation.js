@@ -38,7 +38,7 @@ logIn = () => {
     </Navbar.Header>
     <Navbar.Collapse>
       <Nav>
-        <NavItem eventKey={1} href="#">trainings</NavItem>
+        <NavItem eventKey={1} href="/">trainings</NavItem>
         <NavItem eventKey={2} href="/rowers">rowers</NavItem>
         <MenuItem eventKey={3} href="/ships">ships</MenuItem>
       </Nav>

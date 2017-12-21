@@ -4,7 +4,6 @@ import { push } from 'react-router-redux'
 import { fetchShips } from '../actions/ships/fetch'
 import ShipsEditor from './ShipsEditor'
 
-
 class ShipsContainer extends PureComponent {
 
   componentWillMount() {

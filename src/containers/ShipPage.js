@@ -3,10 +3,8 @@ import PropTypes from 'prop-types'
 import { push } from 'react-router-redux'
 import { connect } from 'react-redux'
 import { fetchOneShip } from '../actions/ships/fetch'
-// import { Link } from 'react-router-dom'
 
-
-class Training extends PureComponent {
+class ShipPage extends PureComponent {
 
 
   componentWillMount() {
@@ -40,4 +38,4 @@ return {
   }
 }
 
-export default connect(mapStateToProps, { fetchOneShip, push }) (Training)
+export default connect(mapStateToProps, { fetchOneShip, push }) (ShipPage)

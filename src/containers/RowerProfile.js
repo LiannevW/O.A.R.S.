@@ -3,34 +3,26 @@ import PropTypes from 'prop-types'
 import { push } from 'react-router-redux'
 import { connect } from 'react-redux'
 import { fetchOneRower } from '../actions/rowers/fetch'
-// import { Link } from 'react-router-dom'
 
-
-class Training extends PureComponent {
-
+class RowerProfile extends PureComponent {
 
   componentWillMount() {
-
     const { rowerId } = this.props.match.params
-      { this.props.fetchOneRower(rowerId) }
-
-}
+      this.props.fetchOneRower(rowerId)
+  }
 
 render() {
-
  const { rower } = this.props
-console.log(rower)
+
   return (
-
       <div>
-       <h1> {rower.firstname } </h1>
-       <h2> {rower.lastname} </h2>
-
+         <h1> {rower.firstname } </h1>
+         <h2> {rower.lastname} </h2>
+         <p> Trainings of this rower:</p>
       </div>
     )
   }
 }
-
 
 const mapStateToProps = ({ rowers }, { match }) => {
 const rower = rowers.filter((t) => (t.id === +match.params.rowerId))[0]
@@ -40,4 +32,4 @@ return {
   }
 }
 
-export default connect(mapStateToProps, { fetchOneRower, push }) (Training)
+export default connect(mapStateToProps, { fetchOneRower, push }) (RowerProfile)
