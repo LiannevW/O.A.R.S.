@@ -7,7 +7,7 @@ import currentUser from './currentUser'
 export default {
   loading,
   loadError,
-  rower,
+  rowers,
   trainings,
   currentUser
 }
