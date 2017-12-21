@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import { push } from 'react-router-redux'
-import { fetchShips } from '../actions/ship/fetch'
+import { fetchShips } from '../actions/ships/fetch'
 import ShipsEditor from './ShipsEditor'
 
 
@@ -17,7 +17,7 @@ linktToOneShip = shipId => event => this.props.push(`/ships-path/${shipId}`);
     console.log(this.props.ships)
 
     return (
-      <div>
+      <div className= "editor">
       <header>
         <ShipsEditor/>
       </header>

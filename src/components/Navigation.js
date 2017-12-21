@@ -43,6 +43,7 @@ logIn = () => {
         <MenuItem eventKey={3} href="/ships">ships</MenuItem>
       </Nav>
 
+
       <Nav>
         {loggedIn && <NavItem eventKey={1}>
         <a href="" onClick={this.logOut.bind(this)}>Log out</a>

@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
-import { createShip } from '../actions/ship/create'
-
+import { createShip } from '../actions/ships/create'
+import './ShipsEditor.css'
 
 class ShipsEditor extends PureComponent {
 
@@ -19,7 +19,7 @@ class ShipsEditor extends PureComponent {
 
   render() {
     return (
-      <div>
+      <div className= "editor">
         <form onSubmit={this.saveShip.bind(this)}>
           <input
             type="name"

@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
-import { createRower } from '../actions/rower/create'
-
+import { createRower } from '../actions/rowers/create'
+import './RowersEditor.css'
 
 class RowersEditor extends PureComponent {
 

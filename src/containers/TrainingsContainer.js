@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import { push } from 'react-router-redux'
 import {GridList, GridTile} from 'material-ui/GridList';
-import {fetchTrainings} from '../actions/training/fetch'
+import {fetchTrainings} from '../actions/trainings/fetch'
 import IconButton from 'material-ui/IconButton';
 import Subheader from 'material-ui/Subheader';
 import StarBorder from 'material-ui/svg-icons/toggle/star-border';

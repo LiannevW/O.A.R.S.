@@ -1,4 +1,4 @@
-import { FETCHED_TRAININGS, FETCHED_ONE_TRAINING } from '../actions/training/fetch'
+import { FETCHED_TRAININGS, FETCHED_ONE_TRAINING } from '../actions/trainings/fetch'
 
 export default (state = [], { type, payload } = {}) => {
   switch(type) {
@@ -16,7 +16,7 @@ export default (state = [], { type, payload } = {}) => {
            if (training.id === payload.id) {
              return { ...payload }
            }
-         return training
+         return [training]
 
        })
 
