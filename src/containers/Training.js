@@ -26,8 +26,9 @@ class Training extends PureComponent {
 }
 
   render() {
+    console.log('props', this.props)
 
-    const training = this.props
+    const {training} = this.props
     if (!training) return null
     console.log(training)
   return (
@@ -40,7 +41,7 @@ class Training extends PureComponent {
   }
 }
 const mapStateToProps = ({ trainings }, { match }) => {
-  const training = trainings.filter((t) => (t.id === match.params.trainingsId))[0]
+  const training = trainings.filter((t) => (t.id === +match.params.trainingId))[0]
 
   return {
     training
