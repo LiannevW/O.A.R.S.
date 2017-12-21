@@ -45,6 +45,8 @@ class Training extends PureComponent {
 
 }
 
+    linkToBoat = ( trainingId, boatNumber ) => event => this.props.push(`/boats-path/${trainingId}/${boatNumber}`)
+
   render() {
 
 
@@ -88,9 +90,11 @@ console.log(boatData)
         <GridTile
           key={boat.number}
           title={boat.boatName}
+          subtitle={boat.number}
           actionIcon={<IconButton><StarBorder color="rgb(0, 188, 212)" /></IconButton>}
           titleStyle={styles.titleStyle}
           titleBackground="linear-gradient(to top, rgba(0,0,0,20) 10%,rgba(0,0,0,0.3) 70%,rgba(0,0,0,10) 100%)"
+          onClick= {this.linkToBoat(training.id, boat.number)}
 
         >
         <img src={googleMaps } />
