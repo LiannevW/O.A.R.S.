@@ -21,7 +21,7 @@ export default class Routes extends Component {
         <Route path="/rowers" component={RowersContainer} />
         <Route path="/rowers-path/:rowerId" component={RowerProfile} />
         <Route path="/ships" component={ShipsContainer} />
-        <Route path="/ships-path/:shipsId" component={ShipPage} />
+        <Route path="/ships-path/:shipId" component={ShipPage} />
         <Route path="/login" component={LogIn}/>
       </div>
     )
