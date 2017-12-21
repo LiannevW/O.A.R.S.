@@ -7,6 +7,7 @@ import IconButton from 'material-ui/IconButton';
 import Subheader from 'material-ui/Subheader';
 import StarBorder from 'material-ui/svg-icons/toggle/star-border';
 import googleMaps from '../img/googleMaps.png'
+
 const styles = {
 root: {
   display: 'flex',

@@ -1,9 +1,12 @@
 import React, {Component} from 'react';
 import {Nav, Navbar, NavItem, NavDropdown, MenuItem} from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/css/bootstrap-theme.css'
 import logOut from '../actions/users/log-out'
 import { connect } from 'react-redux'
 import { push } from 'react-router-redux'
 import PropTypes from 'prop-types'
+
 
 class Navigation extends Component {
 
@@ -26,10 +29,10 @@ logIn = () => {
     const { loggedIn } = this.props
 
     return (
-  <Navbar >
+  <Navbar bsStyle= 'default' fixedTop >
     <Navbar.Header>
       <Navbar.Brand>
-        <a href="#">React-Bootstrap</a>
+
       </Navbar.Brand>
       <Navbar.Toggle />
     </Navbar.Header>
