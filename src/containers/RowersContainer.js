@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import { push } from 'react-router-redux'
-import { fetchRowers } from '../actions/rower/fetch'
+import { fetchRowers } from '../actions/rowers/fetch'
 import RowersEditor from './RowersEditor'
 
 class RowersContainer extends PureComponent {
@@ -17,9 +17,12 @@ class RowersContainer extends PureComponent {
       return (
         <div>
           <header>
-             <RowersEditor />
+
           </header>
           <main>
+          <div className = 'editor'>
+          <RowersEditor />
+          </div>
             <div>
               {this.props.rowers.map((rower) =>
                   <p onClick={this.linkToOneRower(rower.id)}>{rower.firstname}</p>

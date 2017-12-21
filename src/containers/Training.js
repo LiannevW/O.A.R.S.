@@ -9,7 +9,7 @@ import { fetchOneTraining } from '../actions/training/fetch'
 class Training extends PureComponent {
   static propTypes = {
       fetchOneTraining: PropTypes.func.isRequired,
-      training: PropTypes.shape({
+      Training: PropTypes.shape({
         boat: PropTypes.array,
         startdate: PropTypes.string.isRequired,
         starttime: PropTypes.string.isRequired,
@@ -26,14 +26,17 @@ class Training extends PureComponent {
 
   render() {
 
-    const { training } = this.props
+  const { training } = this.props
+  if (!training) return null
+  console.log(training)
 
-    console.log(training)
   return (
 
-
-       <h1> {training.starttime } </h1>
-
+    <div>
+       <h1> {training.startdate } </h1>
+        <h2> {training.starttime} </h2>
+          <h2> {training.duration} </h2>
+      </div>
 
     )
   }
@@ -41,11 +44,11 @@ class Training extends PureComponent {
 
 
 const mapStateToProps = ({ trainings }, { match }) => {
-const training = trainings.filter((t) => (t.id === match.params.trainingId))[0]
+const training = trainings.filter((t) => (t.id === +match.params.trainingId))[0]
 
 return {
   training
   }
 }
 
-export default connect(mapStateToProps, { fetchOneTraining }) (Training)
+export default connect(mapStateToProps, { fetchOneTraining, push }) (Training)
