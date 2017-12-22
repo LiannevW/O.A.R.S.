@@ -29,6 +29,8 @@ const styles = {
   },
 };
 
+
+
 class Training extends PureComponent {
   static propTypes = {
       fetchOneTraining: PropTypes.func.isRequired,
@@ -46,12 +48,12 @@ class Training extends PureComponent {
       { this.props.fetchOneTraining(trainingId) }
 
 }
+
+
     //link to Boatpage
     linkToBoat = ( trainingId, boatNumber ) => event => this.props.push(`/boats-path/${trainingId}/${boatNumber}`)
 
   render() {
-
-
 
   const { training } = this.props
   if (!training) return null
