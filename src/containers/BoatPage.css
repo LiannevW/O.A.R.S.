@@ -5,3 +5,18 @@
 .line path{
   stroke:red !important;
 }
+
+.chart {
+  display: flex;
+  align-items: center;
+}
+
+.range {
+  width: 900px;
+  margin-left: 100px;
+}
+
+.drawgraphs{
+  margin-top: 100px;
+  margin-left: 50px;
+}

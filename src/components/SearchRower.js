@@ -4,7 +4,11 @@ import MenuItem from 'material-ui/MenuItem';
 import { connect } from 'react-redux'
 import {createRowers} from '../actions/rowers/create'
 
+import RaisedButton from 'material-ui/RaisedButton';
+
+
 class SearchRower extends React.Component {
+
 
 constructor(props) {
   super(props);
@@ -38,6 +42,7 @@ const rowers = {
   handleChange2 = (event, index, value) => this.setState({value2: value});
   handleChange3 = (event, index, value) => this.setState({value3: value});
   handleChange4 = (event, index, value) => this.setState({value4: value});
+
 
 renderRower(rower, index ) {
   return (
