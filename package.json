@@ -18,7 +18,13 @@
     "react-tap-event-plugin": "^3.0.2",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0",
-    "superagent": "^3.8.2"
+    "superagent": "^3.8.2",
+    "chart.js": "^1.1.1",
+    "react-google-map-draw-filter": "^1.2.2",
+    "react-google-maps": "^9.4.3",
+    "react-input-range": "^1.2.2",
+    "react-linechart": "^1.1.12",
+    "xlsx": "^0.11.14"
   },
   "scripts": {
     "start": "react-scripts start",
