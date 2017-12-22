@@ -3,7 +3,7 @@ import DropDownMenu from 'material-ui/DropDownMenu';
 import MenuItem from 'material-ui/MenuItem';
 import { connect } from 'react-redux'
 import {createRowers} from '../actions/rowers/create'
-
+import RaisedButton from 'material-ui/RaisedButton';
 
 const styles = {
   customWidth: {
@@ -74,7 +74,7 @@ console.log(this.props.rowers[this.state.value4])
           <MenuItem key={rowers} value={rowers} primaryText={`${rower.firstname} ${rower.lastname}`}/> ))}
       </DropDownMenu>
       <div className="actions">
-      <button className="primary buttonSave" onClick={this.saveRowers.bind(this)}>Save</button>
+      <RaisedButton label= "Save Boat" className="primary buttonSave" onClick={this.saveRowers.bind(this)}/>
     </div>
       </div>
     );
