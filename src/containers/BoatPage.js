@@ -6,6 +6,7 @@ import { fetchRowers } from '../actions/rowers/fetch'
 import { fetchShips} from '../actions/ships/fetch'
 import './BoatPage.css'
 import PropTypes from 'prop-types'
+import SearchRower from '../components/SearchRower'
 
 class BoatPage extends PureComponent {
   static propTypes = {
@@ -27,6 +28,8 @@ class BoatPage extends PureComponent {
   render() {
     const { training, rowers, ships } = this.props
 
+    if(!training) return null;
+
     return (
       <div>
           <div className='training-info'>
@@ -45,6 +48,9 @@ class BoatPage extends PureComponent {
                  <h1> {ship.name } {ship.type } </h1>
 
               )}
+                </div>
+                <div className='rower-search'>
+                <SearchRower />
                 </div>
               </div>
 
