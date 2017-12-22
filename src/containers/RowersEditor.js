@@ -12,7 +12,7 @@ class RowersEditor extends PureComponent {
         firstname: this.refs.firstname.value,
         lastname: this.refs.lastname.value
       }
-
+      console.log(rower)
       this.props.save(rower)
   }
 

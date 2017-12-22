@@ -13,12 +13,13 @@ class RowerProfile extends PureComponent {
 
 render() {
  const { rower } = this.props
+ console.log(rower)
 
   return (
       <div>
          <h1> {rower.firstname } </h1>
          <h2> {rower.lastname} </h2>
-         <p> Trainings of this rower:</p>
+  
       </div>
     )
   }
