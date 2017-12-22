@@ -20,6 +20,7 @@ class RowersContainer extends PureComponent {
   render() {
 
       return (
+
   <div>
       <div className = 'List'>
         <List style={{  width: '60%', marginTop: '300x'  }}>
