@@ -6,6 +6,8 @@ import { fetchRowers } from '../actions/rowers/fetch'
 import { fetchShips} from '../actions/ships/fetch'
 import './BoatPage.css'
 import PropTypes from 'prop-types'
+import DropDownMenu from 'material-ui/DropDownMenu';
+import MenuItem from 'material-ui/MenuItem';
 import SearchRower from '../components/SearchRower'
 
 class BoatPage extends PureComponent {

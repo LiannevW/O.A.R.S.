@@ -3,6 +3,11 @@ import { connect } from 'react-redux'
 import { push } from 'react-router-redux'
 import { fetchRowers } from '../actions/rowers/fetch'
 import RowersEditor from './RowersEditor'
+import avatar from '../img/avatar.png'
+import List from 'material-ui/List/List';
+import ListItem from 'material-ui/List/ListItem';
+import Avatar from 'material-ui/Avatar';
+import './RowersContainer.css'
 
 class RowersContainer extends PureComponent {
 
@@ -15,22 +20,25 @@ class RowersContainer extends PureComponent {
   render() {
 
       return (
-        <div>
-          <header>
+  <div>
+      <div className = 'List'>
+        <List style={{  width: '60%', marginTop: '300x'  }}>
+          {this.props.rowers.map((rower) => (
+            <ListItem key={rower.id} leftAvatar={
+               <Avatar src= {avatar} size={30}  />}
+                primaryText=  {rower.firstname}
+                style={{  margin: '50x', padding: '0,5rem',  }}
+                onClick={this.linkToOneRower(rower.id)}>
+              </ListItem>
+            ))}
+        </List>
+      </div>
+       <div className = 'editor'>
+        <RowersEditor />
+       </div>
+    </div>
 
-          </header>
-          <main>
-          <div className = 'editor'>
-          <RowersEditor />
-          </div>
-            <div>
-              {this.props.rowers.map((rower) =>
-                  <p onClick={this.linkToOneRower(rower.id)}>{rower.firstname}</p>
-              )}
-            </div>
-          </main>
-        </div>
-      )
+    )
   }
 }
 
