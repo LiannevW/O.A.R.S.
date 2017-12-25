@@ -49,7 +49,7 @@ export class TrainingsContainer extends PureComponent {
               onClick= {this.linkToTraining(training.id)}
 
             >
-              <img src={googleMaps } />
+              <img src={googleMaps } alt=""/>
             </GridTile>
           )}
         </GridList>

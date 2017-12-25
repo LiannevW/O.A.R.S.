@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Nav, Navbar, NavItem, NavDropdown, MenuItem} from 'react-bootstrap';
+import {Nav, Navbar, NavItem, MenuItem} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/css/bootstrap-theme.css'
 import logOut from '../actions/users/log-out'
