@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { push } from 'react-router-redux'
 import { connect } from 'react-redux'
 import { fetchOneTraining } from '../actions/trainings/fetch'
-
+import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card';
 import {GridList, GridTile} from 'material-ui/GridList';
 import IconButton from 'material-ui/IconButton';
 import googleMaps from '../img/googleMaps.png'
@@ -17,7 +17,7 @@ const styles = {
     display: 'flex',
     flexWrap: 'wrap',
     justifyContent: 'space-around',
-    backgroundColor: 'blue',
+
   },
   gridList: {
     display: 'flex',
@@ -25,7 +25,7 @@ const styles = {
     overflowX: 'auto',
   },
   titleStyle: {
-    color: 'rgb(0, 188, 212)',
+    color: 'rgb(0, 0, 0)',
   },
 };
 
@@ -81,9 +81,16 @@ console.log(boatData)
 
 <div className= "training-info">
     <div>
-       <h1> {training.startdate } </h1>
-        <h2> {training.starttime} </h2>
-          <h2> {training.duration} </h2>
+    <Card>
+      <CardHeader
+        title=  {`StartDate: ${training.startdate}`}
+        subtitle=  {`starttime ${training.starttime}     duraton: ${training.duration} `}
+      />
+      <CardText >
+      <p> Select Rowers and Ship for this training </p>
+
+      </CardText>
+    </Card>
       </div>
 
 
@@ -96,7 +103,7 @@ console.log(boatData)
           subtitle={boat.number}
           actionIcon={<IconButton><StarBorder color="rgb(0, 188, 212)" /></IconButton>}
           titleStyle={styles.titleStyle}
-          titleBackground="linear-gradient(to top, rgba(0,0,0,20) 10%,rgba(0,0,0,0.3) 70%,rgba(0,0,0,10) 100%)"
+          titleBackground="linear-gradient(to top, rgba(0,0,0,0.1) 10%,rgba(0,0,0,0.3) 70%,rgba(0,0,0,0.10) 100%)"
           onClick= {this.linkToBoat(training.id, boat.number)}
 
         >

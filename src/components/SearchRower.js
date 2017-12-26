@@ -6,6 +6,7 @@ import {createRowersAndShip} from '../actions/rowers/create'
 
 class SearchRowerandShip extends React.Component {
 
+
 constructor(props) {
   super(props);
   this.state = {
@@ -44,6 +45,7 @@ const ships = {
   handleChange3 = (event, index, value) => this.setState({value3: value});
   handleChange4 = (event, index, value) => this.setState({value4: value});
   handleChange5 = (event, index, value) => this.setState({valueShip: value});
+
 
 renderRower(rower, index ) {
   return (

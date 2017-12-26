@@ -6,6 +6,7 @@ import { fetchRowers } from '../actions/rowers/fetch'
 import { fetchShips} from '../actions/ships/fetch'
 import './BoatPage.css'
 import PropTypes from 'prop-types'
+import RaisedButton from 'material-ui/RaisedButton';
 import DropDownMenu from 'material-ui/DropDownMenu';
 import MenuItem from 'material-ui/MenuItem';
 import SearchRower from '../components/SearchRower'
@@ -14,6 +15,11 @@ import MyChart from '../components/mychart';
 import MyMap from '../components/mymap';
 import InputRange from 'react-input-range';
 import 'react-input-range/lib/css/index.css';
+import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card';
+
+const style = {
+  margin: 12,
+}
 
 Number.prototype.toRadians = function() {
   return this * Math.PI / 180;
@@ -169,35 +175,32 @@ sliderHandler(value){
     return (
       <div>
           <div className='training-info'>
-             <h1> {training.startdate } </h1>
-            <span>  <h2> {training.starttime} </h2>
-                  <h2> {training.duration} </h2> </span>
-            </div>
-            <div className='rower-info'>
-            {rowers.map((rower) =>
-               <h1> {rower.firstname } {rower.lastname } </h1>
-
-            )}
-              </div>
-              <div className='ship-info'>
-              {ships.map((ship) =>
-                 <h1> {ship.name } {ship.type } </h1>
-
-              )}
-                </div>
-                <div className='rower-search'>
-                <SearchRower trainingId={this.props.trainingId} boat_number_name={this.props.boat_number_name} /> 
-                </div>
-                <div className='chart'>
-                  <input type="file" id="file"/>
-                  <button id="myBtn" onClick={this.readingExcel.bind(this)} >Draw Graph</button>
-                  <br /><br /><br />
-                  {this.state.fileLoaded ? <InputRange minValue={this.state.range.min} maxValue={this.state.range.max} value={this.state.value} onChange={value =>this.setState({ value })} onChangeComplete={value=> this.sliderHandler(value)}/> : null }
-                  <br />
-                  <MyChart chartData = {this.state.filterData} />
-                  <MyMap MapPath = {this.state.MapPath} MapCenter = {this.state.MapCenter}/>
-                </div>
-              </div>
+    <Card>
+      <CardHeader
+        title=  {`StartDate: ${training.startdate}`}
+        subtitle=  {`starttime ${training.starttime}     duraton: ${training.duration} `}
+        actAsExpander={true}
+        showExpandableButton={true}
+      />
+      <CardText expandable={true}>
+      <p> Select Rowers and Ship for this boat </p>
+        <SearchRower />
+      </CardText>
+    </Card>
+    </div>
+    <div className= 'drawgraphs'>
+    <span><input type="file" id="file"/>
+    <RaisedButton label="DrawGraph" style={style} onClick={this.readingExcel.bind(this)}/></span>
+    </div>
+    <div className='range'>
+    <InputRange minValue={this.state.range.min} maxValue={this.state.range.max} value={this.state.value} onChange={value =>this.setState({ value })} onChangeComplete={value=> this.sliderHandler(value)}/> : null }
+    </div>
+    <div className='chart'>
+    <br />
+    <MyChart chartData = {this.state.filterData} />
+    <MyMap MapPath = {this.state.MapPath} MapCenter = {this.state.MapCenter}/>
+    </div>
+        </div>
 
     )
   }
