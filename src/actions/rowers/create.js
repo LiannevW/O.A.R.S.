@@ -31,10 +31,10 @@ export const createRower = (rower) => {
         }
       }
 
-      export const createRowers = (rowersTraining) => {
+      export const createRowersAndShip = (rowers,  shipId, trainingId, boat_number_name) => {
         return dispatch => {
             dispatch({ type: APP_LOADING })
-                api.post('/rowersToTraining', rowersTraining)
+                api.post('/rowersToTraining', {rowers, shipId, trainingId, boat_number_name})
                   .then(() => {
                     dispatch({ type: ROWERS_CREATED })
 
