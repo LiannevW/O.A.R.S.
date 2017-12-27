@@ -9,7 +9,7 @@ import PropTypes from 'prop-types'
 import RaisedButton from 'material-ui/RaisedButton';
 import DropDownMenu from 'material-ui/DropDownMenu';
 import MenuItem from 'material-ui/MenuItem';
-import SearchRower from '../components/SearchRower'
+import SearchRowerandShip from '../components/SearchRower'
 import * as XLSX from 'xlsx';
 import MyChart from '../components/mychart';
 import MyMap from '../components/mymap';
@@ -184,7 +184,7 @@ sliderHandler(value){
       />
       <CardText expandable={true}>
       <p> Select Rowers and Ship for this boat </p>
-        <SearchRower />
+        <SearchRowerandShip trainingId={this.props.trainingId} boat_number_name={this.props.boat_number_name} />
       </CardText>
     </Card>
     </div>
@@ -206,12 +206,14 @@ sliderHandler(value){
   }
 }
 
-const mapStateToProps = ({ trainings, rowers, ships }, { match }) => {
-const training = trainings.filter((t) => (t.id === +match.params.trainingId))[0]
-
-return {
-  training, rowers, ships
-  }
-}
-
+const mapStateToProps = ({ trainings, rowers, ships }, { match }) => { 
+const training = trainings.filter((t) => (t.id === +match.params.trainingId))[0] 
+const trainingId = match.params.trainingId;
+const boat_number_name = match.params.boat_number_name;
+const shipId = match.params.shipId;
+ 
+return { 
+  training, rowers, ships, trainingId, boat_number_name 
+  } 
+} 
 export default connect(mapStateToProps, { fetchOneTraining, fetchRowers, fetchShips, push }) (BoatPage)
