@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react'
-import PropTypes from 'prop-types'
+// import PropTypes from 'prop-types'
 import { push } from 'react-router-redux'
 import { connect } from 'react-redux'
 import { fetchOneShip } from '../actions/ships/fetch'
@@ -10,7 +10,7 @@ class ShipPage extends PureComponent {
   componentWillMount() {
 
     const { shipId } = this.props.match.params
-      { this.props.fetchOneShip(shipId) }
+      this.props.fetchOneShip(shipId) 
 
 }
 
