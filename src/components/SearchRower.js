@@ -3,49 +3,69 @@ import DropDownMenu from 'material-ui/DropDownMenu';
 import MenuItem from 'material-ui/MenuItem';
 import { connect } from 'react-redux'
 import {createRowersAndShip} from '../actions/rowers/create'
+import {fetchboatRowers} from '../actions/rowers/fetch'
 
 class SearchRowerandShip extends React.Component {
-
 
 constructor(props) {
   super(props);
   this.state = {
-    value1: 0,
-    value2: 0,
-    value3: 0,
-    value4: 0,
+    selectedRowers: [],
     valueShip: 0
   };
+}
+
+//getting selected rowers, making request
+componentWillMount() {
+  const { trainingId, boat_number_name } = this.props
+    this.props.fetchSelectedRowers (trainingId, boat_number_name)
+}
+
+//to show saved rowers
+//boatRowers - rowers that belong to this boat
+componentWillReceiveProps(nextProps) { //is invoked before the component receives new props
+  if (this.props.boatRowers !== nextProps.boatRowers) { //if we have changes
+    const newSelectedRowers = [];
+    //console.log(nextProps.boatRowers.rowers);
+    //console.log(nextProps.rowers);
+    nextProps.boatRowers.rowers.forEach(boatRower => {
+      var newrower = nextProps.rowers.find(rower => rower.id === boatRower.Id);
+      if (newrower !== undefined) {
+        newSelectedRowers.push(newrower);
+      }
+    });
+    this.setState({ //perform state transitions
+      selectedRowers: newSelectedRowers
+    });
+  }
 }
 
 saveRowersandShip() {
   console.table(this.state)
 
-const rowers = [
-  this.props.rowers[this.state.value1].id,
-  this.props.rowers[this.state.value2].id,
-  this.props.rowers[this.state.value3].id,
-  this.props.rowers[this.state.value4].id,
-];
+const rowers = this.state.selectedRowers.map(rower => rower.id);
 
 const ships = {
   shipId: this.props.ships[this.state.valueShip].id
   }
 
 //console.table(rowers)
-  console.log(this.props.rowers[this.state.value1])
-  console.log(this.props.rowers[this.state.value2])
-  console.log(this.props.rowers[this.state.value3])
-  console.log(this.props.rowers[this.state.value4])
+//console.log(this.props.rowers[this.state.value1])
+
   this.props.save(rowers, ships.shipId, this.props.trainingId, this.props.boat_number_name)
 }
 
-  handleChange1 = (event, index, value) => this.setState({value1: value});
-  handleChange2 = (event, index, value) => this.setState({value2: value});
-  handleChange3 = (event, index, value) => this.setState({value3: value});
-  handleChange4 = (event, index, value) => this.setState({value4: value});
-  handleChange5 = (event, index, value) => this.setState({valueShip: value});
+handleRowerChange = (event, index, value) => {
+  var newRower = this.props.rowers[value];
+  var newSelectedRowers = this.state.selectedRowers.slice(); //clone of selectedRowers
+  newSelectedRowers.push(newRower)
 
+  this.setState({
+    selectedRowers: newSelectedRowers
+  });
+}
+
+  handleChange5 = (event, index, value) => this.setState({valueShip: value});
 
 renderRower(rower, index ) {
   return (
@@ -58,22 +78,29 @@ renderShip(ship, index ) {
   )
 }
 render() {
-  const {rowers} = this.props
-  const {ships} = this.props
+  const {rowers, ships} = this.props
+
   return (
     <div>
-    <DropDownMenu value={this.state.value1} onChange={this.handleChange1}>
+    <DropDownMenu value={0} onChange={this.handleRowerChange}>
     {rowers.map(this.renderRower)}
     </DropDownMenu>
-    <DropDownMenu maxHeight={300} value={this.state.value2} onChange={this.handleChange2}>
-    {rowers.map(this.renderRower)}
-    </DropDownMenu>
-    <DropDownMenu maxHeight={300} value={this.state.value3} onChange={this.handleChange3}>
-    {rowers.map(this.renderRower)}
-    </DropDownMenu>
-    <DropDownMenu maxHeight={300} value={this.state.value4} onChange={this.handleChange4}>
-    {rowers.map(this.renderRower)}
-    </DropDownMenu>
+    <div> {
+    this.state.selectedRowers.map((selectedRower, index) => {
+      //console.log(this.state.selectedRowers)
+      return (
+        <div key={index}>
+        {
+          selectedRower.firstname
+        }&nbsp;
+        {
+          selectedRower.lastname
+        }
+    </div>
+      );
+    })
+  }
+  </div>
     <DropDownMenu value={this.state.valueShip} onChange={this.handleChange5}>
     {ships.map(this.renderShip)}
     </DropDownMenu>
@@ -85,8 +112,8 @@ render() {
   }
 }
 
-const mapStateToProps = ({ rowers, ships }) => ({ rowers, ships })
+const mapStateToProps = ({ rowers, ships, boatRowers }) => ({ rowers, ships, boatRowers })
 
-const mapDispatchToProps = { save: createRowersAndShip }
+const mapDispatchToProps = { save: createRowersAndShip, fetchSelectedRowers: fetchboatRowers }
 
 export default connect(mapStateToProps, mapDispatchToProps)(SearchRowerandShip)
