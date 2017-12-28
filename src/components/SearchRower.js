@@ -62,7 +62,7 @@ console.table(rowers)
   console.log(this.props.rowers[this.state.value2])
   console.log(this.props.rowers[this.state.value3])
   console.log(this.props.rowers[this.state.value4])
-  this.props.save(rowers, ships.shipId, this.props.trainingId, this.props.boat_number_name)
+  this.props.save(rowers, shipId, this.props.trainingId, this.props.boat_number_name)
 
 }
 
