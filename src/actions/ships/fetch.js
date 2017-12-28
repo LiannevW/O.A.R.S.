@@ -11,6 +11,7 @@ import API from '../../api/client'
 export const FETCHED_SHIPS = 'FETCHED_SHIPS'
 export const FETCHED_ONE_SHIP = 'FETCHED_ONE_SHIP'
 
+
 const api = new API()
 
 export const fetchShips= () => {

@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { fetchOneTraining } from '../actions/trainings/fetch'
 import { fetchRowers } from '../actions/rowers/fetch'
 import { fetchShips} from '../actions/ships/fetch'
+//import { fetchboatRowers } from '../actions/rowers/fetch'
 import './BoatPage.css'
 import PropTypes from 'prop-types'
 import SearchRowerandShip from '../components/SearchRower'
@@ -69,6 +70,7 @@ class BoatPage extends PureComponent {
       this.props.fetchOneTraining(trainingId)
       this.props.fetchRowers()
       this.props.fetchShips()
+
 }
 
 calculateDistance(lat1,lat2,lon1,lon2){
@@ -241,7 +243,7 @@ const boat_number_name = match.params.boat_number_name;
 const shipId = match.params.shipId;
  
 return { 
-  training, rowers, ships, trainingId, boat_number_name 
+  training, rowers, ships, trainingId, boat_number_name, shipId
   } 
 } 
 export default connect(mapStateToProps, { fetchOneTraining, fetchRowers, fetchShips, push }) (BoatPage)
