@@ -1,0 +1,32 @@
+.navbar,
+.navbar-default {
+    height: 100px;
+
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-brand>img {
+  height: 75px;
+  margin-top: 45px;
+}
+
+.nav{
+  color: red;
+  font-family: sans-serif;
+}
+
+@media (min-width: 768px) {
+  .navbar-nav>li {
+    padding-top: 35.5px;
+    padding-bottom: 35.5px;
+    padding-left: 40.5px;
+    line-height: 27px;
+    color: #4682b4;
+    font-size: 20px;
+    font-family: Helvetica;
+  }
+}

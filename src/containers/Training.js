@@ -6,9 +6,10 @@ import { fetchOneTraining } from '../actions/trainings/fetch'
 import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card';
 import {GridList, GridTile} from 'material-ui/GridList';
 import IconButton from 'material-ui/IconButton';
-import googleMaps from '../img/googleMaps.png'
+import steelblue from '../img/steelblue.jpg'
 import './Training.css'
 import StarBorder from 'material-ui/svg-icons/toggle/star-border';
+
 
 // import { Link } from 'react-router-dom'
 
@@ -25,7 +26,7 @@ const styles = {
     overflowX: 'auto',
   },
   titleStyle: {
-    color: 'rgb(0, 0, 0)',
+    color: 'rgb(0, 188, 212)',
   },
 };
 
@@ -79,44 +80,40 @@ class Training extends PureComponent {
 console.log(boatData)
   return (
 
-<div className= "training-info">
-    <div>
-    <Card>
-      <CardHeader
-        title=  {`StartDate: ${training.startdate}`}
-        subtitle=  {`starttime ${training.starttime}     duraton: ${training.duration} `}
-      />
-      <CardText >
-      <p> Select Rowers and Ship for this training </p>
+    <div className= "training-info">
+        <div>
+        <Card>
+          <CardHeader
+            title=  {`StartDate: ${training.startdate}`}
+            subtitle=  {`starttime ${training.starttime}     duraton: ${training.duration} `}
+          />
+          <CardText >
+          <p> Select Rowers and Ship for this training </p>
 
-      </CardText>
-    </Card>
+          </CardText>
+        </Card>
+          </div>
+      <div style={styles.root}>
+        <GridList style={styles.gridList} cols={2.2}>
+          {boatData.map((boat) => (
+            <GridTile
+              key={boat.number}
+              title={boat.boatName}
+              subtitle={boat.number}
+              actionIcon={<IconButton><StarBorder color="rgb(0, 188, 212)" /></IconButton>}
+              titleStyle={styles.titleStyle}
+              titleBackground="linear-gradient(to top, rgba(0,0,0,0.1) 10%,rgba(0,0,0,0.3) 70%,rgba(0,0,0,0.10) 100%)"
+              onClick= {this.linkToBoat(training.id, boat.number)} >
+              <img src={steelblue } alt=""/>
+            </GridTile>
+          ))}
+        </GridList>
+        </div>
       </div>
+      )
 
-
-  <div style={styles.root}>
-    <GridList style={styles.gridList} cols={2.2}>
-      {boatData.map((boat) => (
-        <GridTile
-          key={boat.number}
-          title={boat.boatName}
-          subtitle={boat.number}
-          actionIcon={<IconButton><StarBorder color="rgb(0, 188, 212)" /></IconButton>}
-          titleStyle={styles.titleStyle}
-          titleBackground="linear-gradient(to top, rgba(0,0,0,0.1) 10%,rgba(0,0,0,0.3) 70%,rgba(0,0,0,0.10) 100%)"
-          onClick= {this.linkToBoat(training.id, boat.number)}
-
-        >
-        <img src={googleMaps } />
-        </GridTile>
-      ))}
-    </GridList>
-    </div>
-  </div>
-  )
-
-  }
-}
+      }
+    }
 
 //filter training from trainers
 const mapStateToProps = ({ trainings }, { match }) => {

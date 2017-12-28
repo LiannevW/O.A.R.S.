@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Route } from 'react-router-dom'
-import { Link } from 'react-router'
+// import { Link } from 'react-router'
 import TrainingsContainer from './containers/TrainingsContainer'
 import Training from './containers/Training'
 import BoatPage from './containers/BoatPage'
