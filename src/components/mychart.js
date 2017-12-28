@@ -15,7 +15,7 @@ class MyChart extends Component {
               xMin = {0}
               xLabel = "time in mins"
               yLabel = "velocity"
-              width={1000}
+              width={750}
               height={400}
               data={this.props.chartData}
           />
@@ -27,7 +27,7 @@ class MyChart extends Component {
 MyChart.defaultProps = {
     zoom: 11,
     chartData:[{
-        color: "#090909",
+        color: "steelblue",
         points: [{x:0,y:0}]
       }]
 }

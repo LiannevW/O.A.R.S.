@@ -5,10 +5,10 @@ import { replace, push } from 'react-router-redux'
 import Paper from 'material-ui/Paper'
 import TextField from 'material-ui/TextField'
 import RaisedButton from 'material-ui/RaisedButton'
-import FlatButton from 'material-ui/FlatButton'
+// import FlatButton from 'material-ui/FlatButton'
 import signIn from '../actions/users/log-in'
 import Title from '../components/Title'
-
+import './log-in.css'
 const dialogStyle = {
   width: '400px',
   margin: '50px auto',
@@ -18,6 +18,7 @@ const dialogStyle = {
 const buttonStyle = {
   float: 'right',
   marginLeft: '2rem',
+  labelColor: "steelblue"
 }
 
 export class LogIn extends PureComponent {
@@ -47,6 +48,7 @@ export class LogIn extends PureComponent {
 
   render() {
     return (
+      <div className= "login">
       <Paper style={ dialogStyle }>
         <Title content="Log In" level={2} />
 
@@ -63,8 +65,11 @@ export class LogIn extends PureComponent {
           style={ buttonStyle }
           onClick={ this.submitForm.bind(this) }
           label="Log In"
+          backgroundColor= "blue"
+          labelColor= "blue"
           primary={true} />
       </Paper>
+      </div>
     )
   }
 }

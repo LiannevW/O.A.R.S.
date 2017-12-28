@@ -13,6 +13,7 @@ root: {
   display: 'flex',
   flexWrap: 'wrap',
   justifyContent: 'space-around',
+  marginTop: '100px',
 },
 gridList: {
   width: 500,
@@ -49,7 +50,7 @@ export class TrainingsContainer extends PureComponent {
               onClick= {this.linkToTraining(training.id)}
 
             >
-              <img src={googleMaps } />
+              <img src={googleMaps } alt=""/>
             </GridTile>
           )}
         </GridList>
