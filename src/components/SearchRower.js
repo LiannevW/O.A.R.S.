@@ -11,7 +11,7 @@ constructor(props) {
   super(props);
   this.state = {
     selectedRowers: [],
-    valueShip: 0
+    selectedShipValue: 0
   };
 }
 
@@ -21,8 +21,8 @@ componentWillMount() {
     this.props.fetchSelectedRowers (trainingId, boat_number_name)
 }
 
-//to show saved rowers
-//boatRowers - rowers that belong to this boat
+//to show saved rowers and ship
+//boatRowers - rowers and ship that belong to this boat
 componentWillReceiveProps(nextProps) { //is invoked before the component receives new props
   if (this.props.boatRowers !== nextProps.boatRowers) { //if we have changes
     const newSelectedRowers = [];
@@ -37,22 +37,29 @@ componentWillReceiveProps(nextProps) { //is invoked before the component receive
     this.setState({ //perform state transitions
       selectedRowers: newSelectedRowers
     });
+    nextProps.boatRowers.ships.forEach(boatShip => {
+      var newship = nextProps.ships.find(ship => ship.id === boatShip.Id);
+      if (newship !== undefined) {
+        this.setState({
+          selectedShipValue: nextProps.ships.indexOf(newship)
+        });
+      }
+    });
   }
 }
 
 saveRowersandShip() {
-  console.table(this.state)
+
+console.table(this.state)
 
 const rowers = this.state.selectedRowers.map(rower => rower.id);
 
-const ships = {
-  shipId: this.props.ships[this.state.valueShip].id
-  }
+const shipId = this.props.ships[this.state.selectedShipValue].id
 
 //console.table(rowers)
 //console.log(this.props.rowers[this.state.value1])
 
-  this.props.save(rowers, ships.shipId, this.props.trainingId, this.props.boat_number_name)
+  this.props.save(rowers, shipId, this.props.trainingId, this.props.boat_number_name)
 }
 
 handleRowerChange = (event, index, value) => {
@@ -65,7 +72,11 @@ handleRowerChange = (event, index, value) => {
   });
 }
 
-  handleChange5 = (event, index, value) => this.setState({valueShip: value});
+handleShipChange = (event, index, value) => {
+  this.setState({
+    selectedShipValue: value
+  });
+}
 
 renderRower(rower, index ) {
   return (
@@ -101,7 +112,7 @@ render() {
     })
   }
   </div>
-    <DropDownMenu value={this.state.valueShip} onChange={this.handleChange5}>
+    <DropDownMenu value={this.state.selectedShipValue} onChange={this.handleShipChange}>
     {ships.map(this.renderShip)}
     </DropDownMenu>
     <div className="actions">
@@ -114,6 +125,6 @@ render() {
 
 const mapStateToProps = ({ rowers, ships, boatRowers }) => ({ rowers, ships, boatRowers })
 
-const mapDispatchToProps = { save: createRowersAndShip, fetchSelectedRowers: fetchboatRowers }
+const mapDispatchToProps = { save : createRowersAndShip, fetchSelectedRowers: fetchboatRowers }
 
 export default connect(mapStateToProps, mapDispatchToProps)(SearchRowerandShip)

@@ -6,6 +6,7 @@ import ships from './ships'
 import currentUser from './currentUser'
 import boatRowers from './boatRowers'
 
+
 export default {
   loading,
   loadError,
@@ -13,5 +14,6 @@ export default {
   trainings,
   currentUser,
   ships,
-  boatRowers
+  boatRowers,
+
 }
