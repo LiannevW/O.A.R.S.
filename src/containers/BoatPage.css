@@ -3,20 +3,33 @@
 }
 
 .line path{
-  stroke:red !important;
+  stroke:steelblue !important;
 }
 
 .chart {
-  display: flex;
-  align-items: center;
+display: flex;
+align-items: flex-start;
+margin-left: 20px;
+}
+
+.mychart {
+  width: 300px;
+}
+.maps {
+  width: 500px;
 }
 
 .range {
-  width: 900px;
-  margin-left: 100px;
+  width:400px !important;
+  margin-left: 0px;
 }
 
 .drawgraphs{
   margin-top: 100px;
   margin-left: 50px;
+}
+
+.FileInput {
+  margin-left: 500px;
+  margin-top: -30px;
 }

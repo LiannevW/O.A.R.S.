@@ -13,6 +13,7 @@ root: {
   display: 'flex',
   flexWrap: 'wrap',
   justifyContent: 'space-around',
+  marginTop: '100px',
 },
 gridList: {
   width: 500,

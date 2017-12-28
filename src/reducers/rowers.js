@@ -7,20 +7,8 @@ export default (state = [], { type, payload } = {}) => {
       return [ ...payload ]
 
     case FETCHED_ONE_ROWER :
+           return [ ...payload ]
 
-     const rowerIds = state.map(t => t.id)
-
-     if (rowerIds.indexOf(payload.id) < 0) {
-      return [{ ...payload }].concat(state)
-     }
-
-      return state.map((rower) => {
-       if (rower.id === payload.id) {
-        return { ...payload }
-      }
-        return [rower]
-
-      })
 
     case ROWER_CREATED:
       const newRower = {...payload}
