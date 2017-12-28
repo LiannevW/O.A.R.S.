@@ -4,6 +4,7 @@ import MenuItem from 'material-ui/MenuItem';
 import { connect } from 'react-redux'
 import {createRowersAndShip} from '../actions/rowers/create'
 import {fetchboatRowers} from '../actions/rowers/fetch'
+import SnackbarSave from './SnackbarSave'
 
 class SearchRowerandShip extends React.Component {
 
@@ -50,7 +51,7 @@ componentWillReceiveProps(nextProps) { //is invoked before the component receive
 
 saveRowersandShip() {
 
-console.table(this.state)
+//console.table(this.state)
 
 const rowers = this.state.selectedRowers.map(rower => rower.id);
 
@@ -115,8 +116,8 @@ render() {
     <DropDownMenu value={this.state.selectedShipValue} onChange={this.handleShipChange}>
     {ships.map(this.renderShip)}
     </DropDownMenu>
-    <div className="actions">
-    <button className="primary buttonSave" onClick={this.saveRowersandShip.bind(this)}>Save</button>
+    <div className = 'snackbar'>
+     <SnackbarSave handleSave={this.saveRowersandShip.bind(this)} />
     </div>
     </div>
     );
