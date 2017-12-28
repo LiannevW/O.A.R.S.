@@ -57,11 +57,7 @@ const rowers = this.state.selectedRowers.map(rower => rower.id);
 
 const shipId = this.props.ships[this.state.selectedShipValue].id
 
-console.table(rowers)
-  console.log(this.props.rowers[this.state.value1])
-  console.log(this.props.rowers[this.state.value2])
-  console.log(this.props.rowers[this.state.value3])
-  console.log(this.props.rowers[this.state.value4])
+  console.table(rowers)
   this.props.save(rowers, shipId, this.props.trainingId, this.props.boat_number_name)
 
 }
