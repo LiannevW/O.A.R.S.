@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import {createRowersAndShip} from '../actions/rowers/create'
 import {fetchboatRowers} from '../actions/rowers/fetch'
 import SnackbarSave from './SnackbarSave'
+import './SearchRower.css'
 
 class SearchRowerandShip extends React.Component {
 
@@ -106,7 +107,8 @@ render() {
         }&nbsp;
         {
           selectedRower.lastname
-        }
+        }&nbsp;
+        <i className="material-icons ">delete</i>
     </div>
       );
     })
