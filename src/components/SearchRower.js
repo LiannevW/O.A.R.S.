@@ -32,7 +32,7 @@ const ships = {
   shipId: this.props.ships[this.state.valueShip].id
   }
 
-//console.table(rowers)
+console.table(rowers)
   console.log(this.props.rowers[this.state.value1])
   console.log(this.props.rowers[this.state.value2])
   console.log(this.props.rowers[this.state.value3])

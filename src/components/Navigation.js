@@ -6,8 +6,8 @@ import logOut from '../actions/users/log-out'
 import { connect } from 'react-redux'
 import { push } from 'react-router-redux'
 import PropTypes from 'prop-types'
-
-
+import logo from '../img/rowcoaching_logo.png'
+import './Navigation.css'
 class Navigation extends Component {
 
   static propTypes = {
@@ -29,22 +29,24 @@ logIn = () => {
     const { loggedIn } = this.props
 
     return (
+<div>
   <Navbar bsStyle= 'default' fixedTop >
     <Navbar.Header>
+    <div>
       <Navbar.Brand>
-
+      <a href="#"><img src={logo} weign="40" height="40"/></a>
       </Navbar.Brand>
+    </div>
       <Navbar.Toggle />
     </Navbar.Header>
     <Navbar.Collapse>
-      <Nav>
-        <NavItem eventKey={1} href="/">trainings</NavItem>
-        <NavItem eventKey={2} href="/rowers">rowers</NavItem>
-        <MenuItem eventKey={3} href="/ships">ships</MenuItem>
+      <Nav className= "navstyle">
+        <NavItem eventKey={1} href="/">Trainings   | </NavItem>
+        <NavItem eventKey={2} href="/rowers">Rowers    | </NavItem>
+        <MenuItem eventKey={3} href="/ships">Ships | </MenuItem>
       </Nav>
 
-
-      <Nav>
+      <Nav classname= "navstyle" pullRight>
         {loggedIn && <NavItem eventKey={1}>
         <a href="" onClick={this.logOut.bind(this)}>Log out</a>
         </NavItem>}
@@ -54,6 +56,7 @@ logIn = () => {
       </Nav>
     </Navbar.Collapse>
   </Navbar>
+</div>
   )
  }
 }
