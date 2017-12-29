@@ -43,6 +43,7 @@ class RowerProfile extends PureComponent {
 
 render() {
  const { rower } = this.props
+ console.log(rower)
  const rowername = rower.filter((r) => (r))[0]
  console.log(rowername)
    if (!rower) return null
