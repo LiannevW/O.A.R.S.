@@ -73,6 +73,16 @@ handleRowerChange = (event, index, value) => {
   });
 }
 
+deleteRower = (index) => {
+  var newSelectedRowers = this.state.selectedRowers.slice();
+  if (index !==  -1) {
+      newSelectedRowers.splice(index, 1);
+  }
+  this.setState({
+    selectedRowers: newSelectedRowers
+  });
+}
+
 handleShipChange = (event, index, value) => {
   this.setState({
     selectedShipValue: value
@@ -99,6 +109,7 @@ render() {
     </DropDownMenu>
     <div> {
     this.state.selectedRowers.map((selectedRower, index) => {
+      const fixedIndex = index;
       //console.log(this.state.selectedRowers)
       return (
         <div key={index}>
@@ -108,7 +119,7 @@ render() {
         {
           selectedRower.lastname
         }&nbsp;
-        <i className="material-icons ">delete</i>
+        <i className="material-icons" onClick={() => this.deleteRower(fixedIndex)}>delete</i>
     </div>
       );
     })
