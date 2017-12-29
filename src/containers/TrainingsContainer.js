@@ -40,7 +40,6 @@ export class TrainingsContainer extends PureComponent {
           cellHeight={180}
           style={styles.gridList}
         >
-          <Subheader>Training</Subheader>
           {trainings.map((training) =>
             <GridTile
               key={training.id}
@@ -48,7 +47,6 @@ export class TrainingsContainer extends PureComponent {
               subtitle={<span>Start Time: <b>{training.starttime}</b></span>}
               actionIcon={<IconButton><StarBorder color="white" /></IconButton>}
               onClick= {this.linkToTraining(training.id)}
-
             >
               <img src={googleMaps } alt=""/>
             </GridTile>
