@@ -5,6 +5,7 @@ import MyMap from './mymap';
 import InputRange from 'react-input-range';
 import 'react-input-range/lib/css/index.css';
 import Heat2 from './heat2';
+import {Card, CardActions, CardHeader, CardText, CardMedia} from 'material-ui/Card';
 
 Number.prototype.toRadians = function() {
   return this * Math.PI / 180;
@@ -207,13 +208,46 @@ class Charts extends Component {
         <input type="file" id="file"/>
         <button id="myBtn" onClick={this.readingExcel.bind(this)} >Draw Graph</button>
         <br /><br /><br />
+        <div className='chart'>
+    <Card style= {{width: '500px', marginLeft: 30, marginRight: 30, flex:1}}>
+      <CardHeader
+      title= "Velocity"
+      titleStyle={{textAlign: "center",
+                   marginBottom:"20px"}}
+      showExpandableButton={true}
+      />
+      <CardMedia expandable={true}>
+      <div className='range'>
         {this.state.fileLoaded ? <InputRange minValue={this.state.range.min} maxValue={this.state.range.max} value={this.state.value} onChange={value =>this.setState({ value })} onChangeComplete={value=> this.sliderHandler(value)}/> : null }
-        <br />
-        <MyChart chartData = {this.state.chartFilterColor}/>
-        <MyMap MapPath = {this.state.FilterMap} MapCenter = {this.state.MapCenter}/>
-        <br />
-        <Heat2/>
       </div>
+        <MyChart chartData = {this.state.chartFilterColor}/>
+      </CardMedia>
+    </Card>
+      <Card style= {{width: '500px', marginLeft: 30, marginRight: 30, flex:1}}>
+       <CardHeader
+        title= "Route"
+        titleStyle={{textAlign: "center",
+                  marginBottom:"20px"}}
+                  showExpandableButton={true}
+        />
+         <CardMedia expandable={true}>
+          <MyMap MapPath = {this.state.FilterMap} MapCenter = {this.state.MapCenter}/>
+         </CardMedia>
+    </Card>
+
+      <Card style= {{width: '500px', marginLeft: 30, marginRight: 30, flex:1}}>
+       <CardHeader
+        title= "HeatMap"
+        titleStyle={{textAlign: "center",
+                  marginBottom:"20px"}}
+                  showExpandableButton={true}
+        />
+         <CardMedia expandable={true}>
+          <Heat2/>
+         </CardMedia>
+      </Card>
+   </div>
+</div>
     );
   }
 }

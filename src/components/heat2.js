@@ -115,7 +115,7 @@ class Heat2 extends Component {
           console.log(cluster.maxVal);
           //transform rotateX 180degrees since heatmap starts 0.0 from top left
           return (
-              <div style={{ width: 500, height: 500, transform: 'rotateX(180deg)' }} >
+              <div style={{ width: 500, height: 400, transform: 'rotateX(180deg)' }} >
                   <ReactHeatmap max={cluster.maxVal} data={cluster.cluster} />
               </div>
           )
