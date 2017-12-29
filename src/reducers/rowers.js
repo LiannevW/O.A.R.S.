@@ -1,6 +1,7 @@
 import { FETCHED_ROWERS } from '../actions/rowers'
 import { ROWER_CREATED } from '../actions/rowers'
 import { FETCHED_ONE_ROWER } from '../actions/rowers'
+
 export default (state = [], { type, payload } = {}) => {
   switch(type) {
     case  FETCHED_ROWERS:
@@ -18,8 +19,7 @@ export default (state = [], { type, payload } = {}) => {
        if (rower.id === payload.id) {
         return { ...payload }
       }
-        return [rower]
-
+        return rower
       })
 
     case ROWER_CREATED:

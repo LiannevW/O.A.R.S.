@@ -4,6 +4,7 @@ import rowers from './rowers'
 import trainings from './trainings'
 import ships from './ships'
 import currentUser from './currentUser'
+
 export default {
   loading,
   loadError,

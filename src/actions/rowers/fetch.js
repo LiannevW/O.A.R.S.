@@ -20,7 +20,7 @@ export const fetchRowers= () => {
     .then((res) => {
       dispatch({ type: APP_DONE_LOADING })
       dispatch({ type: LOAD_SUCCESS })
-
+      console.log(res)
       dispatch({
         type: FETCHED_ROWERS,
         payload: res.body
