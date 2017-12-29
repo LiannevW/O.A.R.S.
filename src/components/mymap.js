@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { compose, withProps } from "recompose"
-import { withScriptjs, withGoogleMap, GoogleMap, Marker,Polyline } from "react-google-maps"
+import { withScriptjs, withGoogleMap, GoogleMap, Polyline } from "react-google-maps"
 
 
 const MyMapComponent = compose(

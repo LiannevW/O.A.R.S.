@@ -29,26 +29,25 @@ class RowerProfile extends PureComponent {
       <TableRowColumn><IconButton onClick= {this.linkToTraining(rower.TrainingId)}><Info /></IconButton></TableRowColumn>
     </TableRow>
   )
-   console.log(rower)
 }
 
 linkToTraining = trainingId => event => this.props.push(`/trainings/${trainingId}`)
 
 render() {
- const { rower } = this.props
- console.log(rower)
- const rowername = rower.filter((r) => (r))[0]
+  const { rower } = this.props
+  const rowername = rower.filter((r) => (r))[0]
 
-   if (!rower) return null
-   if (!rowername) return null
-   console.log(rowername.TrainingId)
+  if (!rower) return null
+  if (!rowername) return null
+
   return (
-  <article className="rowerprofile">
-    <header>
+    <article className="rowerprofile">
+      <header>
         <Title content={`${rowername.firstname} ${rowername.lastname}`} className="level-2" />
-    </header>
-    <div className="table">
-    <Table className="table-header" >
+      </header>
+      <div className="table">
+        <Table className="table-header" >
+
           <TableHeader displaySelectAll={false} adjustForCheckbox={false} style={{fontSize:'20px',}}>
             <TableRow>
               <TableHeaderColumn>Training</TableHeaderColumn>
@@ -58,11 +57,12 @@ render() {
               <TableHeaderColumn>--></TableHeaderColumn>
             </TableRow>
           </TableHeader>
-                <TableBody displayRowCheckbox={false}>
-                    {rower.map(this.renderRower)}
-                </TableBody>
 
-            </Table>
+          <TableBody displayRowCheckbox={false}>
+            {rower.map(this.renderRower)}
+          </TableBody>
+
+        </Table>
     </div>
   </article>
     )

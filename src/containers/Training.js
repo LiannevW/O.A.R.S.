@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { push } from 'react-router-redux'
 import { connect } from 'react-redux'
 import { fetchOneTraining } from '../actions/trainings/fetch'
-import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card';
+import {Card, CardHeader, CardText} from 'material-ui/Card';
 import {GridList, GridTile} from 'material-ui/GridList';
 import IconButton from 'material-ui/IconButton';
 import steelblue from '../img/steelblue.jpg'
@@ -44,7 +44,7 @@ class Training extends PureComponent {
   componentWillMount() {
 
     const { trainingId } = this.props.match.params
-      { this.props.fetchOneTraining(trainingId) }
+    this.props.fetchOneTraining(trainingId) 
 
 }
     //link to Boatpage

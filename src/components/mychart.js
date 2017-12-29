@@ -3,17 +3,15 @@ import LineChart from 'react-linechart';
 import '../../node_modules/react-linechart/dist/styles.css';
 
 class MyChart extends Component {
-  constructor(props){
-    super(props);
-  }
+
   render() {
-    console.log(this.props.chartData);this.props.chartData;
-    const data = [
-      {
-          color: "steelblue",
-          points: [{x: 1, y: 2}, {x: 3, y: 5}, {x: 7, y: -3}]
-      }
-  ];
+
+  //   const data = [
+  //     {
+  //         color: "steelblue",
+  //         points: [{x: 1, y: 2}, {x: 3, y: 5}, {x: 7, y: -3}]
+  //     }
+  // ];
     return (
       <div>
         <LineChart

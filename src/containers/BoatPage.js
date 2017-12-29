@@ -10,7 +10,7 @@ import PropTypes from 'prop-types'
 import SearchRowerandShip from '../components/SearchRower'
 import Charts from '../components/charts'
 import 'react-input-range/lib/css/index.css';
-import {Card, CardActions, CardHeader, CardText, CardMedia} from 'material-ui/Card';
+import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
 import '../../node_modules/react-linechart/dist/styles.css';
 
@@ -37,7 +37,7 @@ class BoatPage extends PureComponent {
 }
 
   render() {
-    const { training, rowers, ships } = this.props
+    const { training } = this.props
 
     if(!training) return null;
 
