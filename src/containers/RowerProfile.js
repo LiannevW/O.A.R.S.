@@ -36,6 +36,7 @@ linkToTraining = trainingId => event => this.props.push(`/trainings/${trainingId
 
 render() {
  const { rower } = this.props
+ console.log(rower)
  const rowername = rower.filter((r) => (r))[0]
 
    if (!rower) return null
