@@ -19,6 +19,7 @@
     "react-heatmap-grid": "^0.2.0",
     "react-input-range": "^1.2.2",
     "react-linechart": "^1.1.12",
+    "react-material-icons": "^1.0.3",
     "react-redux": "^5.0.6",
     "react-router-dom": "^4.2.2",
     "react-router-redux": "^5.0.0-alpha.9",

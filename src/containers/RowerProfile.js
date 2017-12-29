@@ -6,20 +6,10 @@ import { fetchOneRower } from '../actions/rowers/fetch'
 import Title from '../components/Title'
 import {Table,TableBody, TableHeader,  TableHeaderColumn, TableRow, TableRowColumn } from 'material-ui/Table';
 import './RowerProfile.css'
-import picture from '../img/avatar.png'
+import IconButton from 'material-ui/IconButton';
+import Info from 'react-material-icons/icons/action/info'
 
-const styles = {
-root: {
-  display: 'flex',
-  flexWrap: 'wrap',
-  justifyContent: 'space-around',
-},
-gridList: {
-  width: 500,
-  height: 450,
-  overflowY: 'auto',
-},
-};
+
 
 class RowerProfile extends PureComponent {
 
@@ -32,45 +22,48 @@ class RowerProfile extends PureComponent {
   renderRower = (rower, index) => {
   return (
      <TableRow key={index}>
-      <TableRowColumn>{rower.TrainingId}</TableRowColumn>
+      <TableRowColumn >{rower.TrainingId}</TableRowColumn>
+      <TableRowColumn>{rower.startdate}</TableRowColumn>
       <TableRowColumn>{rower.starttime}</TableRowColumn>
       <TableRowColumn>{rower.boat_number}</TableRowColumn>
+      <TableRowColumn><IconButton onClick= {this.linkToTraining(rower.TrainingId)}><Info /></IconButton></TableRowColumn>
     </TableRow>
-
   )
    console.log(rower)
 }
 
+linkToTraining = trainingId => event => this.props.push(`/trainings/${trainingId}`)
+
 render() {
  const { rower } = this.props
+ console.log(rower)
  const rowername = rower.filter((r) => (r))[0]
- console.log(rowername)
-   if (!rower) return null
 
+   if (!rower) return null
+   if (!rowername) return null
+   console.log(rowername.TrainingId)
   return (
   <article className="rowerprofile">
     <header>
         <Title content={`${rowername.firstname} ${rowername.lastname}`} className="level-2" />
-        <div className="color">
-        </div>
-        <div className="cover"
-              style={{backgroundImage:`url(${ picture })`}}/>
-
-      </header>
-
-
-    <Table>
-          <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
+    </header>
+    <div className="table">
+    <Table className="table-header" >
+          <TableHeader displaySelectAll={false} adjustForCheckbox={false} style={{fontSize:'20px',}}>
             <TableRow>
               <TableHeaderColumn>Training</TableHeaderColumn>
-              <TableHeaderColumn>startTime</TableHeaderColumn>
+              <TableHeaderColumn>start Date</TableHeaderColumn>
+              <TableHeaderColumn>start time</TableHeaderColumn>
               <TableHeaderColumn>boat Number</TableHeaderColumn>
+              <TableHeaderColumn>--></TableHeaderColumn>
             </TableRow>
           </TableHeader>
                 <TableBody displayRowCheckbox={false}>
                     {rower.map(this.renderRower)}
                 </TableBody>
+
             </Table>
+    </div>
   </article>
     )
   }

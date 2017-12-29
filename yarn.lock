@@ -5842,6 +5842,12 @@ react-linechart@^1.1.12:
     d3 "3.5.17"
     prop-types "15.5.10"
 
+react-material-icons@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/react-material-icons/-/react-material-icons-1.0.3.tgz#8974b06e00e20f60f21abe94b5d6db07f8a391d9"
+  dependencies:
+    create-react-class "15.6.0"
+
 react-overlays@^0.7.4:
   version "0.7.4"
   resolved "https://registry.yarnpkg.com/react-overlays/-/react-overlays-0.7.4.tgz#ef2ec652c3444ab8aa014262b18f662068e56d5c"
