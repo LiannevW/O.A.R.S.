@@ -34,7 +34,7 @@ logIn = () => {
     <Navbar.Header>
     <div>
       <Navbar.Brand>
-      <a href="#"><img src={logo} weign="40" height="40"/></a>
+      <a href="root"><img src={logo} alt="" width="40" height="40"/></a>
       </Navbar.Brand>
     </div>
       <Navbar.Toggle />
