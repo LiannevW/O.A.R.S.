@@ -3,12 +3,11 @@ import React, { PureComponent } from 'react'
 import { push } from 'react-router-redux'
 import { connect } from 'react-redux'
 import { fetchOneRower } from '../actions/rowers/fetch'
-import {GridList, GridTile} from 'material-ui/GridList';
-import StarBorder from 'material-ui/svg-icons/toggle/star-border';
-import IconButton from 'material-ui/IconButton';
-import googleMaps from '../img/googleMaps.png'
+import Title from '../components/Title'
 import {Table,TableBody, TableHeader,  TableHeaderColumn, TableRow, TableRowColumn } from 'material-ui/Table';
 import './RowerProfile.css'
+import picture from '../img/avatar.png'
+
 const styles = {
 root: {
   display: 'flex',
@@ -44,24 +43,41 @@ class RowerProfile extends PureComponent {
 
 render() {
  const { rower } = this.props
-
- console.log(rower)
+ const rowername = rower.filter((r) => (r))[0]
+ console.log(rowername)
    if (!rower) return null
 
-
   return (
-      <div className= 'rowerprofile'>
-          <p>{rower.lastname}</p>
-          <p>{rower.firstname}</p>
-          <p>{rower.TrainingId}</p>
-          <p>{rower.boat_number}</p>
-      </div>
+  <article className="rowerprofile">
+    <header>
+        <Title content={`${rowername.firstname} ${rowername.lastname}`} className="level-2" />
+        <div className="color">
+        </div>
+        <div className="cover"
+              style={{backgroundImage:`url(${ picture })`}}/>
+
+      </header>
+
+
+    <Table>
+          <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
+            <TableRow>
+              <TableHeaderColumn>Training</TableHeaderColumn>
+              <TableHeaderColumn>startTime</TableHeaderColumn>
+              <TableHeaderColumn>boat Number</TableHeaderColumn>
+            </TableRow>
+          </TableHeader>
+                <TableBody displayRowCheckbox={false}>
+                    {rower.map(this.renderRower)}
+                </TableBody>
+            </Table>
+  </article>
     )
   }
 }
 
 const mapStateToProps = ({ rowers }, { match }) => {
-const rower = rowers.filter((t) => (t.id === +match.params.rowerId))[0]
+const rower = rowers.filter((t) => (t.id === +match.params.rowerId))
 return {
   rower
   }
