@@ -45,7 +45,7 @@ export const fetchOneRower = (id) => {
     .then((res) => {
       dispatch({ type: APP_DONE_LOADING })
       dispatch({ type: LOAD_SUCCESS })
-      console.log(res)
+
       dispatch({
         type: FETCHED_ONE_ROWER,
         payload: res.body

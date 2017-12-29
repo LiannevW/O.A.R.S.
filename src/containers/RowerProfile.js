@@ -51,8 +51,9 @@ render() {
 
   return (
       <div className= 'rowerprofile'>
-          <p>{rower.lastname}</p>
-          <p>{rower.firstname}</p>
+        <header>
+          <h3>Trainings of {rower.lastname} {rower.firstname}</h3>
+        </header>
           <p>{rower.TrainingId}</p>
           <p>{rower.boat_number}</p>
       </div>
