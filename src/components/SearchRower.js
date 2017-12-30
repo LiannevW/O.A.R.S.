@@ -119,7 +119,7 @@ render() {
         {
           selectedRower.lastname
         }&nbsp;
-        <i className="material-icons" onClick={() => this.deleteRower(fixedIndex)}>delete</i>
+        <i className="material-icons pointer"  onClick={() => this.deleteRower(fixedIndex)}>delete</i>
     </div>
       );
     })
