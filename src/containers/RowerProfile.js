@@ -3,24 +3,13 @@ import React, { PureComponent } from 'react'
 import { push } from 'react-router-redux'
 import { connect } from 'react-redux'
 import { fetchOneRower } from '../actions/rowers/fetch'
-import {GridList, GridTile} from 'material-ui/GridList';
-import StarBorder from 'material-ui/svg-icons/toggle/star-border';
-import IconButton from 'material-ui/IconButton';
-import googleMaps from '../img/googleMaps.png'
+import Title from '../components/Title'
 import {Table,TableBody, TableHeader,  TableHeaderColumn, TableRow, TableRowColumn } from 'material-ui/Table';
 import './RowerProfile.css'
-const styles = {
-root: {
-  display: 'flex',
-  flexWrap: 'wrap',
-  justifyContent: 'space-around',
-},
-gridList: {
-  width: 500,
-  height: 450,
-  overflowY: 'auto',
-},
-};
+import IconButton from 'material-ui/IconButton';
+import Info from 'react-material-icons/icons/action/info'
+
+
 
 class RowerProfile extends PureComponent {
 
@@ -33,35 +22,55 @@ class RowerProfile extends PureComponent {
   renderRower = (rower, index) => {
   return (
      <TableRow key={index}>
-      <TableRowColumn>{rower.TrainingId}</TableRowColumn>
+      <TableRowColumn >{rower.TrainingId}</TableRowColumn>
+      <TableRowColumn>{rower.startdate}</TableRowColumn>
       <TableRowColumn>{rower.starttime}</TableRowColumn>
       <TableRowColumn>{rower.boat_number}</TableRowColumn>
+      <TableRowColumn><IconButton onClick= {this.linkToTraining(rower.TrainingId)}><Info /></IconButton></TableRowColumn>
     </TableRow>
-
   )
-   console.log(rower)
 }
 
+linkToTraining = trainingId => event => this.props.push(`/trainings/${trainingId}`)
+
 render() {
- const { rower } = this.props
+  const { rower } = this.props
+  const rowername = rower.filter((r) => (r))[0]
 
- console.log(rower)
-   if (!rower) return null
-
+  if (!rower) return null
+  if (!rowername) return null
 
   return (
-      <div className= 'rowerprofile'>
-          <p>{rower.lastname}</p>
-          <p>{rower.firstname}</p>
-          <p>{rower.TrainingId}</p>
-          <p>{rower.boat_number}</p>
-      </div>
+    <article className="rowerprofile">
+      <header>
+        <Title content={`${rowername.firstname} ${rowername.lastname}`} className="level-2" />
+      </header>
+      <div className="table">
+        <Table className="table-header" >
+
+          <TableHeader displaySelectAll={false} adjustForCheckbox={false} style={{fontSize:'20px',}}>
+            <TableRow>
+              <TableHeaderColumn>Training</TableHeaderColumn>
+              <TableHeaderColumn>start Date</TableHeaderColumn>
+              <TableHeaderColumn>start time</TableHeaderColumn>
+              <TableHeaderColumn>boat Number</TableHeaderColumn>
+              <TableHeaderColumn>--></TableHeaderColumn>
+            </TableRow>
+          </TableHeader>
+
+          <TableBody displayRowCheckbox={false}>
+            {rower.map(this.renderRower)}
+          </TableBody>
+
+        </Table>
+    </div>
+  </article>
     )
   }
 }
 
 const mapStateToProps = ({ rowers }, { match }) => {
-const rower = rowers.filter((t) => (t.id === +match.params.rowerId))[0]
+const rower = rowers.filter((t) => (t.id === +match.params.rowerId))
 return {
   rower
   }

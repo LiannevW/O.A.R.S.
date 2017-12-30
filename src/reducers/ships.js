@@ -7,21 +7,8 @@ export default (state = [], { type, payload } = {}) => {
     case  FETCHED_SHIPS:
       return [ ...payload ]
 
-      case FETCHED_ONE_SHIP :
-
-       const shipIds = state.map(t => t.id)
-
-       if (shipIds.indexOf(payload.id) < 0) {
-        return [{ ...payload }].concat(state)
-       }
-
-        return state.map((ship) => {
-         if (ship.id === payload.id) {
-          return { ...payload }
-        }
-          return [ship]
-
-        })
+    case FETCHED_ONE_SHIP :
+      return [ ...payload ]
 
     case SHIP_CREATED:
       const newShip = {...payload}
@@ -29,6 +16,5 @@ export default (state = [], { type, payload } = {}) => {
 
     default:
      return state
-
     }
   }

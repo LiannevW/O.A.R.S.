@@ -10,11 +10,9 @@ class ShipsContainer extends PureComponent {
     this.props.fetchShips()
   }
 
-linktToOneShip = shipId => event => this.props.push(`/ships-path/${shipId}`);
+  linktToOneShip = shipId => event => this.props.push(`/ships-path/${shipId}`);
 
   render() {
-    console.log(this.props.ships)
-
     return (
       <div className= "editor">
       <header>

@@ -10,6 +10,9 @@ export default (user) => {
     api.post('/login', { ...user })
       .then((res) => {
 
+        const jwt = res.body.token
+        api.storeToken(jwt)
+
             dispatch({
               type: USER_SIGNED_IN,
               payload: res.body.token

@@ -3,19 +3,22 @@ import LineChart from 'react-linechart';
 import '../../node_modules/react-linechart/dist/styles.css';
 
 class MyChart extends Component {
-  constructor(props){
-    super(props);
-  }
+
   render() {
-    console.log(this.props.chartData);
+
+  //   const data = [
+  //     {
+  //         color: "steelblue",
+  //         points: [{x: 1, y: 2}, {x: 3, y: 5}, {x: 7, y: -3}]
+  //     }
+  // ];
     return (
       <div>
         <LineChart
               hidePoints ="true"
-              xMin = {0}
               xLabel = "time in mins"
               yLabel = "velocity"
-              width={750}
+              width={500}
               height={400}
               data={this.props.chartData}
           />
@@ -27,8 +30,8 @@ class MyChart extends Component {
 MyChart.defaultProps = {
     zoom: 11,
     chartData:[{
-        color: "steelblue",
-        points: [{x:0,y:0}]
+        color: "#090909",
+        points: [{x:5,y:10}, {x:6,y:3}]
       }]
 }
 export default MyChart;

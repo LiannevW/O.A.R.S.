@@ -2,7 +2,7 @@ import request from 'superagent'
 
 export default class API{
   defaultOptions = {
-    tokenStorageKey: 'studentApiJWT'
+    tokenStorageKey: 'coachApiJWT'
   }
 
   constructor(host, options = {}) {
