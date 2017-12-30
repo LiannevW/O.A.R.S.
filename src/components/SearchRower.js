@@ -122,7 +122,7 @@ render() {
       const fixedIndex = index;
       //console.log(this.state.selectedRowers)
       return (
-        <div key={index}>
+        <div className="name-rower" key={index}>
         {
           selectedRower.firstname
         }&nbsp;
@@ -136,7 +136,7 @@ render() {
   }
   </div>
     <SelectField
-    //value={this.state.selectedShipValue}
+    value={this.state.selectedShipValue}
     style={styles.customWidth}
     hintText="Select a ship"
     onChange={this.handleShipChange}>
