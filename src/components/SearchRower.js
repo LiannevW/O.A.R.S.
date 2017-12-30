@@ -1,11 +1,18 @@
 import React from 'react';
-import DropDownMenu from 'material-ui/DropDownMenu';
+import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 import { connect } from 'react-redux'
 import {createRowersAndShip} from '../actions/rowers/create'
 import {fetchboatRowers} from '../actions/rowers/fetch'
 import SnackbarSave from './SnackbarSave'
 import './SearchRower.css'
+
+const styles = {
+  customWidth: {
+      width: 200,
+    },
+};
+
 
 class SearchRowerandShip extends React.Component {
 
@@ -104,9 +111,12 @@ render() {
 
   return (
     <div>
-    <DropDownMenu value={0} onChange={this.handleRowerChange}>
+    <SelectField
+    style={styles.customWidth}
+    hintText="Select a name"
+    onChange={this.handleRowerChange}>
     {rowers.map(this.renderRower)}
-    </DropDownMenu>
+    </SelectField>
     <div> {
     this.state.selectedRowers.map((selectedRower, index) => {
       const fixedIndex = index;
@@ -125,9 +135,13 @@ render() {
     })
   }
   </div>
-    <DropDownMenu value={this.state.selectedShipValue} onChange={this.handleShipChange}>
+    <SelectField
+    //value={this.state.selectedShipValue}
+    style={styles.customWidth}
+    hintText="Select a ship"
+    onChange={this.handleShipChange}>
     {ships.map(this.renderShip)}
-    </DropDownMenu>
+    </SelectField>
     <div className = 'snackbar'>
      <SnackbarSave handleSave={this.saveRowersandShip.bind(this)} />
     </div>
