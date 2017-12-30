@@ -1,9 +1,18 @@
 import React from 'react';
-import DropDownMenu from 'material-ui/DropDownMenu';
+import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 import { connect } from 'react-redux'
 import {createRowersAndShip} from '../actions/rowers/create'
 import {fetchboatRowers} from '../actions/rowers/fetch'
+import SnackbarSave from './SnackbarSave'
+import './SearchRower.css'
+
+const styles = {
+  customWidth: {
+      width: 200,
+    },
+};
+
 
 class SearchRowerandShip extends React.Component {
 
@@ -50,7 +59,7 @@ componentWillReceiveProps(nextProps) { //is invoked before the component receive
 
 saveRowersandShip() {
 
-console.table(this.state)
+//console.table(this.state)
 
 const rowers = this.state.selectedRowers.map(rower => rower.id);
 
@@ -66,6 +75,16 @@ handleRowerChange = (event, index, value) => {
   var newSelectedRowers = this.state.selectedRowers.slice(); //clone of selectedRowers
   newSelectedRowers.push(newRower)
 
+  this.setState({
+    selectedRowers: newSelectedRowers
+  });
+}
+
+deleteRower = (index) => {
+  var newSelectedRowers = this.state.selectedRowers.slice();
+  if (index !==  -1) {
+      newSelectedRowers.splice(index, 1);
+  }
   this.setState({
     selectedRowers: newSelectedRowers
   });
@@ -92,30 +111,39 @@ render() {
 
   return (
     <div>
-    <DropDownMenu value={0} onChange={this.handleRowerChange}>
+    <SelectField
+    style={styles.customWidth}
+    hintText="Select a name"
+    onChange={this.handleRowerChange}>
     {rowers.map(this.renderRower)}
-    </DropDownMenu>
+    </SelectField>
     <div> {
     this.state.selectedRowers.map((selectedRower, index) => {
+      const fixedIndex = index;
       //console.log(this.state.selectedRowers)
       return (
-        <div key={index}>
+        <div className="name-rower" key={index}>
         {
           selectedRower.firstname
         }&nbsp;
         {
           selectedRower.lastname
-        }
+        }&nbsp;
+        <i className="material-icons pointer"  onClick={() => this.deleteRower(fixedIndex)}>delete</i>
     </div>
       );
     })
   }
   </div>
-    <DropDownMenu value={this.state.selectedShipValue} onChange={this.handleShipChange}>
+    <SelectField
+    value={this.state.selectedShipValue}
+    style={styles.customWidth}
+    hintText="Select a ship"
+    onChange={this.handleShipChange}>
     {ships.map(this.renderShip)}
-    </DropDownMenu>
-    <div className="actions">
-    <button className="primary buttonSave" onClick={this.saveRowersandShip.bind(this)}>Save</button>
+    </SelectField>
+    <div className = 'snackbar'>
+     <SnackbarSave handleSave={this.saveRowersandShip.bind(this)} />
     </div>
     </div>
     );
