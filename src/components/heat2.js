@@ -35,9 +35,9 @@ class Heat2 extends Component {
   compare(a,b) {
     if (a.x<b.x) {return -1;}
     //if a.x is equal with b.x then sort y
-    if (a.x==b.x && a.y<b.y) {return -1;}
-    if (a.x==b.x && a.y==b.y) {return 0;}
-    if (a.x==b.x && a.y>b.y) {return 1;}
+    if (a.x===b.x && a.y<b.y) {return -1;}
+    if (a.x===b.x && a.y===b.y) {return 0;}
+    if (a.x===b.x && a.y>b.y) {return 1;}
     if (a.x>b.x) {return 1;}
     return 0;
   }
@@ -73,7 +73,7 @@ class Heat2 extends Component {
     var maxVal=0;
     for ( var i=0;i<data.length;i++) {
       //check if x is still the same (else we need to start again from radius)
-      if (x== data[i].x) {
+      if (x=== data[i].x) {
         //if y is between mean's radius increase the value
         if (data[i].y>=mean-radius && data[i].y<mean+radius) {
           value++;
@@ -115,7 +115,7 @@ class Heat2 extends Component {
           console.log(cluster.maxVal);
           //transform rotateX 180degrees since heatmap starts 0.0 from top left
           return (
-              <div style={{ width: 500, height: 400, transform: 'rotateX(180deg)' }} >
+              <div style={{ width: 500, height: 500, transform: 'rotateX(180deg)' }} >
                   <ReactHeatmap max={cluster.maxVal} data={cluster.cluster} />
               </div>
           )
