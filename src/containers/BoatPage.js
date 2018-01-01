@@ -11,7 +11,6 @@ import SearchRowerandShip from '../components/SearchRower'
 import Charts from '../components/charts'
 import 'react-input-range/lib/css/index.css';
 import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card';
-import FlatButton from 'material-ui/FlatButton';
 import '../../node_modules/react-linechart/dist/styles.css';
 
 
@@ -51,20 +50,19 @@ class BoatPage extends PureComponent {
       <CardHeader
         title={` Training of ${training.startdate} `}
         titleStyle={{textAlign: "center",
-                     marginBottom:"20px"}}
-        subtitle=  {`| start time ${training.starttime} |training duraton: ${training.duration} `}
+                     marginBottom:"20px",
+                     marginLeft:"80px",
+                     fontSize:"25px"}}
+        titleColor= "steelblue"
+        subtitle=  {`| start time ${training.starttime}  | Training duraton: ${training.duration} `}
         subtitleStyle={{textAlign: "center",
-                        marginBottom:"20px"}}
+                        marginBottom:"20px",
+                        marginLeft:"100px",
+                        fontSize:"18px"}}
         showExpandableButton={true}
       />
-      <CardActions>
-         <FlatButton label="Boat of 2 " actAsExpander={true} expandable={true}/>
-         <FlatButton label="Boat of 4" actAsExpander={true} expandable={true}/>
-         <FlatButton label="Boat of 8" actAsExpander={true} expandable={true}/>
-
-      </CardActions>
       <CardText expandable={true}>
-      <p> Select Rowers and Ship for this boat </p>
+      <p className= 'text'> Select Rowers and Ship for this boat </p>
         <SearchRowerandShip trainingId={this.props.trainingId} boat_number_name={this.props.boat_number_name} />
       </CardText>
     </Card>
@@ -73,7 +71,7 @@ class BoatPage extends PureComponent {
     </div>
 
     <div className='chart'>
-<Charts />
+      <Charts />
     </div>
   </div>
     )

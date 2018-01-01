@@ -4,6 +4,8 @@ import MenuItem from 'material-ui/MenuItem';
 import { connect } from 'react-redux'
 import {createRowersAndShip} from '../actions/rowers/create'
 import {fetchboatRowers} from '../actions/rowers/fetch'
+import FlatButton from 'material-ui/FlatButton';
+import './SearchRower.css'
 
 class SearchRowerandShip extends React.Component {
 
@@ -71,6 +73,7 @@ handleRowerChange = (event, index, value) => {
   });
 }
 
+
 handleShipChange = (event, index, value) => {
   this.setState({
     selectedShipValue: value
@@ -89,35 +92,31 @@ renderShip(ship, index ) {
 }
 render() {
   const {rowers, ships} = this.props
-
+  const listItems = this.state.selectedRowers.map((selectedRower) =>
+      <li> { selectedRower.firstname } &nbsp;
+            { selectedRower.lastname }
+      </li>
+    );
   return (
-    <div>
+
+    <div className="selector">
     <DropDownMenu value={0} onChange={this.handleRowerChange}>
     {rowers.map(this.renderRower)}
     </DropDownMenu>
-    <div> {
-    this.state.selectedRowers.map((selectedRower, index) => {
-      //console.log(this.state.selectedRowers)
-      return (
-        <div key={index}>
-        {
-          selectedRower.firstname
-        }&nbsp;
-        {
-          selectedRower.lastname
-        }
+
+     <div >
+     <ol className="horizontal">
+      {listItems}
+     </ol>
     </div>
-      );
-    })
-  }
-  </div>
-    <DropDownMenu value={this.state.selectedShipValue} onChange={this.handleShipChange}>
-    {ships.map(this.renderShip)}
-    </DropDownMenu>
-    <div className="actions">
-    <button className="primary buttonSave" onClick={this.saveRowersandShip.bind(this)}>Save</button>
+    <div className='selectship'>
+     <DropDownMenu value={this.state.selectedShipValue} onChange={this.handleShipChange}>
+      {ships.map(this.renderShip)}
+     </DropDownMenu>
+     <FlatButton label="Save boat" style={{marginBottom:'-20px'}} onClick={this.saveRowersandShip.bind(this)}/>
     </div>
     </div>
+
     );
   }
 }

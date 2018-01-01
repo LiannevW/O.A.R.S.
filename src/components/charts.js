@@ -208,7 +208,7 @@ class Charts extends Component {
 
       <Card style= {{ marginLeft: 30, marginRight: 30, flex:1}}>
         <CardHeader
-        title= "Velocity"
+        title= "Range"
         titleStyle={{textAlign: "center",
                      marginBottom:"20px"}}
         showExpandableButton={true}

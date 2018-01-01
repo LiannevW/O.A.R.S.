@@ -1,0 +1,24 @@
+.selector {
+   display: flex;
+}
+
+ol.horizontal{
+    list-style-type: decimal;
+    width: 400px;
+}
+
+ol.horizontal li{
+    float: left;
+    width: 150px;
+    padding: 2px 0px;
+}
+
+.selectship {
+  margin-right: -200px;
+  margin-bottom: -300px;
+}
+
+.actions {
+  margin-right: 100px;
+  margin-bottom: -300px;
+}
