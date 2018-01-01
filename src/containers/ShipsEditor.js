@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import { createShip } from '../actions/ships/create'
 import './ShipsEditor.css'
+import SnackbarAdd from '../components/SnackbarAdd'
 
 class ShipsEditor extends PureComponent {
 
@@ -14,13 +15,18 @@ class ShipsEditor extends PureComponent {
         type: this.refs.type.value
       }
 
-      this.props.save(ship)
-  }
+      const ships = this.props.ships.map(ship => ship.name);
+      if (!ships.includes(ship.name)){
+        this.props.save(ship)
+        return true;
+      }
+      return false
+    }
 
   render() {
     return (
       <div className= "editor">
-        <form onSubmit={this.saveShip.bind(this)}>
+        <form>
           <input
             type="name"
             ref="name"
@@ -33,13 +39,15 @@ class ShipsEditor extends PureComponent {
             placeholder="type of ship"
           />
         </form>
-        <div>
-          <button onClick={this.saveShip.bind(this)}>Add ship</button>
-        </div>
+          <div className = 'snackbar'>
+           <SnackbarAdd handleAdd={this.saveShip.bind(this)} />
+          </div>
       </div>
     )
   }
 }
+const mapStateToProps = ({ships}) => ({ships})
 
 const mapDispatchToProps = { save : createShip}
-export default connect(null, mapDispatchToProps) (ShipsEditor)
+
+export default connect(mapStateToProps, mapDispatchToProps) (ShipsEditor)
