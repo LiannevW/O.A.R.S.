@@ -6,6 +6,7 @@ import Title from '../components/Title'
 import {Table,TableBody, TableHeader,  TableHeaderColumn, TableRow, TableRowColumn } from 'material-ui/Table';
 import IconButton from 'material-ui/IconButton'
 import Info from 'react-material-icons/icons/action/info'
+import './ShipPage.css'
 
 class ShipPage extends PureComponent {
 
@@ -13,8 +14,6 @@ class ShipPage extends PureComponent {
     const { shipId } = this.props.match.params
       this.props.fetchOneShip(shipId)
   }
-
-  linkToBoat = ( trainingId, boatNumber ) => event => this.props.push(`/boats-path/${trainingId}/${boatNumber}`)
 
   renderShip = (ship, index) => {
     return (
@@ -27,34 +26,34 @@ class ShipPage extends PureComponent {
       </TableRow>
     )
   }
+linkToBoat = (trainingId, boat_number_name) => event => this.props.push(`/boats-path/${trainingId}/${boat_number_name}`)
 
 render() {
   const { ship } = this.props
   const shipname = ship.filter((r) => (r))[0]
    if (!ship) return null
-
+   if (!shipname) return null
   return (
-   <article className="rowerprofile">
+   <article className="shippage">
     <header>
-      <Title content={`Name: ${shipname.name} Type: ${shipname.type}`}/>
+      <Title content={`${shipname.name} ${shipname.type}`} className="level-2" />
     </header>
-
-    <main>
-      <Table>
-         <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
-           <TableRow>
-             <TableHeaderColumn>Training</TableHeaderColumn>
-             <TableHeaderColumn>Date</TableHeaderColumn>
-             <TableHeaderColumn>startTime</TableHeaderColumn>
-             <TableHeaderColumn>boat Number</TableHeaderColumn>
-            <TableHeaderColumn>Link to Training</TableHeaderColumn>
-           </TableRow>
-         </TableHeader>
-         <TableBody displayRowCheckbox={false}>
-            {ship.map(this.renderShip)}
-         </TableBody>
-     </Table>
-    </main>
+    <div className="table">
+      <Table className="table-header" >
+        <TableHeader displaySelectAll={false} adjustForCheckbox={false} style={{fontSize:'20px'}}>
+          <TableRow>
+            <TableHeaderColumn>Training</TableHeaderColumn>
+            <TableHeaderColumn>start Date</TableHeaderColumn>
+            <TableHeaderColumn>start time</TableHeaderColumn>
+            <TableHeaderColumn>boat Number</TableHeaderColumn>
+            <TableHeaderColumn>--></TableHeaderColumn>
+          </TableRow>
+        </TableHeader>
+        <TableBody displayRowCheckbox={false}>
+          {ship.map(this.renderShip)}
+        </TableBody>
+      </Table>
+    </div>
    </article>
      )
   }
