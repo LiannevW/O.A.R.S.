@@ -15,6 +15,8 @@ class ShipPage extends PureComponent {
       this.props.fetchOneShip(shipId)
   }
 
+linkToBoat = ( trainingId, boatNumber ) => event => this.props.push(`/boats-path/${trainingId}/${boatNumber}`)
+
   renderShip = (ship, index) => {
     return (
        <TableRow key={index}>
@@ -26,7 +28,7 @@ class ShipPage extends PureComponent {
       </TableRow>
     )
   }
-linkToBoat = (trainingId, boat_number_name) => event => this.props.push(`/boats-path/${trainingId}/${boat_number_name}`)
+
 
 render() {
   const { ship } = this.props
@@ -43,10 +45,10 @@ render() {
         <TableHeader displaySelectAll={false} adjustForCheckbox={false} style={{fontSize:'20px'}}>
           <TableRow>
             <TableHeaderColumn>Training</TableHeaderColumn>
-            <TableHeaderColumn>start Date</TableHeaderColumn>
+            <TableHeaderColumn>Date</TableHeaderColumn>
             <TableHeaderColumn>start time</TableHeaderColumn>
             <TableHeaderColumn>boat Number</TableHeaderColumn>
-            <TableHeaderColumn>--></TableHeaderColumn>
+            <TableHeaderColumn>Link to Training</TableHeaderColumn>
           </TableRow>
         </TableHeader>
         <TableBody displayRowCheckbox={false}>
