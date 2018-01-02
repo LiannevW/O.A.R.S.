@@ -4,14 +4,17 @@ import MenuItem from 'material-ui/MenuItem';
 import { connect } from 'react-redux'
 import {createRowersAndShip} from '../actions/rowers/create'
 import {fetchboatRowers} from '../actions/rowers/fetch'
-import SnackbarSave from './SnackbarSave'
+import FlatButton from 'material-ui/FlatButton';
 import './SearchRower.css'
+import SnackbarSave from './SnackbarSave'
+
 
 const styles = {
   customWidth: {
       width: 200,
     },
 };
+
 
 
 class SearchRowerandShip extends React.Component {
@@ -80,6 +83,8 @@ handleRowerChange = (event, index, value) => {
   });
 }
 
+
+
 deleteRower = (index) => {
   var newSelectedRowers = this.state.selectedRowers.slice();
   if (index !==  -1) {
@@ -108,34 +113,29 @@ renderShip(ship, index ) {
 }
 render() {
   const {rowers, ships} = this.props
-
+  const listItems = this.state.selectedRowers.map((selectedRower) =>
+      <li> { selectedRower.firstname } &nbsp;
+            { selectedRower.lastname } }&nbsp;
+        <i className="material-icons pointer"  onClick={() => this.deleteRower(fixedIndex)}>delete</i>
+      </li>
+    );
   return (
-    <div>
+
+
+    <div className="selector">
     <SelectField
     style={styles.customWidth}
     hintText="Select a name"
     onChange={this.handleRowerChange}>
     {rowers.map(this.renderRower)}
     </SelectField>
-    <div> {
-    this.state.selectedRowers.map((selectedRower, index) => {
-      const fixedIndex = index;
-      //console.log(this.state.selectedRowers)
-      return (
-        <div className="name-rower" key={index}>
-        {
-          selectedRower.firstname
-        }&nbsp;
-        {
-          selectedRower.lastname
-        }&nbsp;
-        <i className="material-icons pointer"  onClick={() => this.deleteRower(fixedIndex)}>delete</i>
+     <div >
+     <ol className="horizontal">
+      {listItems}
+     </ol>
     </div>
-      );
-    })
-  }
-  </div>
-    <SelectField
+    <div className='selectship'>
+       <SelectField
     value={this.state.selectedShipValue}
     style={styles.customWidth}
     hintText="Select a ship"
@@ -143,9 +143,10 @@ render() {
     {ships.map(this.renderShip)}
     </SelectField>
     <div className = 'snackbar'>
-     <SnackbarSave handleSave={this.saveRowersandShip.bind(this)} />
+     <SnackbarSave handleSave={this.saveRowersandShip.bind(this)} />  
     </div>
     </div>
+
     );
   }
 }

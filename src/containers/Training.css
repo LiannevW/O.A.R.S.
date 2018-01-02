@@ -1,3 +1,23 @@
 .training-info {
   margin-top: 200px
 }
+
+span.boat {
+ background: url("../img/Rowboat_symbol.svg") no-repeat top left;
+ background-size: contain;
+ cursor: pointer;
+ display: inline-block;
+ height: 40px;
+ width: 40px;
+}
+
+ol.horizontal{
+ list-style-type: decimal;
+ width: 400px;
+}
+
+ol.horizontal li{
+
+ width: 50px;
+ padding: 2px 0px;
+}
