@@ -11,6 +11,9 @@ import Charts from '../components/charts'
 import 'react-input-range/lib/css/index.css';
 import '../../node_modules/react-linechart/dist/styles.css'
 import './BoatPage.css'
+import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card';
+import BoatPageChartsLayer from '../components/boatPageChartsLayer'
+
 
 class BoatPage extends PureComponent {
 
@@ -66,8 +69,8 @@ class BoatPage extends PureComponent {
     <div className= 'drawgraphs'>
     </div>
 
-    <div className='chart'>
-      <Charts />
+    <div className='boatPageChartsLayer'>
+      <BoatPageChartsLayer />
     </div>
   </div>
     )
