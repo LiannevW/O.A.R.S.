@@ -3,7 +3,6 @@ import ReactHeatmap from 'react-heatmap';
 import InputRange from 'react-input-range';
 import PropTypes from 'prop-types'
 
-
 class Heat2 extends Component {
   static propTypes = {
     width: PropTypes.number

@@ -12,14 +12,7 @@ export default class API{
   logOut() {
     this.removeToken();
   }
-  // GET path
-  //
-  // Example:
-  //  api.get('/students')
-  //    .then(res => console.log(res.body))
-  //    .catch(err => console.log(err))
-  //
-  // Returns: Promise
+
   get(path) {
     return request
       .get(this.createUrl(path))
@@ -52,10 +45,6 @@ export default class API{
       .delete(this.createUrl(path))
       .set(this.headers())
   }
-
-  //signOut() {
-    //localStorage.removeItem(this.options.tokenStorageKey)
-  //}
 
   headers() {
     let headers = {

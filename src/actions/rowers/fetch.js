@@ -1,11 +1,10 @@
+import API from '../../api/client'
 import {
   APP_LOADING,
   APP_DONE_LOADING,
   LOAD_ERROR,
   LOAD_SUCCESS
 } from '../loading'
-
-import API from '../../api/client'
 
 export const FETCHED_ROWERS = 'FETCHED_ROWERS'
 export const FETCHED_ONE_ROWER = 'FETCHED_ONE_ROWER'
@@ -21,7 +20,6 @@ export const fetchRowers= () => {
     .then((res) => {
       dispatch({ type: APP_DONE_LOADING })
       dispatch({ type: LOAD_SUCCESS })
-
       dispatch({
         type: FETCHED_ROWERS,
         payload: res.body
@@ -37,15 +35,14 @@ export const fetchRowers= () => {
   }
 }
 
-export const fetchOneRower = (id) => {
+export const fetchOneRower = (rowerId) => {
   return dispatch => {
     dispatch({ type: APP_LOADING })
 
-  api.get(`/rowers/${id}`)
+  api.get(`/rowers/${rowerId}`)
     .then((res) => {
       dispatch({ type: APP_DONE_LOADING })
       dispatch({ type: LOAD_SUCCESS })
-      console.log(res)
       dispatch({
         type: FETCHED_ONE_ROWER,
         payload: res.body
@@ -69,7 +66,6 @@ export const fetchboatRowers = (trainingId, boat_number) => {
     .then((res) => {
       dispatch({ type: APP_DONE_LOADING })
       dispatch({ type: LOAD_SUCCESS })
-
       dispatch({
         type: BOATROWERS_FETCHED,
         payload: res.body

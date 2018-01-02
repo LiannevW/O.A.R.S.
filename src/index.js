@@ -9,7 +9,6 @@ import { Provider } from 'react-redux';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 injectTapEventPlugin();
 
-
 ReactDOM.render(
   <Provider store={store}>
     <Router history={history}>
