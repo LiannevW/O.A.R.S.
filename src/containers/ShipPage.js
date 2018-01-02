@@ -38,7 +38,7 @@ render() {
   return (
    <article className="shippage">
     <header>
-      <Title content={`${shipname.name} ${shipname.type}`} className="level-2" />
+      <Title content={`Name: ${shipname.name} Type: ${shipname.type}`} className="level-2" />
     </header>
     <div className="table">
       <Table className="table-header" >
