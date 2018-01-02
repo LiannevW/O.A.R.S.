@@ -1,6 +1,9 @@
 .List {
   margin-top: 150px;
-  margin-left: 50px; }
+  margin-left: 50px;
+  width: '60%';
+  margin-top: '300x'
+}
 
 .editor {
   margin-left: 50px;

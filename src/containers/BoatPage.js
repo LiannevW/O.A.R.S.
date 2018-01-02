@@ -7,12 +7,10 @@ import { fetchShips} from '../actions/ships/fetch'
 import {Card, CardHeader, CardText} from 'material-ui/Card'
 import PropTypes from 'prop-types'
 import SearchRowerandShip from '../components/SearchRower'
-import Charts from '../components/charts'
+import BoatPageChartsLayer from '../components/BoatPageChartsLayer'
 import 'react-input-range/lib/css/index.css';
 import '../../node_modules/react-linechart/dist/styles.css'
 import './BoatPage.css'
-import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card';
-import BoatPageChartsLayer from '../components/boatPageChartsLayer'
 
 
 class BoatPage extends PureComponent {
@@ -40,39 +38,33 @@ class BoatPage extends PureComponent {
 
     return (
       <div>
-          <div className='training-info'>
-    <Card style= {{width: '900px',
-                   dislplay: 'flex',
-                   align: 'center',
-                   marginLeft:'300px',
-                   height: '400px'}}>
-      <CardHeader
-        title={` Training of ${training.startdate} `}
-        titleStyle={{textAlign: "center",
-                     marginBottom:"20px",
-                     marginLeft:"80px",
-                     fontSize:"25px"}}
-        titleColor= "steelblue"
-        subtitle=  {`| start time ${training.starttime}  | Training duraton: ${training.duration} `}
-        subtitleStyle={{textAlign: "center",
-                        marginBottom:"20px",
-                        marginLeft:"100px",
-                        fontSize:"18px"}}
-
-      />
-      <CardText>
-      <p className= 'text'> Select Rowers and Ship for this boat </p>
-        <SearchRowerandShip trainingId={this.props.trainingId} boat_number_name={this.props.boat_number_name} />
-      </CardText>
-    </Card>
-    </div>
-    <div className= 'drawgraphs'>
-    </div>
-
-    <div className='boatPageChartsLayer'>
-      <BoatPageChartsLayer />
-    </div>
-  </div>
+        <div className='training-info'>
+          <Card className="cardStyle">
+            <CardHeader
+              title={` Training of ${training.startdate} `}
+              titleStyle={{textAlign: "center",
+                           marginBottom:"20px",
+                           marginLeft:"80px",
+                           fontSize:"25px"}}
+              titleColor= "steelblue"
+              subtitle=  {`Start time ${training.starttime}  | Training duraton: ${training.duration} `}
+              subtitleStyle={{textAlign: "center",
+                              marginBottom:"20px",
+                              marginLeft:"100px",
+                              fontSize:"18px"}}
+            />
+              <CardText>
+                <p className= 'text'> Select Rowers and Ship for this boat </p>
+                <SearchRowerandShip trainingId={this.props.trainingId} boat_number_name={this.props.boat_number_name} />
+              </CardText>
+          </Card>
+        </div>
+        <div className= 'drawgraphs'>
+        </div>
+        <div className='boatPageChartsLayer'>
+          <BoatPageChartsLayer />
+        </div>
+      </div>
     )
   }
 }

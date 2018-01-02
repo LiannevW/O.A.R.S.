@@ -78,4 +78,4 @@ MyMap.defaultProps = {
       MapCenter:{lat: -27.467, lng: 153.027},
 
 }
-export default MyMap;
+export default MyMap

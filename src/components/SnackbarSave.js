@@ -2,7 +2,8 @@ import React from 'react';
 import Snackbar from 'material-ui/Snackbar';
 import RaisedButton from 'material-ui/RaisedButton';
 
-export default class SnackbarSave extends React.Component {
+
+class SnackbarSave extends React.Component {
 
   constructor(props) {
     super(props);
@@ -41,3 +42,5 @@ export default class SnackbarSave extends React.Component {
     );
   }
 }
+
+export default SnackbarSave
