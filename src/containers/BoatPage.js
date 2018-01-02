@@ -4,7 +4,10 @@ import { connect } from 'react-redux'
 import { fetchOneTraining } from '../actions/trainings/fetch'
 import { fetchRowers } from '../actions/rowers/fetch'
 import { fetchShips} from '../actions/ships/fetch'
-import {Card, CardHeader, CardText} from 'material-ui/Card'
+//import { fetchboatRowers } from '../actions/rowers/fetch'
+import RowersList from '../components/RowersList'
+import './BoatPage.css'
+
 import PropTypes from 'prop-types'
 import SearchRowerandShip from '../components/SearchRower'
 import Charts from '../components/charts'
@@ -38,7 +41,9 @@ class BoatPage extends PureComponent {
     if(!training) return null;
 
     return (
+
       <div>
+      <RowersList />
           <div className='training-info'>
     <Card style= {{width: '900px',
                    dislplay: 'flex',

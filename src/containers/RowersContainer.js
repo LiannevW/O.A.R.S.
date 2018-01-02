@@ -27,6 +27,7 @@ class RowersContainer extends PureComponent {
             <ListItem key={rower.id} leftAvatar={
                <Avatar src= {avatar} size={30}  />}
                 style={{  margin: '50x', padding: '0,5rem',  }}
+
                 onClick={this.linkToOneRower(rower.id)}>{rower.firstname} {rower.lastname}
               </ListItem>
             ))}
