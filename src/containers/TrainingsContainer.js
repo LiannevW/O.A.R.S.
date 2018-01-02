@@ -7,18 +7,19 @@ import IconButton from 'material-ui/IconButton';
 import StarBorder from 'material-ui/svg-icons/toggle/star-border';
 import googleMaps from '../img/googleMaps.png'
 import './TrainingsContainer.css'
+
 const styles = {
-root: {
-  display: 'flex',
-  flexWrap: 'wrap',
-  justifyContent: 'space-around',
-  marginTop: '200px',
-},
-gridList: {
-  width: 500,
-  height: 450,
-  overflowY: 'auto',
-},
+  root: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'space-around',
+    marginTop: '200px',
+  },
+  gridList: {
+    width: 500,
+    height: 450,
+    overflowY: 'auto',
+  },
 };
 
 

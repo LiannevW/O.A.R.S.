@@ -7,38 +7,38 @@ import { fetchShips} from '../actions/ships/fetch'
 //import { fetchboatRowers } from '../actions/rowers/fetch'
 import RowersList from '../components/RowersList'
 import './BoatPage.css'
+
 import PropTypes from 'prop-types'
 import SearchRowerandShip from '../components/SearchRower'
 import Charts from '../components/charts'
 import 'react-input-range/lib/css/index.css';
+import '../../node_modules/react-linechart/dist/styles.css'
+import './BoatPage.css'
 import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card';
-import '../../node_modules/react-linechart/dist/styles.css';
-
+import BoatPageChartsLayer from '../components/boatPageChartsLayer'
 
 
 class BoatPage extends PureComponent {
 
   static propTypes = {
-  startdate: PropTypes.date,
-  starttime: PropTypes.time,
-  duration: PropTypes.time,
-  firstname: PropTypes.string,
-  lastname: PropTypes.string,
-  name: PropTypes.string,
-  type: PropTypes.string
-}
-  componentWillMount() {
+    startdate: PropTypes.date,
+    starttime: PropTypes.time,
+    duration: PropTypes.time,
+    firstname: PropTypes.string,
+    lastname: PropTypes.string,
+    name: PropTypes.string,
+    type: PropTypes.string
+  }
 
+  componentWillMount() {
     const { trainingId } = this.props.match.params
       this.props.fetchOneTraining(trainingId)
       this.props.fetchRowers()
       this.props.fetchShips()
-
-}
+  }
 
   render() {
     const { training } = this.props
-
     if(!training) return null;
 
     return (
@@ -74,8 +74,8 @@ class BoatPage extends PureComponent {
     <div className= 'drawgraphs'>
     </div>
 
-    <div className='chart'>
-      <Charts />
+    <div className='boatPageChartsLayer'>
+      <BoatPageChartsLayer />
     </div>
   </div>
     )
@@ -84,12 +84,13 @@ class BoatPage extends PureComponent {
 
 const mapStateToProps = ({ trainings, rowers, ships }, { match }) => { 
 const training = trainings.filter((t) => (t.id === +match.params.trainingId))[0] 
-const trainingId = match.params.trainingId;
-const boat_number_name = match.params.boat_number_name;
-const shipId = match.params.shipId;
+const trainingId = match.params.trainingId
+const boat_number_name = match.params.boat_number_name
+const shipId = match.params.shipId
  
 return { 
   training, rowers, ships, trainingId, boat_number_name, shipId
   } 
 } 
+
 export default connect(mapStateToProps, { fetchOneTraining, fetchRowers, fetchShips, push }) (BoatPage)

@@ -3,6 +3,9 @@ import { connect } from 'react-redux'
 import { push } from 'react-router-redux'
 import { fetchShips } from '../actions/ships/fetch'
 import ShipsEditor from './ShipsEditor'
+import './ShipsContainer.css'
+import List from 'material-ui/List/List';
+
 
 class ShipsContainer extends PureComponent {
 
@@ -14,15 +17,17 @@ class ShipsContainer extends PureComponent {
 
   render() {
     return (
-      <div className= "editor">
-      <header>
+      <div>
+      <div className = "List pointer">
+      <List style={{  width: '60%', marginTop: '300x'  }}>
+        {this.props.ships.map((ship) => (
+          <p onClick={this.linktToOneShip(ship.id)}>{ship.name} {ship.type}</p>
+        ))}
+        </List>
+      </div>
+      <div className = "editor">
         <ShipsEditor/>
-      </header>
-      <main>
-        {this.props.ships.map((ship) =>
-          <p onClick={this.linktToOneShip(ship.id)}>{ship.name}</p>
-        )}
-      </main>
+      </div>
       </div>
     )
   }

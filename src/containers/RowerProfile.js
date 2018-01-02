@@ -26,12 +26,12 @@ class RowerProfile extends PureComponent {
       <TableRowColumn>{rower.startdate}</TableRowColumn>
       <TableRowColumn>{rower.starttime}</TableRowColumn>
       <TableRowColumn>{rower.boat_number}</TableRowColumn>
-      <TableRowColumn><IconButton onClick= {this.linkToTraining(rower.TrainingId)}><Info /></IconButton></TableRowColumn>
+      <TableRowColumn><IconButton onClick= {this.linkToTraining(rower.TrainingId, rower.boat_number)}><Info /></IconButton></TableRowColumn>
     </TableRow>
   )
 }
 
-linkToTraining = trainingId => event => this.props.push(`/trainings/${trainingId}`)
+linkToTraining = ( trainingId, boatNumber ) => event => this.props.push(`/boats-path/${trainingId}/${boatNumber}`)
 
 render() {
   const { rower } = this.props
@@ -54,7 +54,7 @@ render() {
               <TableHeaderColumn>start Date</TableHeaderColumn>
               <TableHeaderColumn>start time</TableHeaderColumn>
               <TableHeaderColumn>boat Number</TableHeaderColumn>
-              <TableHeaderColumn>--></TableHeaderColumn>
+              <TableHeaderColumn>Link to Training</TableHeaderColumn>
             </TableRow>
           </TableHeader>
 

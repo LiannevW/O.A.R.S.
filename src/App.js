@@ -5,7 +5,7 @@ import muiTheme from './assets/theme'
 import Navigation from './components/Navigation'
 import Routes from './routes'
 import RowersList from './components/RowersList'
-
+import Footer from './components/Footer'
 
 
 class App extends Component {
@@ -23,7 +23,7 @@ class App extends Component {
         <div className="App">
           <Navigation />
           <Routes />
-
+          <Footer />
         </div>
       </MuiThemeProvider>
     )
@@ -31,5 +31,3 @@ class App extends Component {
 }
 
 export default App
-
-// <TrainingsContainer trainings={trainings} />

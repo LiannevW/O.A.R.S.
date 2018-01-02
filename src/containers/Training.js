@@ -3,14 +3,11 @@ import PropTypes from 'prop-types'
 import { push } from 'react-router-redux'
 import { connect } from 'react-redux'
 import { fetchOneTraining } from '../actions/trainings/fetch'
-import {Card, CardHeader, CardText, CardActions} from 'material-ui/Card';
+import {Card, CardHeader, CardActions} from 'material-ui/Card';
 import {GridList, GridTile} from 'material-ui/GridList';
 import IconButton from 'material-ui/IconButton';
 import './Training.css'
 import StarBorder from 'material-ui/svg-icons/toggle/star-border';
-
-
-// import { Link } from 'react-router-dom'
 
 const styles = {
   root: {
@@ -41,47 +38,45 @@ class Training extends PureComponent {
     }
 
   componentWillMount() {
-
     const { trainingId } = this.props.match.params
     this.props.fetchOneTraining(trainingId)
+  }
 
-}
-    //link to Boatpage
-    linkToBoat = ( trainingId, boatNumber ) => event => this.props.push(`/boats-path/${trainingId}/${boatNumber}`)
+  linkToBoat = ( trainingId, boatNumber ) => event => this.props.push(`/boats-path/${trainingId}/${boatNumber}`)
 
-  render() {
-
-
-
+render() {
   const { training } = this.props
   if (!training) return null
 
   // assing names and number to boat
   const boatData = [
-  {
-    boatName: training.boat_1_name,
-    number: 1
-  },
-  {
-    boatName: training.boat_2_name,
-    number: 2
-  },
-  {
-    boatName: training.boat_3_name,
-    number: 3
+    {
+      boatName: training.boat_1_name,
+      number: 1
+    },
+    {
+      boatName: training.boat_2_name,
+      number: 2
+    },
+    {
+      boatName: training.boat_3_name,
+      number: 3
 
-  },
-  {
-    boatName: training.boat_4_name,
-    number: 4
-  },
-]
+    },
+    {
+      boatName: training.boat_4_name,
+      number: 4
+    },
+  ]
 
-const listItems = boatData.map((boat) => (
-    <li>   <button><span class="boat" onClick= {this.linkToBoat(training.id, boat.number)}></span></button>
-    </li>
+  const listItems = boatData.map((boat) => (
+      <li>
+        <button>
+          <span class="boat" onClick= {this.linkToBoat(training.id, boat.number)}></span>
+        </button>
+      </li>
   ))
-console.log(boatData)
+
   return (
 
     <div className= "training-info">

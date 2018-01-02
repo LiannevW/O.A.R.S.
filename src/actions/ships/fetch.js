@@ -1,11 +1,10 @@
+import API from '../../api/client'
 import {
   APP_LOADING,
   APP_DONE_LOADING,
   LOAD_ERROR,
   LOAD_SUCCESS
 } from '../loading'
-
-import API from '../../api/client'
 
 export const FETCHED_SHIPS = 'FETCHED_SHIPS'
 export const FETCHED_ONE_SHIP = 'FETCHED_ONE_SHIP'
@@ -20,7 +19,6 @@ export const fetchShips= () => {
     .then((res) => {
       dispatch({ type: APP_DONE_LOADING })
       dispatch({ type: LOAD_SUCCESS })
-
       dispatch({
         type: FETCHED_SHIPS,
         payload: res.body
@@ -44,7 +42,6 @@ export const fetchOneShip = (shipId) => {
     .then((res) => {
       dispatch({ type: APP_DONE_LOADING })
       dispatch({ type: LOAD_SUCCESS })
-      console.log(res)
       dispatch({
         type: FETCHED_ONE_SHIP,
         payload: res.body

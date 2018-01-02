@@ -26,10 +26,10 @@ class RowersContainer extends PureComponent {
           {this.props.rowers.map((rower) => (
             <ListItem key={rower.id} leftAvatar={
                <Avatar src= {avatar} size={30}  />}
-                primaryText=  {rower.firstname}
                 style={{  margin: '50x', padding: '0,5rem',  }}
-                onClick={this.linkToOneRower(rower.id)}>
-            </ListItem>
+
+                onClick={this.linkToOneRower(rower.id)}>{rower.firstname} {rower.lastname}
+              </ListItem>
             ))}
         </List>
       </div>
