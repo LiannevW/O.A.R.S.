@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import * as XLSX from 'xlsx';
-import MyChart from './mychart';
-import MyMap from './mymap';
+import MyChart from './Mychart';
+import MyMap from './Mymap';
 import InputRange from 'react-input-range';
 import 'react-input-range/lib/css/index.css';
-import Heat2 from './heat2';
+import Heat from './Heat';
 import {Card, CardActions, CardHeader, CardText, CardMedia} from 'material-ui/Card';
-import './charts.css'
+import './Charts.css'
 
 
 Number.prototype.toRadians = function() {
