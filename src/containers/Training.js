@@ -8,6 +8,8 @@ import { GridList, GridTile } from 'material-ui/GridList'
 import IconButton from 'material-ui/IconButton'
 import StarBorder from 'material-ui/svg-icons/toggle/star-border'
 import './Training.css'
+import TrainingsPageChartsLayer from '../components/trainingsPageChartsLayer'
+import TrainignsChart from '../components/trainignsChart'
 
 const styles = {
   root: {
@@ -105,6 +107,7 @@ class Training extends PureComponent {
           </Card>
         </div>
 
+
         <div style={styles.root}>
           <GridList style={styles.gridList} cols={2.2}>
             {boatData.map((boat) => (
@@ -119,7 +122,11 @@ class Training extends PureComponent {
               </GridTile>
             ))}
           </GridList>
+
         </div>
+
+        <TrainingsPageChartsLayer />
+
       </div>
     )
   }
