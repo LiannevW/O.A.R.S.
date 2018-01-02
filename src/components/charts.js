@@ -232,7 +232,7 @@ class Charts extends Component {
         />
        <CardMedia expandable={true}>
         <div className='range'>
-          {this.state.fileLoaded ? <InputRange minValue={this.state.range.min} maxValue={this.state.range.max} value={this.state.value} onChange={value =>this.setState({ value })} onChangeComplete={value=> this.sliderHandler(value)}/> : null }
+          {this.state.fileLoaded ? <InputRange minValue={this.state.range.min} maxValue={this.state.range.max} formatLabel={value => `${(value/84).toFixed(1)} secs`} value={this.state.value} onChange={value =>this.setState({ value })} onChangeComplete={value=> this.sliderHandler(value)}/> : null }
         </div>
         <input type="file" id="file"/>
         <button id="myBtn" onClick={this.readingExcel.bind(this)} >Draw Graph</button>
