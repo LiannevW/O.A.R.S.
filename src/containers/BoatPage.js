@@ -4,14 +4,11 @@ import { connect } from 'react-redux'
 import { fetchOneTraining } from '../actions/trainings/fetch'
 import { fetchRowers } from '../actions/rowers/fetch'
 import { fetchShips} from '../actions/ships/fetch'
-//import { fetchboatRowers } from '../actions/rowers/fetch'
-import RowersList from '../components/RowersList'
-import './BoatPage.css'
-
+import {Card, CardHeader, CardText} from 'material-ui/Card'
 import PropTypes from 'prop-types'
 import SearchRowerandShip from '../components/SearchRower'
 import BoatPageChartsLayer from '../components/BoatPageChartsLayer'
-import 'react-input-range/lib/css/index.css';
+import 'react-input-range/lib/css/index.css'
 import '../../node_modules/react-linechart/dist/styles.css'
 import './BoatPage.css'
 
