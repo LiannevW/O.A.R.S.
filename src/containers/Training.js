@@ -8,6 +8,8 @@ import {GridList, GridTile} from 'material-ui/GridList';
 import IconButton from 'material-ui/IconButton';
 import './Training.css'
 import StarBorder from 'material-ui/svg-icons/toggle/star-border';
+import TrainingsPageChartsLayer from '../components/trainingsPageChartsLayer'
+import TrainignsChart from '../components/trainignsChart'
 
 
 // import { Link } from 'react-router-dom'
@@ -116,7 +118,7 @@ console.log(boatData)
             <GridTile
               key={boat.number}
               title={boat.boatName}
-              subtitle={boat.number}
+                subtitle={boat.number}
               actionIcon={<IconButton><StarBorder color="rgb(0, 188, 212)" /></IconButton>}
               titleStyle={styles.titleStyle}
               titleBackground="linear-gradient(to top, rgba(0,0,0,0.1) 10%,rgba(0,0,0,0.3) 70%,rgba(0,0,0,0.10) 100%)"
@@ -125,6 +127,9 @@ console.log(boatData)
           ))}
         </GridList>
         </div>
+
+        <TrainingsPageChartsLayer />
+
       </div>
       )
 
