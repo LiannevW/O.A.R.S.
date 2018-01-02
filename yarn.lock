@@ -4498,6 +4498,10 @@ material-design-icons@^3.0.1:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/material-design-icons/-/material-design-icons-3.0.1.tgz#9a71c48747218ebca51e51a66da682038cdcb7bf"
 
+material-ui-responsive-drawer@^1.19.4:
+  version "1.19.4"
+  resolved "https://registry.yarnpkg.com/material-ui-responsive-drawer/-/material-ui-responsive-drawer-1.19.4.tgz#b84c224b93de7c945fc720ab069a50251ad52709"
+
 material-ui-upload@^1.2.1:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/material-ui-upload/-/material-ui-upload-1.2.1.tgz#c5a082b07620f42564a193e57d94b0e7a3aa89b8"

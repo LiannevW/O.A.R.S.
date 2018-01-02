@@ -4,6 +4,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import muiTheme from './assets/theme'
 import Navigation from './components/Navigation'
 import Routes from './routes'
+import RowersList from './components/RowersList'
 
 
 

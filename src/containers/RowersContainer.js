@@ -29,7 +29,7 @@ class RowersContainer extends PureComponent {
                 primaryText=  {rower.firstname}
                 style={{  margin: '50x', padding: '0,5rem',  }}
                 onClick={this.linkToOneRower(rower.id)}>
-              </ListItem>
+            </ListItem>
             ))}
         </List>
       </div>

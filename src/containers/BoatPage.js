@@ -5,6 +5,7 @@ import { fetchOneTraining } from '../actions/trainings/fetch'
 import { fetchRowers } from '../actions/rowers/fetch'
 import { fetchShips} from '../actions/ships/fetch'
 //import { fetchboatRowers } from '../actions/rowers/fetch'
+import RowersList from '../components/RowersList'
 import './BoatPage.css'
 import PropTypes from 'prop-types'
 import SearchRowerandShip from '../components/SearchRower'
@@ -41,7 +42,9 @@ class BoatPage extends PureComponent {
     if(!training) return null;
 
     return (
+
       <div>
+      <RowersList />
           <div className='training-info'>
     <Card style= {{width: '900px',
                    dislplay: 'flex',
