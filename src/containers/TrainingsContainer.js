@@ -6,13 +6,13 @@ import {fetchTrainings} from '../actions/trainings/fetch'
 import IconButton from 'material-ui/IconButton';
 import StarBorder from 'material-ui/svg-icons/toggle/star-border';
 import googleMaps from '../img/googleMaps.png'
-
+import './TrainingsContainer.css'
 const styles = {
 root: {
   display: 'flex',
   flexWrap: 'wrap',
   justifyContent: 'space-around',
-  marginTop: '100px',
+  marginTop: '200px',
 },
 gridList: {
   width: 500,
@@ -34,6 +34,7 @@ export class TrainingsContainer extends PureComponent {
     const { trainings } = this.props
 
     return (
+    <div className='background'>
       <div style={styles.root}>
         <GridList
           cellHeight={180}
@@ -52,7 +53,7 @@ export class TrainingsContainer extends PureComponent {
           )}
         </GridList>
       </div>
-
+    </div>
       )
     }
 }
