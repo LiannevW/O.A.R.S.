@@ -7,6 +7,8 @@ import 'react-input-range/lib/css/index.css';
 import Heat2 from './heat2';
 import {Card, CardActions, CardHeader, CardText, CardMedia} from 'material-ui/Card';
 import './charts.css'
+
+
 Number.prototype.toRadians = function() {
   return this * Math.PI / 180;
 }
@@ -72,12 +74,14 @@ class Charts extends Component {
          Math.sin(Dl/2) * Math.sin(Dl/2);
    var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
 
-   var d = (R * c) / 1000;
+   var d = (R * c) ;
+  //  console.log("Distance travelled")
   //  console.log(d);
    return d;
  }
 
   readingExcel(){
+    console.log("Loading File");
     var fileToRead = document.getElementById('file').files[0];
     const reader = new FileReader();
     reader.onload = (evt) => {
@@ -86,23 +90,32 @@ class Charts extends Component {
         const wsname = wb.SheetNames[0];
         const ws = wb.Sheets[wsname];
         const data = XLSX.utils.sheet_to_json(ws, {header:1});
-        var j = 1;
-      for (var i=1;i<data.length-1;i++){
-          j++;
-        if (this.calculateDistance(Number.parseFloat(data[i][3]),Number.parseFloat(data[j][3]),Number.parseFloat(data[i][4]),Number.parseFloat(data[j][4])) > 0)
-          {break;}
-      }
+        // var j = 1;
+      // for (var i=1;i<data.length-1;i++){
+          // j++;
+      //   if (this.calculateDistance(Number.parseFloat(data[i][3]),Number.parseFloat(data[j][3]),Number.parseFloat(data[i][4]),Number.parseFloat(data[j][4])) < 5)
+      //     {break;}
+      // }
         var temp = [];
         var tempMap = [];
         var tempColor =[];
         var center = {};
-        for(i;i<data.length;i++){
+        var j = 1;
+        // console.log("Number check");
+        // console.log(Number.parseFloat(data[1][3]));
+        // console.log("Before calculateDistance");
+        // console.log(data);
+        for(var i=1;i<data.length-1;i++){
+          j++;
+          if (this.calculateDistance(Number.parseFloat(data[i][3]),Number.parseFloat(data[j][3]),Number.parseFloat(data[i][4]),Number.parseFloat(data[j][4])) < 0.75)
+            {continue;}
           switch (data[i][8]) {
-            case "1" : { tempColor.push('red'); break; };
-            case "2" : { tempColor.push('blue'); break; };
-            case "3" : { tempColor.push('green'); break; };
-            case "4" : { tempColor.push('yellow'); break; };
+            case "1" :  tempColor.push('red'); break;
+            case "2" :  tempColor.push('blue'); break;
+            case "3" :  tempColor.push('green'); break;
+            case "4" :  tempColor.push('yellow'); break;
           }
+            console.log("")
           temp.push({
             x: (data[i][0]) / 60000,
             y: data[i][5]
@@ -119,6 +132,10 @@ class Charts extends Component {
           }
 
         }
+        //
+        // console.log("After calculateDistance");
+        // console.log(temp);
+        // console.log(tempMap);
 
 
         this.setState(
@@ -132,9 +149,9 @@ class Charts extends Component {
             MapCenter: center,
             color: tempColor,
             filterColor: tempColor,
-            range: { min: 1, max: data.length },
-            value:{ min: 1, max: data.length },
-            prevValue:{ min: 1, max: data.length },
+            range: { min: 1, max: temp.length },
+            value:{ min: 1, max: temp.length },
+            prevValue:{ min: 1, max: temp.length },
             fileLoaded:true,
             filterData: [{
               color:'red',
@@ -167,11 +184,11 @@ class Charts extends Component {
       this.setState({ value });
     }
     else {
-      if (this.state.value.max-this.state.value.min<500){
+      if (this.state.value.max-this.state.value.min<200){
         if (this.state.value.max !== this.state.prevValue.max){
-          this.setState({value:{min: this.state.value.min, max: this.state.value.min+500 } });
+          this.setState({value:{min: this.state.value.min, max: this.state.value.min+200 } });
         }
-        else {  this.setState({value:{min: this.state.value.max-500, max: this.state.value.max } }); }
+        else {  this.setState({value:{min: this.state.value.max-200, max: this.state.value.max } }); }
       }
       else { this.setState({ value }); }
      }
@@ -248,19 +265,7 @@ class Charts extends Component {
          </CardMedia>
     </Card>
 
-      <Card style= {{width: '600px', marginLeft: 10, marginRight: 10, flex:1}}>
-       <CardHeader
-        title= "HeatMap"
-        titleStyle={{textAlign: "center",
-                     marginBottom:"20px"}}
-                     showExpandableButton={true}
-        />
-         <CardMedia expandable={true}>
-         <div className= "heat">
-          <Heat2 />
-         </div>
-         </CardMedia>
-      </Card>
+
    </div>
 </div>
     );
