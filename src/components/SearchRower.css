@@ -1,4 +1,3 @@
-
 .selector {
    display: flex;
 }
@@ -11,17 +10,14 @@ ol.horizontal{
 ol.horizontal li{
     float: left;
     width: 150px;
-    padding: 2px 0px;
+    padding: 6px 4px;
+    margin: 10px;
 }
 
 .selectship {
   margin-right: -200px;
   margin-bottom: -300px;
 }
-
-.actions {
-  margin-right: 100px;
-  margin-bottom: -300px;
 
 .material-icons {
   font-family: 'Material Icons';
@@ -36,17 +32,14 @@ ol.horizontal li{
   white-space: nowrap;
   direction: ltr;
   vertical-align: text-bottom;
-
   /* Support for all WebKit browsers. */
-  text-rendering: optimizeLegibility;
-
-  /* Support for Firefox. */
-  -moz-osx-font-smoothing: grayscale;
-
-  /* Support for IE. */
-  font-feature-settings: 'liga';
   -webkit-font-smoothing: antialiased;
   /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+  /* Support for IE. */
+  font-feature-settings: 'liga';
 }
 .name-rower {
     font-size: 16px;
@@ -62,5 +55,4 @@ ol.horizontal li{
     url(https://example.com/MaterialIcons-Regular.woff2) format('woff2'),
     url(https://example.com/MaterialIcons-Regular.woff) format('woff'),
     url(https://example.com/MaterialIcons-Regular.ttf) format('truetype');
-
 }
