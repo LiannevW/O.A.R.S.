@@ -46,7 +46,8 @@ class BoatPage extends PureComponent {
     <Card style= {{width: '900px',
                    dislplay: 'flex',
                    align: 'center',
-                   marginLeft:'300px',}}>
+                   marginLeft:'300px',
+                   height: '400px'}}>
       <CardHeader
         title={` Training of ${training.startdate} `}
         titleStyle={{textAlign: "center",
@@ -59,9 +60,9 @@ class BoatPage extends PureComponent {
                         marginBottom:"20px",
                         marginLeft:"100px",
                         fontSize:"18px"}}
-        showExpandableButton={true}
+
       />
-      <CardText expandable={true}>
+      <CardText>
       <p className= 'text'> Select Rowers and Ship for this boat </p>
         <SearchRowerandShip trainingId={this.props.trainingId} boat_number_name={this.props.boat_number_name} />
       </CardText>

@@ -115,8 +115,8 @@ render() {
   const {rowers, ships} = this.props
   const listItems = this.state.selectedRowers.map((selectedRower) =>
       <li> { selectedRower.firstname } &nbsp;
-            { selectedRower.lastname } }&nbsp;
-        <i className="material-icons pointer"  onClick={() => this.deleteRower(fixedIndex)}>delete</i>
+            { selectedRower.lastname } &nbsp;
+        <i className="material-icons pointer"  onClick={() => this.deleteRower(selectedRower)}>delete</i>
       </li>
     );
   return (
@@ -143,7 +143,8 @@ render() {
     {ships.map(this.renderShip)}
     </SelectField>
     <div className = 'snackbar'>
-     <SnackbarSave handleSave={this.saveRowersandShip.bind(this)} />  
+     <SnackbarSave handleSave={this.saveRowersandShip.bind(this)} />
+    </div>
     </div>
     </div>
 
