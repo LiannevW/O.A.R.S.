@@ -14,8 +14,8 @@ class RowersEditor extends PureComponent {
         firstname: this.refs.firstname.value,
         lastname: this.refs.lastname.value
       }
-      const rowers = this.props.rowers.map(rower => rower.firstname);
-      if (!rowers.includes(rower.firstname)){
+      const rowers = this.props.rowers.map(rower => rower.firstname && rower.lastname);
+      if (!rowers.includes(rower.firstname && rower.lastname)){
         this.props.save(rower)
         return true;
       }

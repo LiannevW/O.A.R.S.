@@ -54,7 +54,7 @@ render() {
               <TableHeaderColumn>start Date</TableHeaderColumn>
               <TableHeaderColumn>start time</TableHeaderColumn>
               <TableHeaderColumn>boat Number</TableHeaderColumn>
-              <TableHeaderColumn>--></TableHeaderColumn>
+              <TableHeaderColumn>Link to Training</TableHeaderColumn>
             </TableRow>
           </TableHeader>
 
