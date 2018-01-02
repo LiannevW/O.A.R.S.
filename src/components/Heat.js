@@ -3,7 +3,7 @@ import ReactHeatmap from 'react-heatmap';
 import InputRange from 'react-input-range';
 import PropTypes from 'prop-types'
 
-class Heat2 extends Component {
+class Heat extends Component {
   static propTypes = {
     width: PropTypes.number
 }
@@ -161,8 +161,8 @@ sliderHandler(value){
       }
 }
 // add width prop default value 10 if not provided
-// Heat2.defaultProps = {
+// Heat.defaultProps = {
 //   width:3,
 // }
 
-export default Heat2;
+export default Heat

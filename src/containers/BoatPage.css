@@ -1,3 +1,11 @@
+.cardStyle {
+  width: 900px;
+  display: flex;
+  align: center;
+  margin-left: 300px;
+  height: 400px;
+}
+
 .training-info {
   margin-top: 100px
 }
