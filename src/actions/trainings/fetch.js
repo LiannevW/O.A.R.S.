@@ -1,10 +1,10 @@
+import API from '../../api/client'
 import {
   APP_LOADING,
   APP_DONE_LOADING,
   LOAD_ERROR,
   LOAD_SUCCESS
 } from '../loading'
-import API from '../../api/client'
 
 export const FETCHED_TRAININGS = 'FETCHED_TRAININGS'
 export const FETCHED_ONE_TRAINING = 'FETCHED_ONE_TRAINING'
@@ -19,7 +19,6 @@ export const fetchTrainings = () => {
     .then((res) => {
       dispatch({ type: APP_DONE_LOADING })
       dispatch({ type: LOAD_SUCCESS })
-      console.log(res)
       dispatch({
         type: FETCHED_TRAININGS,
         payload: res.body
@@ -35,15 +34,14 @@ export const fetchTrainings = () => {
   }
 }
 
-export const fetchOneTraining = (id) => {
+export const fetchOneTraining = (trainingId) => {
   return dispatch => {
     dispatch({ type: APP_LOADING })
 
-  api.get(`/trainings/${id}`)
+  api.get(`/trainings/${trainingId}`)
     .then((res) => {
       dispatch({ type: APP_DONE_LOADING })
       dispatch({ type: LOAD_SUCCESS })
-      console.log(res)
       dispatch({
         type: FETCHED_ONE_TRAINING,
         payload: res.body

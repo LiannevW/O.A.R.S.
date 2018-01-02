@@ -14,39 +14,39 @@ const api = new API()
 export const createRower = (rower) => {
   return dispatch => {
       dispatch({ type: APP_LOADING })
-          api.post('/rowers', rower)
-            .then(() => {
-              dispatch({ type: ROWER_CREATED })
 
-              dispatch({ type: APP_DONE_LOADING })
-              dispatch({ type: LOAD_SUCCESS })
-            })
-            .catch((error) => {
-              dispatch({ type: APP_DONE_LOADING })
-              dispatch({
-                type: LOAD_ERROR,
-                payload: error.message
-              })
-            })
-        }
-      }
+      api.post('/rowers', rower)
+        .then(() => {
+          dispatch({ type: ROWER_CREATED })
+          dispatch({ type: APP_DONE_LOADING })
+          dispatch({ type: LOAD_SUCCESS })
+        })
+        .catch((error) => {
+          dispatch({ type: APP_DONE_LOADING })
+          dispatch({
+            type: LOAD_ERROR,
+            payload: error.message
+          })
+        })
+  }
+}
 
-      export const createRowersAndShip = (rowers,  shipId, trainingId, boat_number_name) => {
-        return dispatch => {
-            dispatch({ type: APP_LOADING })
-                api.post('/rowersToTraining', {rowers, shipId, trainingId, boat_number_name})
-                  .then(() => {
-                    dispatch({ type: ROWERS_CREATED })
+export const createRowersAndShip = (rowers,  shipId, trainingId, boat_number_name) => {
+  return dispatch => {
+      dispatch({ type: APP_LOADING })
 
-                    dispatch({ type: APP_DONE_LOADING })
-                    dispatch({ type: LOAD_SUCCESS })
-                  })
-                  .catch((error) => {
-                    dispatch({ type: APP_DONE_LOADING })
-                    dispatch({
-                      type: LOAD_ERROR,
-                      payload: error.message
-                    })
-                  })
-              }
-            }
+      api.post('/rowersToTraining', {rowers, shipId, trainingId, boat_number_name})
+        .then(() => {
+          dispatch({ type: ROWERS_CREATED })
+          dispatch({ type: APP_DONE_LOADING })
+          dispatch({ type: LOAD_SUCCESS })
+        })
+        .catch((error) => {
+          dispatch({ type: APP_DONE_LOADING })
+          dispatch({
+            type: LOAD_ERROR,
+            payload: error.message
+          })
+        })
+  }
+}

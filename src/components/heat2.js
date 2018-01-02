@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import ReactHeatmap from 'react-heatmap';
 
-
 class Heat2 extends Component {
   return_graph() {
       var result 	= [];
