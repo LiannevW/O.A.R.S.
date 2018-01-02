@@ -1,11 +1,21 @@
 import React from 'react';
-import DropDownMenu from 'material-ui/DropDownMenu';
+import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 import { connect } from 'react-redux'
 import {createRowersAndShip} from '../actions/rowers/create'
 import {fetchboatRowers} from '../actions/rowers/fetch'
 import FlatButton from 'material-ui/FlatButton';
 import './SearchRower.css'
+import SnackbarSave from './SnackbarSave'
+
+
+const styles = {
+  customWidth: {
+      width: 200,
+    },
+};
+
+
 
 class SearchRowerandShip extends React.Component {
 
@@ -52,7 +62,7 @@ componentWillReceiveProps(nextProps) { //is invoked before the component receive
 
 saveRowersandShip() {
 
-console.table(this.state)
+//console.table(this.state)
 
 const rowers = this.state.selectedRowers.map(rower => rower.id);
 
@@ -74,6 +84,17 @@ handleRowerChange = (event, index, value) => {
 }
 
 
+
+deleteRower = (index) => {
+  var newSelectedRowers = this.state.selectedRowers.slice();
+  if (index !==  -1) {
+      newSelectedRowers.splice(index, 1);
+  }
+  this.setState({
+    selectedRowers: newSelectedRowers
+  });
+}
+
 handleShipChange = (event, index, value) => {
   this.setState({
     selectedShipValue: value
@@ -94,26 +115,35 @@ render() {
   const {rowers, ships} = this.props
   const listItems = this.state.selectedRowers.map((selectedRower) =>
       <li> { selectedRower.firstname } &nbsp;
-            { selectedRower.lastname }
+            { selectedRower.lastname } }&nbsp;
+        <i className="material-icons pointer"  onClick={() => this.deleteRower(fixedIndex)}>delete</i>
       </li>
     );
   return (
 
-    <div className="selector">
-    <DropDownMenu value={0} onChange={this.handleRowerChange}>
-    {rowers.map(this.renderRower)}
-    </DropDownMenu>
 
+    <div className="selector">
+    <SelectField
+    style={styles.customWidth}
+    hintText="Select a name"
+    onChange={this.handleRowerChange}>
+    {rowers.map(this.renderRower)}
+    </SelectField>
      <div >
      <ol className="horizontal">
       {listItems}
      </ol>
     </div>
     <div className='selectship'>
-     <DropDownMenu value={this.state.selectedShipValue} onChange={this.handleShipChange}>
-      {ships.map(this.renderShip)}
-     </DropDownMenu>
-     <FlatButton label="Save boat" style={{marginBottom:'-20px'}} onClick={this.saveRowersandShip.bind(this)}/>
+       <SelectField
+    value={this.state.selectedShipValue}
+    style={styles.customWidth}
+    hintText="Select a ship"
+    onChange={this.handleShipChange}>
+    {ships.map(this.renderShip)}
+    </SelectField>
+    <div className = 'snackbar'>
+     <SnackbarSave handleSave={this.saveRowersandShip.bind(this)} />  
     </div>
     </div>
 
