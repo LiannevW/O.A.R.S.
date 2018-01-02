@@ -15,9 +15,11 @@ export const createRower = (rower) => {
   return dispatch => {
       dispatch({ type: APP_LOADING })
           api.post('/rowers', rower)
-            .then(() => {
-              dispatch({ type: ROWER_CREATED })
-
+            .then((res) => {
+              dispatch({
+                type: ROWER_CREATED,
+                payload: res.body
+              })
               dispatch({ type: APP_DONE_LOADING })
               dispatch({ type: LOAD_SUCCESS })
             })
