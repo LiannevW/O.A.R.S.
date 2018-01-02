@@ -54,7 +54,7 @@ class BoatPage extends PureComponent {
                               fontSize:"18px"}}
             />
               <CardText>
-                <p className= 'text'> Select Rowers and Ship for this boat </p>
+                <p className='text'> Select Rowers and Ship for this boat </p>
                 <SearchRowerandShip trainingId={this.props.trainingId} boat_number_name={this.props.boat_number_name} />
               </CardText>
           </Card>
