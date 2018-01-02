@@ -1,14 +1,12 @@
 import React, { PureComponent } from 'react'
-// import PropTypes from 'prop-types'
 import { push } from 'react-router-redux'
 import { connect } from 'react-redux'
 import { fetchOneRower } from '../actions/rowers/fetch'
 import Title from '../components/Title'
 import {Table,TableBody, TableHeader,  TableHeaderColumn, TableRow, TableRowColumn } from 'material-ui/Table';
-import './RowerProfile.css'
 import IconButton from 'material-ui/IconButton';
 import Info from 'react-material-icons/icons/action/info'
-
+import './RowerProfile.css'
 
 
 class RowerProfile extends PureComponent {
@@ -26,7 +24,11 @@ class RowerProfile extends PureComponent {
       <TableRowColumn>{rower.startdate}</TableRowColumn>
       <TableRowColumn>{rower.starttime}</TableRowColumn>
       <TableRowColumn>{rower.boat_number}</TableRowColumn>
-      <TableRowColumn><IconButton onClick= {this.linkToTraining(rower.TrainingId, rower.boat_number)}><Info /></IconButton></TableRowColumn>
+      <TableRowColumn>
+        <IconButton onClick= {this.linkToTraining(rower.TrainingId, rower.boat_number)}>
+          <Info />
+        </IconButton>
+      </TableRowColumn>
     </TableRow>
   )
 }
@@ -63,8 +65,8 @@ render() {
           </TableBody>
 
         </Table>
-    </div>
-  </article>
+      </div>
+    </article>
     )
   }
 }
@@ -77,24 +79,3 @@ return {
 }
 
 export default connect(mapStateToProps, { fetchOneRower, push }) (RowerProfile)
-
-// <div style={styles.root}>
-//   <GridList
-//     cellHeight={180}
-//     style={styles.gridList}
-//   >
-//
-//     {rower.RowerId.map((training) =>
-//       <GridTile
-//         key={training.id}
-//         title={training.startdate}
-//         subtitle={<span>Start Time: <b>{training.starttime}</b></span>}
-//         actionIcon={<IconButton><StarBorder color="white" /></IconButton>}
-//         onClick= {this.linkToTraining(training.id)}
-//
-//       >
-//         <img src={googleMaps } alt=""/>
-//       </GridTile>
-//     )}
-//   </GridList>
-// </div>

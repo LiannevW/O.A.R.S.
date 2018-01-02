@@ -3,14 +3,13 @@ import PropTypes from 'prop-types'
 import { push } from 'react-router-redux'
 import { connect } from 'react-redux'
 import { fetchOneTraining } from '../actions/trainings/fetch'
-import {Card, CardHeader, CardText, CardActions} from 'material-ui/Card';
-import {GridList, GridTile} from 'material-ui/GridList';
-import IconButton from 'material-ui/IconButton';
+import { Card, CardHeader, CardActions } from 'material-ui/Card'
+import { GridList, GridTile } from 'material-ui/GridList'
+import IconButton from 'material-ui/IconButton'
+import StarBorder from 'material-ui/svg-icons/toggle/star-border'
 import './Training.css'
-import StarBorder from 'material-ui/svg-icons/toggle/star-border';
-
-
-// import { Link } from 'react-router-dom'
+import TrainingsPageChartsLayer from '../components/trainingsPageChartsLayer'
+import TrainignsChart from '../components/trainignsChart'
 
 const styles = {
   root: {
@@ -41,95 +40,97 @@ class Training extends PureComponent {
     }
 
   componentWillMount() {
-
     const { trainingId } = this.props.match.params
     this.props.fetchOneTraining(trainingId)
+  }
 
-}
-    //link to Boatpage
-    linkToBoat = ( trainingId, boatNumber ) => event => this.props.push(`/boats-path/${trainingId}/${boatNumber}`)
+  linkToBoat = ( trainingId, boatNumber ) => event => this.props.push(`/boats-path/${trainingId}/${boatNumber}`)
 
   render() {
+    const { training } = this.props
+    if (!training) return null
 
+    // assing names and number to boat
+    const boatData = [
+      {
+        boatName: training.boat_1_name,
+        number: 1
+      },
+      {
+        boatName: training.boat_2_name,
+        number: 2
+      },
+      {
+        boatName: training.boat_3_name,
+        number: 3
 
+      },
+      {
+        boatName: training.boat_4_name,
+        number: 4
+      },
+    ]
 
-  const { training } = this.props
-  if (!training) return null
+    const listItems = boatData.map((boat) => (
+        <li>
+          <button>
+            <span className="boat" onClick= {this.linkToBoat(training.id, boat.number)}></span>
+          </button>
+        </li>
+    ))
 
-  // assing names and number to boat
-  const boatData = [
-  {
-    boatName: training.boat_1_name,
-    number: 1
-  },
-  {
-    boatName: training.boat_2_name,
-    number: 2
-  },
-  {
-    boatName: training.boat_3_name,
-    number: 3
-
-  },
-  {
-    boatName: training.boat_4_name,
-    number: 4
-  },
-]
-
-const listItems = boatData.map((boat) => (
-    <li>   <button><span class="boat" onClick= {this.linkToBoat(training.id, boat.number)}></span></button>
-    </li>
-  ))
-console.log(boatData)
-  return (
-
-    <div className= "training-info">
+    return (
+      <div className= "training-info">
         <div>
-        <Card style={{height:'400px', width: '600px', marginLeft: '500px'}}>
-          <CardHeader
-          title={` Training of ${training.startdate} `}
-          titleStyle={{textAlign: "center",
-                       marginBottom:"20px",
-                       marginLeft:"80px",
-                       fontSize:"25px"}}
-          titleColor= "steelblue"
-          subtitle=  {`| start time ${training.starttime}  | Training duraton: ${training.duration} `}
-          subtitleStyle={{textAlign: "center",
-                          marginBottom:"20px",
-                          marginLeft:"100px",
-                          fontSize:"18px"}}
-          />
-          <CardActions
-          style={{width:'800px', marginLeft: '150px'}}>
-        <span>  <ol className="horizontal">
-            {listItems}
-          </ol> </span>
-         </CardActions>
-
-
-        </Card>
-          </div>
-      <div style={styles.root}>
-        <GridList style={styles.gridList} cols={2.2}>
-          {boatData.map((boat) => (
-            <GridTile
-              key={boat.number}
-              title={boat.boatName}
-              subtitle={boat.number}
-              actionIcon={<IconButton><StarBorder color="rgb(0, 188, 212)" /></IconButton>}
-              titleStyle={styles.titleStyle}
-              titleBackground="linear-gradient(to top, rgba(0,0,0,0.1) 10%,rgba(0,0,0,0.3) 70%,rgba(0,0,0,0.10) 100%)"
-              onClick= {this.linkToBoat(training.id, boat.number)} >
-            </GridTile>
-          ))}
-        </GridList>
+          <Card style={{height:'400px', width: '600px', marginLeft: '500px'}}>
+            <CardHeader
+              title={` Training of ${training.startdate} `}
+              titleStyle={{textAlign: "center",
+                           marginBottom:"20px",
+                           marginLeft:"80px",
+                           fontSize:"25px"}}
+              titleColor= "steelblue"
+              subtitle=  {`Start time ${training.starttime}  | Training duraton: ${training.duration} `}
+              subtitleStyle={{textAlign: "center",
+                              marginBottom:"20px",
+                              marginLeft:"100px",
+                              fontSize:"18px"}}
+            />
+            <CardActions
+              style={{width:'800px', marginLeft: '150px'}}>
+              <span>
+                <ol className="horizontal">
+                  {listItems}
+                </ol>
+              </span>
+           </CardActions>
+          </Card>
         </div>
-      </div>
-      )
 
-      }
-    }
+
+        <div style={styles.root}>
+          <GridList style={styles.gridList} cols={2.2}>
+            {boatData.map((boat) => (
+              <GridTile
+                key={boat.number}
+                title={boat.boatName}
+                subtitle={boat.number}
+                actionIcon={<IconButton><StarBorder color="rgb(0, 188, 212)" /></IconButton>}
+                titleStyle={styles.titleStyle}
+                titleBackground="linear-gradient(to top, rgba(0,0,0,0.1) 10%,rgba(0,0,0,0.3) 70%,rgba(0,0,0,0.10) 100%)"
+                onClick= {this.linkToBoat(training.id, boat.number)} >
+              </GridTile>
+            ))}
+          </GridList>
+
+        </div>
+
+        <TrainingsPageChartsLayer />
+
+      </div>
+    )
+  }
+}
 
 //filter training from trainers
 const mapStateToProps = ({ trainings }, { match }) => {

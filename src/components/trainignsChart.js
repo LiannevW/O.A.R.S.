@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import * as XLSX from 'xlsx';
-import MyChart from './Mychart';
-import MyMap from './Mymap';
+import MyChart from './mychart';
+import MyMap from './mymap';
 import InputRange from 'react-input-range';
 import 'react-input-range/lib/css/index.css';
-import {Card, CardHeader, CardMedia} from 'material-ui/Card';
-import './Charts.css'
+import Heat2 from './heat2';
+import {Card, CardActions, CardHeader, CardText, CardMedia} from 'material-ui/Card';
+import './charts.css'
 
 
 Number.prototype.toRadians = function() {
@@ -105,16 +106,15 @@ class Charts extends Component {
         // console.log("Before calculateDistance");
         // console.log(data);
         for(var i=1;i<data.length-1;i++){
-          j++;
-          if (this.calculateDistance(Number.parseFloat(data[i][3]),Number.parseFloat(data[j][3]),Number.parseFloat(data[i][4]),Number.parseFloat(data[j][4])) < 0.75)
-            {continue;}
+          // j++;
+          //     if (this.calculateDistance(Number.parseFloat(data[i][3]),Number.parseFloat(data[j][3]),Number.parseFloat(data[i][4]),Number.parseFloat(data[j][4])) < 1)
+          //       {continue;}
           switch (data[i][8]) {
             case "1" :  tempColor.push('red'); break;
             case "2" :  tempColor.push('blue'); break;
             case "3" :  tempColor.push('green'); break;
             case "4" :  tempColor.push('yellow'); break;
           }
-            console.log("")
           temp.push({
             x: (data[i][0]) / 60000,
             y: data[i][5]
@@ -132,9 +132,9 @@ class Charts extends Component {
 
         }
         //
-        // console.log("After calculateDistance");
-        // console.log(temp);
-        // console.log(tempMap);
+        console.log("After calculateDistance");
+        console.log(Number(typeof (data[4][3]) + Number(data[4][8]) - 0.99999));
+        console.log(tempMap);
 
 
         this.setState(
@@ -271,4 +271,4 @@ class Charts extends Component {
   }
 }
 
-export default Charts
+export default Charts;

@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import { createShip } from '../actions/ships/create'
 import './ShipsEditor.css'
-import SnackbarAdd from '../components/SnackbarAdd'
+import SnackbarAddShip from '../components/SnackbarAddShip'
 
 class ShipsEditor extends PureComponent {
 
@@ -40,7 +40,7 @@ class ShipsEditor extends PureComponent {
           />
         </form>
           <div className = 'snackbar'>
-           <SnackbarAdd handleAdd={this.saveShip.bind(this)} />
+           <SnackbarAddShip handleAdd={this.saveShip.bind(this)} />
           </div>
       </div>
     )

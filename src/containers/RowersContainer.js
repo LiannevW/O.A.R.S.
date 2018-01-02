@@ -9,6 +9,7 @@ import ListItem from 'material-ui/List/ListItem';
 import Avatar from 'material-ui/Avatar';
 import './RowersContainer.css'
 
+
 class RowersContainer extends PureComponent {
 
   componentWillMount() {
@@ -19,24 +20,24 @@ class RowersContainer extends PureComponent {
 
   render() {
 
-      return (
-  <div>
+  return (
+    <div>
       <div className = 'List'>
-        <List style={{  width: '60%', marginTop: '300x'  }}>
+        <List>
           {this.props.rowers.map((rower) => (
             <ListItem key={rower.id} leftAvatar={
                <Avatar src= {avatar} size={30}  />}
                 style={{  margin: '50x', padding: '0,5rem',  }}
+
                 onClick={this.linkToOneRower(rower.id)}>{rower.firstname} {rower.lastname}
-              </ListItem>
-            ))}
+            </ListItem>
+          ))}
         </List>
       </div>
-       <div className = 'editor'>
+      <div className = 'editor'>
         <RowersEditor />
-       </div>
+      </div>
     </div>
-
     )
   }
 }

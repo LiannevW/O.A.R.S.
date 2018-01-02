@@ -2,13 +2,14 @@ import React from 'react';
 import Snackbar from 'material-ui/Snackbar';
 import RaisedButton from 'material-ui/RaisedButton';
 
-export default class SnackbarAddRower extends React.Component {
+
+class SnackbarAddRower extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {
       open: false,
-    };
+    }
   }
 
   handleClick = (event) => {
@@ -16,15 +17,15 @@ export default class SnackbarAddRower extends React.Component {
     if (result === false){
       this.setState({
         open: true,
-      });
+      })
     }
-  };
+  }
 
   handleRequestClose = () => {
     this.setState({
       open: false,
-    });
-  };
+    })
+  }
 
   render() {
     return (
@@ -40,6 +41,8 @@ export default class SnackbarAddRower extends React.Component {
           onRequestClose={this.handleRequestClose}
         />
       </div>
-    );
+    )
   }
 }
+
+export default SnackbarAddRower

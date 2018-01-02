@@ -12,24 +12,24 @@ const api = new API()
 
 export const createShip = (ship) => {
   return dispatch => {
-      dispatch({ type: APP_LOADING })
+    dispatch({ type: APP_LOADING })
 
-          api.post('/ships', ship)
-            .then((res) => {
-              dispatch({
-                type: SHIP_CREATED,
-                payload: res.body
-              })
-              dispatch({ type: APP_DONE_LOADING })
-              dispatch({ type: LOAD_SUCCESS })
+  api.post('/ships', ship)
+    .then((res) => {
+      dispatch({
+        type: SHIP_CREATED,
+        payload: res.body
+      })
+      dispatch({ type: APP_DONE_LOADING })
+      dispatch({ type: LOAD_SUCCESS })
 
-            })
-            .catch((error) => {
-              dispatch({ type: APP_DONE_LOADING })
-              dispatch({
-                type: LOAD_ERROR,
-                payload: error.message
-              })
-            })
-        }
-      }
+    })
+    .catch((error) => {
+      dispatch({ type: APP_DONE_LOADING })
+      dispatch({
+        type: LOAD_ERROR,
+        payload: error.message
+      })
+    })
+  }
+}
