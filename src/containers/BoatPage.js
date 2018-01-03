@@ -40,7 +40,7 @@ class BoatPage extends PureComponent {
     return (
       <div>
       <RowersList />
-        <div className='training-info'>
+        <div>
           <Card className="cardStyle">
             <CardHeader
               title={` Training of ${training.startdate} `}
@@ -61,7 +61,7 @@ class BoatPage extends PureComponent {
               </CardText>
           </Card>
         </div>
-        <div className= 'drawgraphs'>
+        <div className='drawgraphs'>
         </div>
         <div className='boatPageChartsLayer'>
           <BoatPageChartsLayer />

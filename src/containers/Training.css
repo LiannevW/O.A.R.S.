@@ -2,9 +2,6 @@
 body {
     background-color: #f7f7f7;
 }
-.training-info {
-  margin-top: 200px
-}
 
 span.boat {
  background: url("../img/Rowboat_symbol.svg") no-repeat top left;
@@ -27,9 +24,6 @@ ol.horizontal li{
  width: 50px;
  padding: 2px 0px;
 }
-
-
-
 
 .chart {
 display: flex;

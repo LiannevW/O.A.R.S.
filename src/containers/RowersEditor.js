@@ -1,7 +1,10 @@
 import React, { PureComponent } from 'react'
+
 import { connect } from 'react-redux'
 import { createRower } from '../actions/rowers/create'
 import SnackbarAddRower from '../components/SnackbarAddRower'
+import Form from 'muicss/lib/react/form';
+import Input from 'muicss/lib/react/input';
 import './RowersEditor.css'
 
 
@@ -25,24 +28,23 @@ class RowersEditor extends PureComponent {
 
   render() {
     return (
-      <div className="editor">
+      <span><div className="editor">
         <form>
-          <input
+          <input className="input"
             type="firstname"
             ref="firstname"
             placeholder="first name"
-
           />
-          <input
-            type="lastname"
-            ref="lastname"
-            placeholder="last name"
-          />
+          <input className="input"
+              type="lastname"
+              ref="lastname"
+              placeholder="last name"
+            />
         </form>
         <div className = 'snackbar'>
            <SnackbarAddRower handleAdd={this.saveRower.bind(this)} />
         </div>
-      </div>
+      </div></span>
     )
   }
 }
