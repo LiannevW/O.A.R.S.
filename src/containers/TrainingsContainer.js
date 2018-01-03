@@ -35,6 +35,7 @@ export class TrainingsContainer extends PureComponent {
     const { trainings } = this.props
 
     return (
+  <body>
     <div className='background'>
       <div style={styles.root}>
         <GridList
@@ -55,6 +56,7 @@ export class TrainingsContainer extends PureComponent {
         </GridList>
       </div>
     </div>
+  </body>
       )
     }
 }

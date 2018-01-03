@@ -61,7 +61,7 @@ class BoatPage extends PureComponent {
               </CardText>
           </Card>
         </div>
-        <div className= 'drawgraphs'>
+        <div className='drawgraphs'>
         </div>
         <div className='boatPageChartsLayer'>
           <BoatPageChartsLayer />
