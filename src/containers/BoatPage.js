@@ -40,9 +40,9 @@ class BoatPage extends PureComponent {
     return (
       <div>
       <RowersList />
-        <div className='training-info'>
+        <div>
           <Card className="cardStyle">
-            <CardHeader
+            <CardHeader style={{width: "900px"}}
               title={` Training of ${training.startdate} `}
               titleStyle={{textAlign: "center",
                            marginBottom:"20px",

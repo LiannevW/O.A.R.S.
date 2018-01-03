@@ -224,7 +224,7 @@ class Charts extends PureComponent {
 
        <Card
         expanded= 'true'
-        style= {{ width: '1200px', marginLeft: 200, marginRight: 200, marginTop:120, flex:1}}>
+        style= {{ width: '1200px', margin: 'auto', marginTop:120, flex:1}}>
         <CardHeader
          title= "Range"
          titleStyle={{textAlign: "center", marginBottom:"20px"}}
@@ -241,7 +241,7 @@ class Charts extends PureComponent {
 
       <Card
         expanded= 'true'
-        style= {{width: '1200px', marginLeft: 200, marginRigth: 200, marginTop: 10, flex:1}}>
+        style= {{width: '1200px', margin: 'auto' , marginTop: 10, flex:1}}>
         <CardHeader
          title= "Route"
          titleStyle={{textAlign: "center",
@@ -255,7 +255,7 @@ class Charts extends PureComponent {
           </CardMedia>
        </Card>
       <Card expanded = 'true'
-        style= {{width: '1200px', marginLeft: 200, marginRight: 200, flex:1}}>
+        style= {{width: '1200px', margin: 'auto', flex:1}}>
        <CardHeader
         title= "Velocity"
         titleStyle={{textAlign: "center", marginBottom:"20px"}}

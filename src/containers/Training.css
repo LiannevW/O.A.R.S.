@@ -2,9 +2,6 @@
 body {
     background-color: #f7f7f7;
 }
-.training-info {
-  margin-top: 200px
-}
 
 span.boat {
  background: url("../img/Rowboat_symbol.svg") no-repeat top left;
@@ -18,8 +15,8 @@ span.boat {
 
 ol.horizontal{
  list-style-type: decimal;
- width: 400px;
- margin-left:-40px;
+ /*width: 400px;
+ margin-left:-40px;*/
 }
 
 ol.horizontal li{
