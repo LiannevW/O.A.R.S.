@@ -10,7 +10,7 @@ class BoatPageChartsLayer extends Component {
     return(
       <div>
       <Charts />
-        <Card style= {{width: '600px', marginLeft: 10, marginRight: 10, flex:1}}>
+        <Card style= {{width: '800px', marginLeft: 400, marginRight: 400, marginTop:20, flex:1}}>
          <CardHeader
           title= "HeatMap"
           titleStyle={{textAlign: "center",
