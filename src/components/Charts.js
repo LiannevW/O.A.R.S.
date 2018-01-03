@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import * as XLSX from 'xlsx';
+// import * as XLSX from 'xlsx';
 import MyChart from './Mychart';
 import MyMap from './Mymap';
 import InputRange from 'react-input-range';
 import 'react-input-range/lib/css/index.css';
 import {Card, CardHeader, CardMedia} from 'material-ui/Card';
 import './Charts.css'
-
+import fixtures from '../fixtures/fixture.json'
 
 Number.prototype.toRadians = function() {
   return this * Math.PI / 180;
@@ -58,7 +58,7 @@ class Charts extends Component {
       fileLoaded:false,
       filterData: [{color: '#090909', points: [{ x:0, y:0 }]}],
     }
-    this.readingExcel = this.readingExcel.bind(this);
+    this.readingExcel()
   }
 
   calculateDistance(lat1,lat2,lon1,lon2){
@@ -74,50 +74,34 @@ class Charts extends Component {
    var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
 
    var d = (R * c) ;
-  //  console.log("Distance travelled")
   //  console.log(d);
+  //  console.log("Distance travelled")
    return d;
  }
 
   readingExcel(){
-    console.log("Loading File");
-    var fileToRead = document.getElementById('file').files[0];
-    const reader = new FileReader();
-    reader.onload = (evt) => {
-        const bstr = evt.target.result;
-        const wb = XLSX.read(bstr, {type:'binary'});
-        const wsname = wb.SheetNames[0];
-        const ws = wb.Sheets[wsname];
-        const data = XLSX.utils.sheet_to_json(ws, {header:1});
-        // var j = 1;
-      // for (var i=1;i<data.length-1;i++){
-          // j++;
-      //   if (this.calculateDistance(Number.parseFloat(data[i][3]),Number.parseFloat(data[j][3]),Number.parseFloat(data[i][4]),Number.parseFloat(data[j][4])) < 5)
-      //     {break;}
-      // }
+        const data = fixtures
         var temp = [];
         var tempMap = [];
         var tempColor =[];
         var center = {};
         var j = 1;
-        // console.log("Number check");
-        // console.log(Number.parseFloat(data[1][3]));
-        // console.log("Before calculateDistance");
         // console.log(data);
-        for(var i=1;i<data.length-1;i++){
+        for(var i=1;i<data.length;i++){
           j++;
+          console.log(data[10][4]);
           if (this.calculateDistance(Number.parseFloat(data[i][3]),Number.parseFloat(data[j][3]),Number.parseFloat(data[i][4]),Number.parseFloat(data[j][4])) < 0.75)
             {continue;}
+
           switch (data[i][8]) {
             case "1" :  tempColor.push('red'); break;
             case "2" :  tempColor.push('blue'); break;
             case "3" :  tempColor.push('green'); break;
             case "4" :  tempColor.push('yellow'); break;
           }
-            console.log("")
           temp.push({
             x: (data[i][0]) / 60000,
-            y: data[i][5]
+            y: data[i][6]
           });
           tempMap.push({
             lat: Number(data[i][3]),
@@ -129,13 +113,7 @@ class Charts extends Component {
               lng: Number(data[i][4])
             };
           }
-
         }
-        //
-        // console.log("After calculateDistance");
-        // console.log(temp);
-        // console.log(tempMap);
-
 
         this.setState(
           {chartData: [{
@@ -158,8 +136,8 @@ class Charts extends Component {
             }],
         });
     };
-    reader.readAsBinaryString(fileToRead);
-  }
+    // reader.readAsBinaryString(fileToRead);
+
   filterColorChart(chart,color){
     //add 4 colors
     const chartRed= chart.filter((point,index) => {if (color[index]==='red'){return true;}} );
@@ -234,7 +212,6 @@ class Charts extends Component {
           {this.state.fileLoaded ? <InputRange minValue={this.state.range.min} maxValue={this.state.range.max} value={this.state.value} onChange={value =>this.setState({ value })} onChangeComplete={value=> this.sliderHandler(value)}/> : null }
         </div>
         <input type="file" id="file"/>
-        <button id="myBtn" onClick={this.readingExcel.bind(this)} >Draw Graph</button>
        </CardMedia>
       </Card>
         <br /><br /><br />
@@ -272,3 +249,11 @@ class Charts extends Component {
 }
 
 export default Charts
+
+
+
+
+
+
+
+// <button id="myBtn" onClick={this.readingExcel.bind(this)} >Draw Graph</button>

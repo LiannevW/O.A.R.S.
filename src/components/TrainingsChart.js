@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
-import * as XLSX from 'xlsx';
 import MyChart from './Mychart';
 import MyMap from './Mymap';
 import InputRange from 'react-input-range';
 import 'react-input-range/lib/css/index.css';
-import Heat from './Heat';
-import {Card, CardHeader, CardText, CardMedia} from 'material-ui/Card';
+import {Card, CardHeader, CardMedia} from 'material-ui/Card';
 import './Charts.css'
-
+import fixtures from '../fixtures/fixture.json'
 
 Number.prototype.toRadians = function() {
   return this * Math.PI / 180;
@@ -59,7 +57,10 @@ class Charts extends Component {
       fileLoaded:false,
       filterData: [{color: '#090909', points: [{ x:0, y:0 }]}],
     }
-    this.readingExcel = this.readingExcel.bind(this);
+    this.readingExcel = this.readingExcel.bind(this)
+  }
+  componentWillMount() {
+    this.readingExcel()
   }
 
   calculateDistance(lat1,lat2,lon1,lon2){
@@ -75,40 +76,22 @@ class Charts extends Component {
    var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
 
    var d = (R * c) ;
-  //  console.log("Distance travelled")
-  //  console.log(d);
+
    return d;
  }
 
-  readingExcel(){
-    console.log("Loading File");
-    var fileToRead = document.getElementById('file').files[0];
-    const reader = new FileReader();
-    reader.onload = (evt) => {
-        const bstr = evt.target.result;
-        const wb = XLSX.read(bstr, {type:'binary'});
-        const wsname = wb.SheetNames[0];
-        const ws = wb.Sheets[wsname];
-        const data = XLSX.utils.sheet_to_json(ws, {header:1});
-        // var j = 1;
-      // for (var i=1;i<data.length-1;i++){
-          // j++;
-      //   if (this.calculateDistance(Number.parseFloat(data[i][3]),Number.parseFloat(data[j][3]),Number.parseFloat(data[i][4]),Number.parseFloat(data[j][4])) < 5)
-      //     {break;}
-      // }
+  readingExcel() {
+        const data = fixtures
+
         var temp = [];
         var tempMap = [];
         var tempColor =[];
-        var center = {};
         var j = 1;
-        // console.log("Number check");
-        // console.log(Number.parseFloat(data[1][3]));
-        // console.log("Before calculateDistance");
-        // console.log(data);
+
         for(var i=1;i<data.length-1;i++){
-          // j++;
-          //     if (this.calculateDistance(Number.parseFloat(data[i][3]),Number.parseFloat(data[j][3]),Number.parseFloat(data[i][4]),Number.parseFloat(data[j][4])) < 1)
-          //       {continue;}
+          j++;
+              if (this.calculateDistance(Number.parseFloat(data[i][3]),Number.parseFloat(data[j][3]),Number.parseFloat(data[i][4]),Number.parseFloat(data[j][4])) < 1)
+                {continue;}
           switch (data[i][8]) {
             case "1" :  tempColor.push('red'); break;
             case "2" :  tempColor.push('blue'); break;
@@ -124,17 +107,10 @@ class Charts extends Component {
             lng: Number(data[i][4])
           });
           if(i > data.length/2 && i < data.length/2 +2){
-            center = {
-              lat: Number(data[i][3]),
-              lng: Number(data[i][4])
-            };
+            const center = { lat: 51.988472, lng: 4.373634 }
           }
 
         }
-        //
-        console.log("After calculateDistance");
-        console.log(Number(typeof (data[4][3]) + Number(data[4][8]) - 0.99999));
-        console.log(tempMap);
 
 
         this.setState(
@@ -145,7 +121,7 @@ class Charts extends Component {
             chartFilterColor: this.filterColorChart(temp,tempColor),
             MapPath: tempMap,
             FilterMap: this.filterColorMap(tempMap, tempColor),
-            MapCenter: center,
+            MapCenter: { lat: 51.988472, lng: 4.373634 },
             color: tempColor,
             filterColor: tempColor,
             range: { min: 1, max: temp.length },
@@ -158,8 +134,8 @@ class Charts extends Component {
             }],
         });
     };
-    reader.readAsBinaryString(fileToRead);
-  }
+
+
   filterColorChart(chart,color){
     //add 4 colors
     const chartRed= chart.filter((point,index) => {if (color[index]==='red'){return true;}} );
@@ -219,7 +195,6 @@ class Charts extends Component {
   }
 
 render() {
-
     return (
       <div className="Charts">
 
@@ -233,10 +208,8 @@ render() {
         />
         <CardMedia expandable={true}>
           <div className='range'>
-          {this.state.fileLoaded ? <InputRange minValue={this.state.range.min} maxValue={this.state.range.max} value={this.state.value} onChange={value =>this.setState({ value })} onChangeComplete={value=> this.sliderHandler(value)}/> : null }
+           <InputRange minValue={this.state.range.min} maxValue={this.state.range.max} value={this.state.value} onChange={value =>this.setState({ value })} onChangeComplete={value=> this.sliderHandler(value)}/>
           </div>
-          <input type="file" id="file"/>
-          <button id="myBtn" onClick={this.readingExcel.bind(this)} >Draw Graph</button>
         </CardMedia>
        </Card>
 
