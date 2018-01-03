@@ -1,7 +1,7 @@
 import Charts from './Charts'
-import Heat from './Heat';
-import React, { Component } from 'react';
-import {Card, CardHeader, CardMedia} from 'material-ui/Card';
+import Heat from './Heat'
+import React, { Component } from 'react'
+import { Card, CardHeader, CardMedia } from 'material-ui/Card'
 
 
 class BoatPageChartsLayer extends Component {

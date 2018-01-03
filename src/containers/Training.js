@@ -7,9 +7,9 @@ import { Card, CardHeader, CardActions } from 'material-ui/Card'
 import { GridList, GridTile } from 'material-ui/GridList'
 import IconButton from 'material-ui/IconButton'
 import StarBorder from 'material-ui/svg-icons/toggle/star-border'
+import TrainingsPageChartsLayer from '../components/TrainingsPageChartsLayer'
 import './Training.css'
-import TrainingsPageChartsLayer from '../components/trainingsPageChartsLayer'
-import TrainignsChart from '../components/trainignsChart'
+
 
 const styles = {
   root: {
@@ -82,7 +82,7 @@ class Training extends PureComponent {
     return (
       <div className= "training-info">
         <div>
-          <Card style={{height:'400px', width: '600px', marginLeft: '500px'}}>
+          <Card style={{height:'400px', width: '600px', marginLeft: '500px', marginTop: '110px'}}>
             <CardHeader
               title={` Training of ${training.startdate} `}
               titleStyle={{textAlign: "center",
