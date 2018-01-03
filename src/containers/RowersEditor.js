@@ -1,8 +1,9 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import { createRower } from '../actions/rowers/create'
-import './RowersEditor.css'
 import SnackbarAddRower from '../components/SnackbarAddRower'
+import './RowersEditor.css'
+
 
 class RowersEditor extends PureComponent {
 
