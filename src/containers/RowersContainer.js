@@ -8,23 +8,55 @@ import List from 'material-ui/List/List';
 import ListItem from 'material-ui/List/ListItem';
 import Avatar from 'material-ui/Avatar';
 import './RowersContainer.css'
+import TextField from 'material-ui/TextField';
+import RaisedButton from 'material-ui/RaisedButton';
 
 
 class RowersContainer extends PureComponent {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      filteredRowers: [],
+      searchInput: ''
+    };
+  }
 
   componentWillMount() {
     this.props.fetchRowers()
   }
 
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      filteredRowers: nextProps.rowers
+    })
+  }
+
   linkToOneRower = rowerId => event => this.props.push(`/rowers-path/${rowerId}`);
 
+  handleChange = (event) => {
+    this.setState({
+      searchInput: event.target.value,
+    });
+   };
+  searchOneRower() {
+    const filteredRowersForSeatch = this.props.rowers.filter(rower => rower.firstname.toUpperCase() === this.state.searchInput.toUpperCase());
+    this.setState({
+      filteredRowers: filteredRowersForSeatch
+    })
+  }
+  reset() {
+    this.setState({
+      filteredRowers: this.props.rowers
+    })
+  }
   render() {
 
   return (
     <div>
       <div className = 'List'>
         <List>
-          {this.props.rowers.sort(function(a, b){
+          {this.state.filteredRowers.sort(function(a, b){
             if (a.firstname < b.firstname) {
               return -1
             } else if (a.firstname > b.firstname) {
@@ -42,6 +74,20 @@ class RowersContainer extends PureComponent {
         </List>
       </div>
       <div className = 'editor'>
+      <TextField
+        value={this.state.searchInput}
+        onChange={this.handleChange}
+      />
+      <div className="actions">
+        <RaisedButton
+        onClick={this.searchOneRower.bind(this)}
+        label="Search a rower"
+        />
+        <RaisedButton
+        onClick={this.reset.bind(this)}
+        label="Reset"
+        />
+      </div>
         <RowersEditor />
       </div>
     </div>
