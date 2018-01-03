@@ -13,7 +13,7 @@ Number.prototype.toRadians = function() {
   return this * Math.PI / 180;
 }
 
-class Charts extends Component {
+class TrainingsChart extends Component {
   constructor(props){
     super(props);
     this.state = {
@@ -225,11 +225,12 @@ render() {
 
        <Card
         expanded= 'true'
-        style= {{ width: '1200px', marginLeft: 200, marginRight: 200, marginTop:-160, flex:1}}>
+        showExpandableButton={true}
+        actAsExpander={true}
+        style= {{ width: '1200px', marginLeft: 150, marginRight: 300, marginTop:130, flex:1}}>
         <CardHeader
          title= "Range"
          titleStyle={{textAlign: "center", marginBottom:"20px"}}
-         showExpandableButton={true}
         />
         <CardMedia expandable={true}>
           <div className='range'>
@@ -241,13 +242,13 @@ render() {
        </Card>
 
       <Card
-        expanded= 'true'
-        style= {{width: '1200px', marginLeft: 200, marginRigth: 200, marginTop: 10, flex:1}}>
+        style= {{width: '1200px', marginLeft: 150, marginRight: 200, marginTop: 10, flex:1}}>
         <CardHeader
          title= "Route"
          titleStyle={{textAlign: "center",
                       marginBottom:"20px"}}
          showExpandableButton={true}
+         actAsExpander={true}
          />
           <CardMedia expandable={true}>
           <div className= "route">
@@ -255,12 +256,13 @@ render() {
           </div>
           </CardMedia>
        </Card>
-      <Card expanded = 'true'
-        style= {{width: '1200px', marginLeft: 200, marginRight: 200, flex:1}}>
+      <Card
+        style= {{width: '1200px', marginLeft: 150, marginRight: 300, marginTop: 10, flex:1}}>
        <CardHeader
         title= "Velocity"
         titleStyle={{textAlign: "center", marginBottom:"20px"}}
         showExpandableButton={true}
+        actAsExpander={true}
       />
       <CardMedia expandable={true}>
        <MyChart chartData = {this.state.chartFilterColor}/>
@@ -274,4 +276,4 @@ render() {
   }
 }
 
-export default Charts;
+export default TrainingsChart;
