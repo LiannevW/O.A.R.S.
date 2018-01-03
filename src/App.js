@@ -4,6 +4,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import muiTheme from './assets/theme'
 import Navigation from './components/Navigation'
 import Routes from './routes'
+import Footer from './components/Footer'
 
 
 
@@ -21,10 +22,12 @@ class App extends Component {
     return (
       <MuiThemeProvider muiTheme={muiTheme}>
         <div className="App">
+        <div className="Content">
           <Navigation />
           <Routes />
-
         </div>
+       <Footer />
+      </div>
       </MuiThemeProvider>
     )
   }
