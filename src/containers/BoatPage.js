@@ -7,7 +7,7 @@ import { fetchShips} from '../actions/ships/fetch'
 //import { fetchboatRowers } from '../actions/rowers/fetch'
 import RowersList from '../components/RowersList'
 import './BoatPage.css'
-
+import {Card, CardHeader, CardActions, CardText} from 'material-ui/Card';
 import PropTypes from 'prop-types'
 import SearchRowerandShip from '../components/SearchRower'
 import Charts from '../components/charts'

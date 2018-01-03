@@ -106,15 +106,20 @@ class Charts extends Component {
         // console.log("Before calculateDistance");
         // console.log(data);
         for(var i=1;i<data.length-1;i++){
-          // j++;
-          //     if (this.calculateDistance(Number.parseFloat(data[i][3]),Number.parseFloat(data[j][3]),Number.parseFloat(data[i][4]),Number.parseFloat(data[j][4])) < 1)
-          //       {continue;}
+          j++;
+          if (data[i][8] === data[j][8]){
+           if (this.calculateDistance(Number.parseFloat(data[i][3]),Number.parseFloat(data[j][3]),Number.parseFloat(data[i][4]),Number.parseFloat(data[j][4])) < 1)
+                {continue;}
+              }
+
+
           switch (data[i][8]) {
             case "1" :  tempColor.push('red'); break;
             case "2" :  tempColor.push('blue'); break;
             case "3" :  tempColor.push('green'); break;
             case "4" :  tempColor.push('yellow'); break;
           }
+
           temp.push({
             x: (data[i][0]) / 60000,
             y: data[i][5]
@@ -133,8 +138,10 @@ class Charts extends Component {
         }
         //
         console.log("After calculateDistance");
-        console.log(Number(typeof (data[4][3]) + Number(data[4][8]) - 0.99999));
+        // console.log(Number(typeof (data[4][3]) + Number(data[4][8]) - 0.99999));
         console.log(tempMap);
+        console.log(tempColor);
+        console.log(temp);
 
 
         this.setState(
@@ -160,6 +167,8 @@ class Charts extends Component {
     };
     reader.readAsBinaryString(fileToRead);
   }
+
+
   filterColorChart(chart,color){
     //add 4 colors
     const chartRed= chart.filter((point,index) => {if (color[index]==='red'){return true;}} );
