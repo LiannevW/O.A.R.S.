@@ -75,8 +75,12 @@ const shipId = this.props.ships[this.state.selectedShipValue].id
 handleRowerChange = (event, index, value) => {
   var newRower = this.props.rowers[value];
   var newSelectedRowers = this.state.selectedRowers.slice(); //clone of selectedRowers
-  newSelectedRowers.push(newRower)
-
+  var indexOfRower = this.state.selectedRowers.indexOf(newRower);
+    if (indexOfRower === -1) {
+      newSelectedRowers.push(newRower)
+    } else {
+      newSelectedRowers.splice(indexOfRower, 1);
+    }
   this.setState({
     selectedRowers: newSelectedRowers
   });
@@ -102,7 +106,11 @@ handleShipChange = (event, index, value) => {
 
 renderRower(rower, index ) {
   return (
-    <MenuItem key={index} value={index} primaryText={`${rower.firstname} ${rower.lastname}`}/>
+    <MenuItem key={index}
+    value={index}
+    insetChildren={true}
+    checked={this.state.selectedRowers.includes(rower)}
+    primaryText={`${rower.firstname} ${rower.lastname}`}/>
   )
 }
 renderShip(ship, index ) {
@@ -122,10 +130,11 @@ render() {
 
     <div className="selector">
     <SelectField
+    multiple={true}
     style={styles.customWidth}
     hintText="Select a name"
     onChange={this.handleRowerChange}>
-    {rowers.map(this.renderRower)}
+    {rowers.map(this.renderRower.bind(this))}
     </SelectField>
     <div >
      <ol className="horizontal">

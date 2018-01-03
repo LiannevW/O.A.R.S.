@@ -20,7 +20,15 @@ class ShipsContainer extends PureComponent {
       <div>
       <div className = "List pointer">
       <List style={{  width: '60%', marginTop: '300x'  }}>
-        {this.props.ships.map((ship) => (
+        {this.props.ships.sort(function(a, b){
+          if (a.name < b.name) {
+            return -1
+          } else if (a.name > b.name) {
+            return 1
+          } else {
+            return 0
+          }
+        }).map((ship) => (
           <p onClick={this.linktToOneShip(ship.id)}>{ship.name} {ship.type}</p>
         ))}
         </List>
