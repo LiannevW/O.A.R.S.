@@ -54,7 +54,6 @@ class TrainingsChart extends Component {
         min: 1,
         max: 4
       },
-      fileLoaded:false,
       filterData: [{color: '#090909', points: [{ x:0, y:0 }]}],
     }
     this.readingExcel = this.readingExcel.bind(this)
@@ -90,8 +89,8 @@ class TrainingsChart extends Component {
 
         for(var i=1;i<data.length-1;i++){
           j++;
-              if (this.calculateDistance(Number.parseFloat(data[i][3]),Number.parseFloat(data[j][3]),Number.parseFloat(data[i][4]),Number.parseFloat(data[j][4])) < 1)
-                {continue;}
+          if (this.calculateDistance(Number.parseFloat(data[i][3]),Number.parseFloat(data[j][3]),Number.parseFloat(data[i][4]),Number.parseFloat(data[j][4])) < 1)
+            {continue}
           switch (data[i][8]) {
             case "1" :  tempColor.push('red'); break;
             case "2" :  tempColor.push('blue'); break;
@@ -127,7 +126,6 @@ class TrainingsChart extends Component {
             range: { min: 1, max: temp.length },
             value:{ min: 1, max: temp.length },
             prevValue:{ min: 1, max: temp.length },
-            fileLoaded:true,
             filterData: [{
               color:'red',
               points:temp
