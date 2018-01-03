@@ -1,5 +1,6 @@
-.training-info {
-  margin-top: 200px
+
+body {
+    background-color: #f7f7f7;
 }
 
 span.boat {
@@ -9,11 +10,13 @@ span.boat {
  display: inline-block;
  height: 40px;
  width: 40px;
+
 }
 
 ol.horizontal{
  list-style-type: decimal;
- width: 400px;
+ /*width: 400px;
+ margin-left:-40px;*/
 }
 
 ol.horizontal li{

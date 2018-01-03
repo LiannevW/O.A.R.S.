@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import * as XLSX from 'xlsx';
 import MyChart from './Mychart';
 import MyMap from './Mymap';
@@ -12,7 +12,7 @@ Number.prototype.toRadians = function() {
   return this * Math.PI / 180;
 }
 
-class Charts extends Component {
+class Charts extends PureComponent {
   constructor(props){
     super(props);
     this.state = {
@@ -222,51 +222,50 @@ class Charts extends Component {
     return (
       <div className="Charts">
 
-      <Card style= {{ marginLeft: 30, marginRight: 30, flex:1}}>
+       <Card
+        expanded= 'true'
+        style= {{ width: '1200px', margin: 'auto', marginTop:120, flex:1}}>
         <CardHeader
-        title= "Range"
-        titleStyle={{textAlign: "center",
-                     marginBottom:"20px"}}
-        showExpandableButton={true}
+         title= "Range"
+         titleStyle={{textAlign: "center", marginBottom:"20px"}}
+         showExpandableButton={true}
         />
-       <CardMedia expandable={true}>
-        <div className='range'>
+        <CardMedia expandable={true}>
+          <div className='range'>
           {this.state.fileLoaded ? <InputRange minValue={this.state.range.min} maxValue={this.state.range.max} value={this.state.value} onChange={value =>this.setState({ value })} onChangeComplete={value=> this.sliderHandler(value)}/> : null }
-        </div>
-        <input type="file" id="file"/>
-        <button id="myBtn" onClick={this.readingExcel.bind(this)} >Draw Graph</button>
-       </CardMedia>
-      </Card>
-        <br /><br /><br />
-      <div className='chart'>
-    <Card style= {{width: '500px', marginLeft: 10, marginRight: 10, flex:1}}>
-      <CardHeader
-      title= "Velocity"
-      titleStyle={{textAlign: "center",
-                   marginBottom:"20px"}}
-      showExpandableButton={true}
+          </div>
+          <input type="file" id="file"/>
+          <button id="myBtn" onClick={this.readingExcel.bind(this)} >Draw Graph</button>
+        </CardMedia>
+       </Card>
+
+      <Card
+        expanded= 'true'
+        style= {{width: '1200px', margin: 'auto' , marginTop: 10, flex:1}}>
+        <CardHeader
+         title= "Route"
+         titleStyle={{textAlign: "center",
+                      marginBottom:"20px"}}
+         showExpandableButton={true}
+         />
+          <CardMedia expandable={true}>
+          <div className= "route">
+           <MyMap MapPath = {this.state.FilterMap} MapCenter = {this.state.MapCenter}/>
+          </div>
+          </CardMedia>
+       </Card>
+      <Card expanded = 'true'
+        style= {{width: '1200px', margin: 'auto', flex:1}}>
+       <CardHeader
+        title= "Velocity"
+        titleStyle={{textAlign: "center", marginBottom:"20px"}}
+        showExpandableButton={true}
       />
       <CardMedia expandable={true}>
-        <MyChart chartData = {this.state.chartFilterColor}/>
+       <MyChart chartData = {this.state.chartFilterColor}/>
       </CardMedia>
     </Card>
-      <Card style= {{width: '500px', marginLeft: 10, marginRight: 10, flex:1}}>
-       <CardHeader
-        title= "Route"
-        titleStyle={{textAlign: "center",
-                     marginBottom:"20px"}}
-                     showExpandableButton={true}
-        />
-         <CardMedia expandable={true}>
-         <div className= "route">
-          <MyMap MapPath = {this.state.FilterMap} MapCenter = {this.state.MapCenter}/>
-        </div>
-         </CardMedia>
-    </Card>
-
-
-   </div>
-</div>
+ </div>
     );
   }
 }
