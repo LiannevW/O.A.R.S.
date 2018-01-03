@@ -75,8 +75,12 @@ const shipId = this.props.ships[this.state.selectedShipValue].id
 handleRowerChange = (event, index, value) => {
   var newRower = this.props.rowers[value];
   var newSelectedRowers = this.state.selectedRowers.slice(); //clone of selectedRowers
-  newSelectedRowers.push(newRower)
-
+  var indexOfRower = this.state.selectedRowers.indexOf(newRower);
+    if (indexOfRower === -1) {
+      newSelectedRowers.push(newRower)
+    } else {
+      newSelectedRowers.splice(indexOfRower, 1);
+    }
   this.setState({
     selectedRowers: newSelectedRowers
   });
