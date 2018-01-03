@@ -87,7 +87,7 @@ class Training extends PureComponent {
       <body>
       <div>
 
-          <Card style={{height:'400px', width: '600px', margin: 'auto', marginTop: 10}}>
+          <Card style={{height:'400px', width: '600px', margin: 'auto', marginTop: 120}}>
             <CardHeader
               title={` Training of ${training.startdate} `}
               titleStyle={{textAlign: "center",
