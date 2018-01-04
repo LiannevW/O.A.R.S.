@@ -63,7 +63,20 @@ class RowersContainer extends PureComponent {
       </Card>
 
       <Card style={{width: 1200, margin: 'auto', marginTop: 50}} >
-
+      <TextField
+        value={this.state.searchInput}
+        onChange={this.handleChange}
+      />
+      <div className="actions">
+        <RaisedButton
+        onClick={this.searchOneRower.bind(this)}
+        label="Search a rower"
+        />
+        <RaisedButton
+        onClick={this.reset.bind(this)}
+        label="Reset"
+        />
+      </div>
           <List style={{margin: 'auto', align: 'center'}}>
           <Subheader style={{color:'steelblue', fontSize:20}}
           inset={true}>Rowers</Subheader>
@@ -83,20 +96,7 @@ class RowersContainer extends PureComponent {
               </ListItem>
             ))}
           </List>
-          <TextField
-            value={this.state.searchInput}
-            onChange={this.handleChange}
-          />
-          <div className="actions">
-            <RaisedButton
-            onClick={this.searchOneRower.bind(this)}
-            label="Search a rower"
-            />
-            <RaisedButton
-            onClick={this.reset.bind(this)}
-            label="Reset"
-            />
-          </div>
+
       </Card>
     </div>
     )

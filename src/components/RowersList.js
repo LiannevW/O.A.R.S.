@@ -68,6 +68,20 @@ class RowersList extends PureComponent {
           onRequestChange={(open) => this.setState({open})}
          >
         <div>
+        <TextField
+          value={this.state.searchInput}
+          onChange={this.handleChange}
+        />
+        <div className="actions">
+          <RaisedButton
+          onClick={this.searchOneRower.bind(this)}
+          label="Search a rower"
+          />
+          <RaisedButton
+          onClick={this.reset.bind(this)}
+          label="Reset"
+          />
+          </div>
          <List className='list'>
          {this.state.filteredRowers.sort(function(a, b){
            if (a.firstname < b.firstname) {
@@ -86,20 +100,6 @@ class RowersList extends PureComponent {
            </ListItem>
           ))}
          </List>
-         <TextField
-           value={this.state.searchInput}
-           onChange={this.handleChange}
-         />
-         <div className="actions">
-           <RaisedButton
-           onClick={this.searchOneRower.bind(this)}
-           label="Search a rower"
-           />
-           <RaisedButton
-           onClick={this.reset.bind(this)}
-           label="Reset"
-           />
-           </div>
         </div>
        </ResponsiveDrawer>
     </div>
