@@ -16,12 +16,10 @@ const styles = {
     marginTop: '200px',
   },
   gridList: {
-    width: 500,
+    width: 900,
     height: 450,
-    overflowY: 'auto',
   },
 };
-
 
 export class TrainingsContainer extends PureComponent {
 
@@ -29,34 +27,36 @@ export class TrainingsContainer extends PureComponent {
      this.props.fetchTrainings()
    }
 
-   linkToTraining = trainingId => event => this.props.push(`/trainings/${trainingId}`)
+  linkToTraining = trainingId => event => this.props.push(`/trainings/${trainingId}`)
 
   render() {
     const { trainings } = this.props
 
     return (
-  <body>
-    <div className='background'>
-      <div style={styles.root}>
-        <GridList
-          cellHeight={180}
-          style={styles.gridList}
-        >
-          {trainings.map((training) =>
-            <GridTile
-              key={training.id}
-              title={training.startdate}
-              subtitle={<span>Start Time: <b>{training.starttime}</b></span>}
-              actionIcon={<IconButton><StarBorder color="white" /></IconButton>}
-              onClick= {this.linkToTraining(training.id)}
+      <body>
+        <div className='background'>
+          <div style={styles.root}>
+            <GridList
+              cellHeight={180}
+              cols = {3}
+              padding = {30}
+              style={styles.gridList}
             >
-              <img src={googleMaps } alt=""/>
-            </GridTile>
-          )}
-        </GridList>
-      </div>
-    </div>
-  </body>
+              {trainings.map((training) =>
+                <GridTile
+                  key={training.id}
+                  title={training.startdate}
+                  subtitle={<span>Start Time: <b>{training.starttime}</b></span>}
+                  actionIcon={<IconButton><StarBorder color="white" /></IconButton>}
+                  onClick= {this.linkToTraining(training.id)}
+                >
+                  <img src={googleMaps } alt=""/>
+                </GridTile>
+              )}
+            </GridList>
+          </div>
+        </div>
+      </body>
       )
     }
 }
