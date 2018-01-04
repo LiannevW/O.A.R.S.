@@ -10,16 +10,48 @@ import Avatar from 'material-ui/Avatar';
 import Subheader from 'material-ui/Subheader';
 import { Card, CardHeader } from 'material-ui/Card'
 import './RowersContainer.css'
+import TextField from 'material-ui/TextField';
+import RaisedButton from 'material-ui/RaisedButton';
 
 
 class RowersContainer extends PureComponent {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      filteredRowers: [],
+      searchInput: ''
+    };
+  }
 
   componentWillMount() {
     this.props.fetchRowers()
   }
 
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      filteredRowers: nextProps.rowers
+    })
+  }
+
   linkToOneRower = rowerId => event => this.props.push(`/rowers-path/${rowerId}`);
 
+  handleChange = (event) => {
+    this.setState({
+      searchInput: event.target.value,
+    });
+   };
+  searchOneRower() {
+    const filteredRowersForSeatch = this.props.rowers.filter(rower => rower.firstname.toUpperCase() === this.state.searchInput.toUpperCase());
+    this.setState({
+      filteredRowers: filteredRowersForSeatch
+    })
+  }
+  reset() {
+    this.setState({
+      filteredRowers: this.props.rowers
+    })
+  }
   render() {
 
   return (
@@ -31,11 +63,24 @@ class RowersContainer extends PureComponent {
       </Card>
 
       <Card style={{width: 1200, margin: 'auto', marginTop: 50}} >
-
+      <TextField
+        value={this.state.searchInput}
+        onChange={this.handleChange}
+      />
+      <div className="actions">
+        <RaisedButton
+        onClick={this.searchOneRower.bind(this)}
+        label="Search a rower"
+        />
+        <RaisedButton
+        onClick={this.reset.bind(this)}
+        label="Reset"
+        />
+      </div>
           <List style={{margin: 'auto', align: 'center'}}>
           <Subheader style={{color:'steelblue', fontSize:20}}
           inset={true}>Rowers</Subheader>
-            {this.props.rowers.sort(function(a, b){
+            {this.state.filteredRowers.sort(function(a, b){
               if (a.firstname < b.firstname) {
                 return -1
               } else if (a.firstname > b.firstname) {
@@ -51,7 +96,8 @@ class RowersContainer extends PureComponent {
               </ListItem>
             ))}
           </List>
-      </Card >
+
+      </Card>
     </div>
     )
   }

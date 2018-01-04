@@ -4,13 +4,11 @@ import { connect } from 'react-redux'
 import { fetchOneTraining } from '../actions/trainings/fetch'
 import { fetchRowers } from '../actions/rowers/fetch'
 import { fetchShips} from '../actions/ships/fetch'
-//import { fetchboatRowers } from '../actions/rowers/fetch'
-import RowersList from '../components/RowersList'
-import './BoatPage.css'
-import {Card, CardHeader, CardActions, CardText} from 'material-ui/Card';
+import {Card, CardHeader, CardText} from 'material-ui/Card'
 import PropTypes from 'prop-types'
 import SearchRowerandShip from '../components/SearchRower'
 import BoatPageChartsLayer from '../components/BoatPageChartsLayer'
+import RowersList from '../components/RowersList'
 import 'react-input-range/lib/css/index.css'
 import '../../node_modules/react-linechart/dist/styles.css'
 import './BoatPage.css'
@@ -43,7 +41,7 @@ class BoatPage extends PureComponent {
       <div>
       <RowersList />
         <div>
-          <Card className="cardStyle">
+            <Card className="cardStyle" style={{height: "100%", minHeight: 300}}>
             <CardHeader style={{width: "900px"}}
               title={` Training of ${training.startdate} `}
               titleStyle={{textAlign: "center",
@@ -63,7 +61,7 @@ class BoatPage extends PureComponent {
               </CardText>
           </Card>
         </div>
-        <div className='drawgraphs'>
+        <div className= 'drawgraphs'>
         </div>
         <div className='boatPageChartsLayer'>
           <BoatPageChartsLayer />
