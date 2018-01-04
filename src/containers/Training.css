@@ -15,8 +15,8 @@ span.boat {
 
 ol.horizontal{
  list-style-type: decimal;
- /*width: 400px;
- margin-left:-40px;*/
+ width: 400px;
+ margin-left:-40px;
 }
 
 ol.horizontal li{
