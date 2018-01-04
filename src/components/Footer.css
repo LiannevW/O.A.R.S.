@@ -1,3 +1,7 @@
 .link {
   color: #4682b4;
 }
+.footer {
+  position: absolute;
+  bottom: 0;
+}
