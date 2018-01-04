@@ -65,7 +65,7 @@ class Training extends PureComponent {
     return (
       <body>
         <div>
-          <Card style={{height:'400px', width: '600px', margin: 'auto', marginTop: 120}}>
+          <Card style={{height:'400px', width: '600px', margin: 'auto', marginTop: 120, textAlign: "center"}}>
             <CardHeader
               title={` Training ${new Date(training.startdate).toLocaleDateString("nl-NL")} `}
               titleStyle={{textAlign: "center",
