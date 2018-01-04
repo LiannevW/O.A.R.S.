@@ -5,6 +5,7 @@ import { fetchOneTraining } from '../actions/trainings/fetch'
 import { fetchRowers } from '../actions/rowers/fetch'
 import { fetchShips} from '../actions/ships/fetch'
 import {Card, CardHeader, CardText} from 'material-ui/Card'
+import Divider from 'material-ui/Divider';
 import PropTypes from 'prop-types'
 import SearchRowerandShip from '../components/SearchRower'
 import BoatPageChartsLayer from '../components/BoatPageChartsLayer'
@@ -55,8 +56,9 @@ class BoatPage extends PureComponent {
                               marginLeft:"100px",
                               fontSize:"18px"}}
             />
-              <CardText>
-                <p className='text'> Select Rowers and Ship for this boat </p>
+            <Divider />
+              <CardText style={{textAlign:"center", fontSize:20}}>
+                <p> Select your rowers and a ship for this boat </p>
                 <SearchRowerandShip trainingId={this.props.trainingId} boat_number_name={this.props.boat_number_name} />
               </CardText>
           </Card>
