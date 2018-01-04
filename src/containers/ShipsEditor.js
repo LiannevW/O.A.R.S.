@@ -27,13 +27,13 @@ class ShipsEditor extends PureComponent {
     return (
       <div className= "editor">
         <form>
-          <input
+          <input className="input"
             type="name"
             ref="name"
             placeholder="name of the ship"
 
           />
-          <input
+          <input className="input"
             type="type"
             ref="type"
             placeholder="type of ship"

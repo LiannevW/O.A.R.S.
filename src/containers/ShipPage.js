@@ -47,8 +47,8 @@ render() {
             <TableHeaderColumn>Training</TableHeaderColumn>
             <TableHeaderColumn>Date</TableHeaderColumn>
             <TableHeaderColumn>start time</TableHeaderColumn>
-            <TableHeaderColumn>boat Number</TableHeaderColumn>
-            <TableHeaderColumn>Link to Training</TableHeaderColumn>
+            <TableHeaderColumn>Boat number</TableHeaderColumn>
+            <TableHeaderColumn>Link to training</TableHeaderColumn>
           </TableRow>
         </TableHeader>
         <TableBody displayRowCheckbox={false}>

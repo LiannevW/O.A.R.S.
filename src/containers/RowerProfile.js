@@ -45,7 +45,7 @@ render() {
   return (
     <article className="rowerprofile">
       <header>
-        <Title content={`${rowername.firstname} ${rowername.lastname}`} className="level-2" />
+        <Title content={`${rowername.firstname} ${rowername.lastname}`} className="titlerower" />
       </header>
       <div className="table">
         <Table className="table-header" >
@@ -53,10 +53,10 @@ render() {
           <TableHeader displaySelectAll={false} adjustForCheckbox={false} style={{fontSize:'20px',}}>
             <TableRow>
               <TableHeaderColumn>Training</TableHeaderColumn>
-              <TableHeaderColumn>start Date</TableHeaderColumn>
-              <TableHeaderColumn>start time</TableHeaderColumn>
-              <TableHeaderColumn>boat Number</TableHeaderColumn>
-              <TableHeaderColumn>Link to Training</TableHeaderColumn>
+              <TableHeaderColumn>Start date</TableHeaderColumn>
+              <TableHeaderColumn>Start time</TableHeaderColumn>
+              <TableHeaderColumn>Boat number</TableHeaderColumn>
+              <TableHeaderColumn>Link to training</TableHeaderColumn>
             </TableRow>
           </TableHeader>
 
