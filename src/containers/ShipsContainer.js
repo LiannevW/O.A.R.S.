@@ -83,7 +83,7 @@ class ShipsContainer extends PureComponent {
       </div>
           <List style={{margin: 'auto', align: 'center'}}>
 
-          {this.props.ships.sort(function(a, b){
+        {this.state.filteredShips.sort(function(a, b){
             if (a.name < b.name) {
               return -1
             } else if (a.name > b.name) {
