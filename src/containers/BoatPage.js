@@ -10,7 +10,7 @@ import './BoatPage.css'
 import {Card, CardHeader, CardActions, CardText} from 'material-ui/Card';
 import PropTypes from 'prop-types'
 import SearchRowerandShip from '../components/SearchRower'
-import BoatPageChartsLayer from '../components/boatPageChartsLayer'
+import BoatPageChartsLayer from '../components/BoatPageChartsLayer'
 import 'react-input-range/lib/css/index.css'
 import '../../node_modules/react-linechart/dist/styles.css'
 import './BoatPage.css'

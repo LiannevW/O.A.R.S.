@@ -13,7 +13,7 @@ Number.prototype.toRadians = function() {
   return this * Math.PI / 180;
 }
 
-class Charts extends Component {
+class TrainingsChart extends Component {
   constructor(props){
     super(props);
     this.state = {
@@ -80,6 +80,11 @@ class Charts extends Component {
    return d;
  }
 
+ compare(a,b) {
+    return a[0]-b[0];
+}
+
+
   readingExcel(){
     console.log("Loading File");
     var fileToRead = document.getElementById('file').files[0];
@@ -90,30 +95,55 @@ class Charts extends Component {
         const wsname = wb.SheetNames[0];
         const ws = wb.Sheets[wsname];
         const data = XLSX.utils.sheet_to_json(ws, {header:1});
-        // var j = 1;
+      //   var j = 1;
       // for (var i=1;i<data.length-1;i++){
-          // j++;
+      //     j++;
       //   if (this.calculateDistance(Number.parseFloat(data[i][3]),Number.parseFloat(data[j][3]),Number.parseFloat(data[i][4]),Number.parseFloat(data[j][4])) < 5)
       //     {break;}
       // }
+
+      console.log("Raw data");
+      console.log(data);
+
         var temp = [];
         var tempMap = [];
         var tempColor =[];
         var center = {};
         var j = 1;
+        var tempData = [];
+
+        for (var k=1;k<data.length-1;k++){
+          j++;
+          if (data[k][8] === data[j][8]){
+           if (this.calculateDistance(Number.parseFloat(data[k][3]),Number.parseFloat(data[j][3]),Number.parseFloat(data[k][4]),Number.parseFloat(data[j][4])) < 1)
+                {continue;}
+
+              }
+              tempData.push(data[k]);
+        }
+        //
+        // console.log("Data after calculating the distance");
+        // console.log(tempData);
+
+        tempData.sort(this.compare);
+
+
+        console.log("Data after sort");
+        console.log(tempData);
+
         // console.log("Number check");
         // console.log(Number.parseFloat(data[1][3]));
         // console.log("Before calculateDistance");
         // console.log(data);
-        for(var i=1;i<data.length-1;i++){
-          j++;
-          if (data[i][8] === data[j][8]){
-           if (this.calculateDistance(Number.parseFloat(data[i][3]),Number.parseFloat(data[j][3]),Number.parseFloat(data[i][4]),Number.parseFloat(data[j][4])) < 1)
-                {continue;}
-              }
+        for(var i=0;i<tempData.length;i++){
+          // j++;
+          //
+          // if (data[i][8] === data[j][8]){
+          //  if (this.calculateDistance(Number.parseFloat(data[i][3]),Number.parseFloat(data[j][3]),Number.parseFloat(data[i][4]),Number.parseFloat(data[j][4])) < 1)
+          //       {continue;}
+          //     }
 
-
-          switch (data[i][8]) {
+          switch (tempData[i][8]) {
             case "1" :  tempColor.push('red'); break;
             case "2" :  tempColor.push('blue'); break;
             case "3" :  tempColor.push('green'); break;
@@ -121,27 +151,30 @@ class Charts extends Component {
           }
 
           temp.push({
-            x: (data[i][0]) / 60000,
-            y: data[i][5]
+            x: Number(tempData[i][0]) / 60000,
+            y: Number(tempData[i][5])
           });
           tempMap.push({
-            lat: Number(data[i][3]),
-            lng: Number(data[i][4])
+            lat: Number(tempData[i][3]) + Number(tempData[i][8])/100000,
+            lng: Number(tempData[i][4]) + Number(tempData[i][8])/100000
           });
-          if(i > data.length/2 && i < data.length/2 +2){
+          if(i > tempData.length/2 && i < tempData.length/2 +2){
             center = {
-              lat: Number(data[i][3]),
-              lng: Number(data[i][4])
+              lat: Number(tempData[i][3]),
+              lng: Number(tempData[i][4])
             };
           }
 
         }
         //
         console.log("After calculateDistance");
+        console.log(tempData);
         // console.log(Number(typeof (data[4][3]) + Number(data[4][8]) - 0.99999));
         console.log(tempMap);
         console.log(tempColor);
         console.log(temp);
+
+
 
 
         this.setState(
@@ -283,4 +316,4 @@ render() {
   }
 }
 
-export default Charts;
+export default TrainingsChart;
