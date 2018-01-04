@@ -43,13 +43,13 @@ class BoatPage extends PureComponent {
         <div>
             <Card className="cardStyle" style={{height: "100%", minHeight: 300}}>
             <CardHeader style={{width: "900px"}}
-              title={` Training of ${training.startdate} `}
+              title={` Training ${new Date(training.startdate).toLocaleDateString("nl-NL")} `}
               titleStyle={{textAlign: "center",
                            marginBottom:"20px",
                            marginLeft:"80px",
                            fontSize:"25px"}}
               titleColor= "steelblue"
-              subtitle=  {`Start time ${training.starttime}  | Training duraton: ${training.duration} `}
+              subtitle=  {`Time ${training.starttime}  | Duration: ${training.duration} `}
               subtitleStyle={{textAlign: "center",
                               marginBottom:"20px",
                               marginLeft:"100px",

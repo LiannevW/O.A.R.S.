@@ -67,13 +67,13 @@ class Training extends PureComponent {
         <div>
           <Card style={{height:'400px', width: '600px', margin: 'auto', marginTop: 120}}>
             <CardHeader
-              title={` Training of ${training.startdate} `}
+              title={` Training ${new Date(training.startdate).toLocaleDateString("nl-NL")} `}
               titleStyle={{textAlign: "center",
                            marginBottom:"20px",
                            marginLeft:"80px",
                            fontSize:"25px"}}
               titleColor= "steelblue"
-              subtitle=  {`Start time ${training.starttime}  | Training duration: ${training.duration} `}
+              subtitle=  {`Time ${training.starttime}  | Duration: ${training.duration} `}
               subtitleStyle={{textAlign: "center",
                               marginBottom:"20px",
                               marginLeft:"100px",

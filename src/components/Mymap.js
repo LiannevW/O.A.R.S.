@@ -50,13 +50,11 @@ class MyMap extends Component {
   }
 
   componentWillReceiveProps(newProps){
-    console.log(newProps);
     this.props = newProps;
   }
 
 
   render() {
-    console.log(this.props.MapPath);
     return (
       <MyMapComponent
         isMarkerShown={this.state.isMarkerShown}
