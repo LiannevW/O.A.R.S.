@@ -8,7 +8,7 @@ import List from 'material-ui/List/List';
 import ListItem from 'material-ui/List/ListItem';
 import Avatar from 'material-ui/Avatar';
 import Subheader from 'material-ui/Subheader';
-import { Card, CardHeader } from 'material-ui/Card'
+import { Card } from 'material-ui/Card'
 import './RowersContainer.css'
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';

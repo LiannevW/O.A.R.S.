@@ -1,10 +1,7 @@
 import React, { PureComponent } from 'react'
-
 import { connect } from 'react-redux'
 import { createRower } from '../actions/rowers/create'
 import SnackbarAddRower from '../components/SnackbarAddRower'
-import Form from 'muicss/lib/react/form';
-import Input from 'muicss/lib/react/input';
 import './RowersEditor.css'
 
 

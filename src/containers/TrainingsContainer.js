@@ -45,7 +45,7 @@ export class TrainingsContainer extends PureComponent {
               {trainings.map((training) =>
                 <GridTile
                   key={training.id}
-                  title={training.startdate}
+                  title={new Date(training.startdate).toLocaleDateString("nl-NL")}
                   subtitle={<span>Start Time: <b>{training.starttime}</b></span>}
                   actionIcon={<IconButton><StarBorder color="white" /></IconButton>}
                   onClick= {this.linkToTraining(training.id)}
