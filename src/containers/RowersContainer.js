@@ -8,7 +8,7 @@ import List from 'material-ui/List/List';
 import ListItem from 'material-ui/List/ListItem';
 import Avatar from 'material-ui/Avatar';
 import Subheader from 'material-ui/Subheader';
-import { Card, CardHeader } from 'material-ui/Card'
+import { Card, CardHeader, CardMedia, CardText} from 'material-ui/Card'
 import './RowersContainer.css'
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
@@ -56,10 +56,13 @@ class RowersContainer extends PureComponent {
 
   return (
     <div>
-      <Card className='addrower' style={{width: 1200, height:100, margin: 'auto', marginTop: 120,}}>
-
-      <RowersEditor />
-
+      <Card className='addrower' style={{width: 1200, height:160, margin: 'auto', marginTop: 120,}}>
+        <CardText style= {{flex:1, margin: 'auto', textAlign: 'center', marginTop: -80, color:'steelblue'}}>
+        <h2> Rowers </h2>
+        </CardText>
+       <CardMedia mediaStyle= {{margin:'auto', marginTop: -80, marginLeft: -50}}>
+        <RowersEditor />
+       </CardMedia>
       </Card>
 
       <Card style={{width: 1200, margin: 'auto', marginTop: 50}} >
@@ -78,8 +81,6 @@ class RowersContainer extends PureComponent {
         />
       </div>
           <List style={{margin: 'auto', align: 'center'}}>
-          <Subheader style={{color:'steelblue', fontSize:20}}
-          inset={true}>Rowers</Subheader>
             {this.state.filteredRowers.sort(function(a, b){
               if (a.firstname < b.firstname) {
                 return -1

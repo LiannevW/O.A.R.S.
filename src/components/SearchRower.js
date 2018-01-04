@@ -4,7 +4,6 @@ import MenuItem from 'material-ui/MenuItem';
 import { connect } from 'react-redux'
 import {createRowersAndShip} from '../actions/rowers/create'
 import {fetchboatRowers} from '../actions/rowers/fetch'
-import FlatButton from 'material-ui/FlatButton';
 import './SearchRower.css'
 import SnackbarSave from './SnackbarSave'
 

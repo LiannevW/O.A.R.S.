@@ -142,7 +142,7 @@ sliderHandler(value){
   // console.log(this.create_data());
 
   render() {console.time("asd")
-
+          
           var data = Heat.randomNumber;
           // console.log("Data_Old = ");
           // console.log(data);
@@ -169,7 +169,7 @@ sliderHandler(value){
                 onChange={value => this.setState({ value })}
                 onChangeComplete={val => this.sliderHandler(val)} />
               <br />
-              <div style={{ width: 500, height: 500, transform: 'rotateX(180deg)' }} >
+              <div style={{ width: 800, height: 500, transform: 'rotateX(180deg)' }} >
                   <ReactHeatmap max={cluster.maxVal} data={cluster.cluster} />
               </div>
               </div>

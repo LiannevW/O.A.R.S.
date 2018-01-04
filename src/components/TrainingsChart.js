@@ -224,27 +224,11 @@ class TrainingsChart extends Component {
   }
 
 render() {
+
     return (
       <div className="Charts">
-
        <Card
-        expanded= 'true'
-        showExpandableButton={true}
-        actAsExpander={true}
-        style= {{ width: '1200px', margin: 'auto', marginTop:130, flex:1}}>
-        <CardHeader
-         title= "Range"
-         titleStyle={{textAlign: "center", marginBottom:"20px"}}
-        />
-        <CardMedia expandable={true}>
-          <div className='range'>
-           <InputRange minValue={this.state.range.min} maxValue={this.state.range.max} value={this.state.value} onChange={value =>this.setState({ value })} onChangeComplete={value=> this.sliderHandler(value)}/>
-          </div>
-        </CardMedia>
-       </Card>
-
-      <Card
-        style= {{width: '1200px', margin: 'auto', marginTop: 10, flex:1}}>
+        style= {{width: '1200px', margin: 'auto', marginTop: 120, flex:1}}>
         <CardHeader
          title= "Route"
          titleStyle={{textAlign: "center",
@@ -254,12 +238,16 @@ render() {
          />
           <CardMedia expandable={true}>
           <div className= "route">
+          <div className='range'>
+           <InputRange minValue={this.state.range.min} maxValue={this.state.range.max} value={this.state.value} onChange={value =>this.setState({ value })} onChangeComplete={value=> this.sliderHandler(value)}/>
+          </div>
            <MyMap MapPath = {this.state.FilterMap} MapCenter = {this.state.MapCenter}/>
           </div>
           </CardMedia>
        </Card>
       <Card
-        style= {{width: '1200px', margin: 'auto', marginTop: 10, flex:1}}>
+        style= {{width: '1200px', margin: 'auto', marginTop: 10, flex:1}}
+        expanded={true}>
        <CardHeader
         title= "Velocity"
         titleStyle={{textAlign: "center", marginBottom:"20px"}}
@@ -267,6 +255,9 @@ render() {
         actAsExpander={true}
       />
       <CardMedia expandable={true}>
+      <div className='range'>
+       <InputRange minValue={this.state.range.min} maxValue={this.state.range.max} value={this.state.value} onChange={value =>this.setState({ value })} onChangeComplete={value=> this.sliderHandler(value)}/>
+      </div>
        <MyChart chartData = {this.state.chartFilterColor}/>
       </CardMedia>
     </Card>
