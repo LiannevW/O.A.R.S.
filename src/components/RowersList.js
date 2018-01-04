@@ -14,7 +14,11 @@ class RowersList extends PureComponent {
 
   constructor(props) {
     super(props);
-    this.state = {open: false};
+    this.state = {
+      open: false,
+      filteredRowers: [],
+      searchInput: ''
+    };
   }
 
   componentWillMount() {
@@ -25,8 +29,30 @@ class RowersList extends PureComponent {
 
   handleClose = () => this.setState({open: false});
 
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      filteredRowers: nextProps.rowers
+    })
+}
+
   linkToOneRower = rowerId => event => this.props.push(`/rowers-path/${rowerId}`);
 
+  handleChange = (event) => {
+    this.setState({
+      searchInput: event.target.value,
+    });
+  };
+  searchOneRower() {
+    const filteredRowersForSeatch = this.props.rowers.filter(rower => rower.firstname.toUpperCase() === this.state.searchInput.toUpperCase());
+    this.setState({
+      filteredRowers: filteredRowersForSeatch
+    })
+  }
+  reset() {
+    this.setState({
+      filteredRowers: this.props.rowers
+    })
+  }
   render() {
     return (
      <div className='drawer'>
@@ -40,13 +66,35 @@ class RowersList extends PureComponent {
         </div>
          <ResponsiveDrawer
           docked={false}
-          width={200}
+          width={250}
           open={this.state.open}
           onRequestChange={(open) => this.setState({open})}
          >
+         <TextField
+           value={this.state.searchInput}
+           onChange={this.handleChange}
+         />
+         <div className="actions">
+           <RaisedButton
+           onClick={this.searchOneRower.bind(this)}
+           label="Search a rower"
+           />
+           <RaisedButton
+           onClick={this.reset.bind(this)}
+           label="Reset"
+           />
+           </div>
         <div>
          <List className='list'>
-          {this.props.rowers.map((rower) => (
+         {this.state.filteredRowers.sort(function(a, b){
+          if (a.firstname < b.firstname) {
+            return -1
+          } else if (a.firstname > b.firstname) {
+            return 1
+          } else {
+            return 0
+          }
+        }).map((rower) => (
            <ListItem
             key={rower.id}
             primaryText= {`${rower.firstname} ${rower.lastname}`}
@@ -55,6 +103,7 @@ class RowersList extends PureComponent {
            </ListItem>
           ))}
          </List>
+
         </div>
        </ResponsiveDrawer>
     </div>
