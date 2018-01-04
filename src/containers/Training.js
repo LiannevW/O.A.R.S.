@@ -4,30 +4,9 @@ import { push } from 'react-router-redux'
 import { connect } from 'react-redux'
 import { fetchOneTraining } from '../actions/trainings/fetch'
 import { Card, CardHeader, CardActions } from 'material-ui/Card'
-import { GridList, GridTile } from 'material-ui/GridList'
-import IconButton from 'material-ui/IconButton'
-import rowboatIcon from '../img/Rowboat_symbol.svg'
-import StarBorder from 'material-ui/svg-icons/toggle/star-border'
 import TrainingsPageChartsLayer from '../components/TrainingsPageChartsLayer'
 import './Training.css'
 
-
-const styles = {
-  root: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    justifyContent: 'space-around',
-
-  },
-  gridList: {
-    display: 'flex',
-    flexWrap: 'nowrap',
-    overflowX: 'auto',
-  },
-  titleStyle: {
-    color: 'rgb(0, 188, 212)',
-  },
-};
 
 class Training extends PureComponent {
   static propTypes = {
@@ -85,8 +64,7 @@ class Training extends PureComponent {
 
     return (
       <body>
-      <div>
-
+        <div>
           <Card style={{height:'400px', width: '600px', margin: 'auto', marginTop: 120}}>
             <CardHeader
               title={` Training of ${training.startdate} `}
@@ -95,7 +73,7 @@ class Training extends PureComponent {
                            marginLeft:"80px",
                            fontSize:"25px"}}
               titleColor= "steelblue"
-              subtitle=  {`Start time ${training.starttime}  | Training duraton: ${training.duration} `}
+              subtitle=  {`Start time ${training.starttime}  | Training duration: ${training.duration} `}
               subtitleStyle={{textAlign: "center",
                               marginBottom:"20px",
                               marginLeft:"100px",

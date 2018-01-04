@@ -11,17 +11,49 @@ import ListItem from 'material-ui/List/ListItem';
 import Avatar from 'material-ui/Avatar';
 import mui from 'material-ui';
 import DirectionsBoatIcon from 'react-material-icons/icons/maps/directions-boat'
+import TextField from 'material-ui/TextField';
+import RaisedButton from 'material-ui/RaisedButton';
+
 
 
 class ShipsContainer extends PureComponent {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      filteredShips: [],
+      searchInput: ''
+    };
+  }
 
   componentWillMount() {
     this.props.fetchShips()
   }
 
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      filteredShips: nextProps.ships
+    })
+  }
 
   linktToOneShip = shipId => event => this.props.push(`/ships-path/${shipId}`);
 
+  handleChange = (event) => {
+    this.setState({
+      searchInput: event.target.value,
+    });
+   };
+  searchOneShip() {
+     const filteredShipsForSeatch = this.props.ships.filter(ship => ship.name.toUpperCase() === this.state.searchInput.toUpperCase());
+     this.setState({
+       filteredShips: filteredShipsForSeatch
+     })
+   }
+   reset() {
+     this.setState({
+       filteredShips: this.props.ships
+     })
+   }
   render() {
     return (
     <div>
@@ -35,7 +67,22 @@ class ShipsContainer extends PureComponent {
     </Card>
 
       <Card style={{width: 1200, margin: 'auto', marginTop: 50}} >
+      <TextField
+        value={this.state.searchInput}
+        onChange={this.handleChange}
+      />
+      <div className="actions">
+        <RaisedButton
+        onClick={this.searchOneShip.bind(this)}
+        label="Search a ship"
+        />
+        <RaisedButton
+        onClick={this.reset.bind(this)}
+        label="Reset"
+        />
+      </div>
           <List style={{margin: 'auto', align: 'center'}}>
+
           {this.props.ships.sort(function(a, b){
             if (a.name < b.name) {
               return -1
