@@ -5,7 +5,7 @@ import InputRange from 'react-input-range';
 import 'react-input-range/lib/css/index.css';
 import {Card, CardHeader, CardMedia} from 'material-ui/Card';
 import './Charts.css'
-import fixtures from '../fixtures/fixture.json'
+import fixtures from '../fixtures/fixtureOneBoat.json'
 
 
 Number.prototype.toRadians = function() {
@@ -198,28 +198,24 @@ class Charts extends Component {
     return (
       <div className="Charts">
 
-        <Card expanded= 'true' style= {{ width: '1200px', margin: 'auto', marginTop:120, flex:1}}>
-          <CardHeader title= "Range" titleStyle={{textAlign: "center", marginBottom:"20px"}} showExpandableButton={true} />
-          <CardMedia expandable={true}>
-            <div className='range'>
-               <InputRange minValue={this.state.range.min} maxValue={this.state.range.max} value={this.state.value} onChange={value =>this.setState({ value })} onChangeComplete={value=> this.sliderHandler(value)}/>
-            </div>
-
-          </CardMedia>
-         </Card>
-
-        <Card expanded= 'true' style= {{width: '1200px', margin: 'auto' , marginTop: 10, flex:1}}>
+        <Card expanded= 'true' style= {{width: '1200px', margin: 'auto' , marginTop: 120, flex:1}}>
           <CardHeader title= "Route" titleStyle={{textAlign: "center", marginBottom:"20px"}} showExpandableButton={true} />
           <CardMedia expandable={true}>
+          <div className='range'>
+           <InputRange minValue={this.state.range.min} maxValue={this.state.range.max} value={this.state.value} onChange={value =>this.setState({ value })} onChangeComplete={value=> this.sliderHandler(value)}/>
+          </div>
             <div className= "route">
               <MyMap MapPath = {this.state.FilterMap} MapCenter = {this.state.MapCenter}/>
             </div>
           </CardMedia>
         </Card>
 
-        <Card expanded = 'true' style= {{width: '1200px', margin: 'auto', flex:1}}>
+        <Card expanded = 'true' style= {{width: '1200px', margin: 'auto', marginTop: 20, flex:1}}>
           <CardHeader title= "Velocity" titleStyle={{textAlign: "center", marginBottom:"20px"}} showExpandableButton={true} />
           <CardMedia expandable={true}>
+          <div className='range'>
+           <InputRange minValue={this.state.range.min} maxValue={this.state.range.max} value={this.state.value} onChange={value =>this.setState({ value })} onChangeComplete={value=> this.sliderHandler(value)}/>
+          </div>
             <MyChart chartData = {this.state.chartFilterColor}/>
           </CardMedia>
         </Card>
