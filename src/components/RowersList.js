@@ -54,7 +54,7 @@ class RowersList extends PureComponent {
   }
   render() {
     return (
-     <div className='editor'>
+     <div className='drawer'>
       <div className='handleToggle'>
         <RaisedButton
          label="RowersList"
@@ -101,7 +101,6 @@ class RowersList extends PureComponent {
            />
            </div>
         </div>
-         <RowersEditor />
        </ResponsiveDrawer>
     </div>
     );

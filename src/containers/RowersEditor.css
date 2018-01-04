@@ -1,3 +1,9 @@
 .editor {
-  margin-top: 100px
+ display: flex;
+ align-items: center;
+ vertical-align: middle
+}
+
+.input {
+  height: 39px;
 }

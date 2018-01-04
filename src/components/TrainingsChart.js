@@ -78,7 +78,9 @@ class TrainingsChart extends Component {
 
    return d;
  }
-
+ compare(a,b) {
+    return a[0]-b[0];
+}
   readingExcel() {
         const data = fixtures
 
@@ -86,24 +88,53 @@ class TrainingsChart extends Component {
         var tempMap = [];
         var tempColor =[];
         var j = 1;
+        var tempData = [];
 
-        for(var i=1;i<data.length-1;i++){
+        for (var k=1;k<data.length-1;k++){
           j++;
-          if (this.calculateDistance(Number.parseFloat(data[i][3]),Number.parseFloat(data[j][3]),Number.parseFloat(data[i][4]),Number.parseFloat(data[j][4])) < 1)
-            {continue}
-          switch (data[i][8]) {
+          if (data[k][8] === data[j][8]){
+           if (this.calculateDistance(Number.parseFloat(data[k][3]),Number.parseFloat(data[j][3]),Number.parseFloat(data[k][4]),Number.parseFloat(data[j][4])) < 1)
+                {continue;}
+
+              }
+              tempData.push(data[k]);
+        }
+        //
+        // console.log("Data after calculating the distance");
+        // console.log(tempData);
+
+        tempData.sort(this.compare);
+
+
+        // console.log("Data after sort");
+        // console.log(tempData);
+
+        // console.log("Number check");
+        // console.log(Number.parseFloat(data[1][3]));
+        // console.log("Before calculateDistance");
+        // console.log(data);
+        for(var i=0;i<tempData.length;i++){
+          // j++;
+          //
+          // if (data[i][8] === data[j][8]){
+          //  if (this.calculateDistance(Number.parseFloat(data[i][3]),Number.parseFloat(data[j][3]),Number.parseFloat(data[i][4]),Number.parseFloat(data[j][4])) < 1)
+          //       {continue;}
+          //     }
+
+          switch (tempData[i][8]) {
             case "1" :  tempColor.push('red'); break;
             case "2" :  tempColor.push('blue'); break;
             case "3" :  tempColor.push('green'); break;
             case "4" :  tempColor.push('yellow'); break;
           }
+
           temp.push({
-            x: (data[i][0]) / 60000,
-            y: data[i][5]
+            x: Number(tempData[i][0]) / 60000,
+            y: Number(tempData[i][5])
           });
           tempMap.push({
-            lat: Number(data[i][3]),
-            lng: Number(data[i][4])
+            lat: Number(tempData[i][3]) + Number(tempData[i][8])/100000,
+            lng: Number(tempData[i][4]) + Number(tempData[i][8])/100000
           });
           if(i > data.length/2 && i < data.length/2 +2){
             const center = { lat: 51.988472, lng: 4.373634 }

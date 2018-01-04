@@ -3,7 +3,21 @@ import ReactHeatmap from 'react-heatmap';
 import InputRange from 'react-input-range';
 import PropTypes from 'prop-types'
 
+
+
 class Heat extends Component {
+
+
+  static randomNumber = Heat.create_data();
+
+  static   create_data()
+  {
+// console.time("asd")
+      var data = [];
+      for (var i = 0; i < 200; i++) data.push(Heat.return_graph());
+      // console.timeEnd("asd")
+      return data;
+    }
   static propTypes = {
     width: PropTypes.number
 }
@@ -20,7 +34,7 @@ sliderHandler(value){
   this.setState({ width: value/20})
 }
 
-  return_graph() {
+  static return_graph() {
       var result 	= [];
       var t_start = Math.round(Math.random() * 10 - 0.5); // 0 - 10
       var len 	= Math.round(Math.random() * 150 + 150);  // 150 - 300
@@ -32,22 +46,18 @@ sliderHandler(value){
         var t = t_start + i * 10;
         result.push({
           x: t / 30,
-          y:  this.normal_dist(t, amp * spread, mean, spread) / 3
+          y:  Heat.normal_dist(t, amp * spread, mean, spread) / 3
         });
       }
 
       return result;
     }
 
-  normal_dist(x, u, m, s) {
+  static normal_dist(x, u, m, s) {
     return ((u / (s * Math.sqrt(2 * Math.PI))) * Math.exp((-1/2)*Math.pow(((x - m) / s),2)));
   }
 
-  create_data(){
-    var data = [];
-    for (var i = 0; i < 200; i++) data.push(this.return_graph());
-    return data;
-  }
+
 
   compare(a,b) {
     if (a.x<b.x) {return -1;}
@@ -128,8 +138,12 @@ sliderHandler(value){
     return {cluster: cluster, maxVal: maxVal};
   }
 
-  render() {
-          var data = this.create_data();
+
+  // console.log(this.create_data());
+
+  render() {console.time("asd")
+
+          var data = Heat.randomNumber;
           // console.log("Data_Old = ");
           // console.log(data);
           data = this.serialize_norm_data(data);
@@ -143,6 +157,8 @@ sliderHandler(value){
           // console.log(this.props.width);
           // console.log("Next");
           //transform rotateX 180degrees since heatmap starts 0.0 from top left
+          console.timeEnd("asd")
+
           return (
             <div>
             <br /><br /><br />
