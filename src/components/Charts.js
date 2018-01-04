@@ -202,7 +202,7 @@ class Charts extends Component {
           <CardHeader title= "Route" titleStyle={{textAlign: "center", marginBottom:"20px"}} showExpandableButton={true} />
           <CardMedia expandable={true}>
           <div className='range'>
-           <InputRange minValue={this.state.range.min} maxValue={this.state.range.max} value={this.state.value} onChange={value =>this.setState({ value })} onChangeComplete={value=> this.sliderHandler(value)}/>
+           <InputRange minValue={this.state.range.min} maxValue={this.state.range.max} formatLabel={value => `${parseInt(value / 86)} mins`} value={this.state.value} onChange={value =>this.setState({ value })} onChangeComplete={value=> this.sliderHandler(value)}/>
           </div>
             <div className= "route">
               <MyMap MapPath = {this.state.FilterMap} MapCenter = {this.state.MapCenter}/>
@@ -214,7 +214,7 @@ class Charts extends Component {
           <CardHeader title= "Velocity" titleStyle={{textAlign: "center", marginBottom:"20px"}} showExpandableButton={true} />
           <CardMedia expandable={true}>
           <div className='range'>
-           <InputRange minValue={this.state.range.min} maxValue={this.state.range.max} value={this.state.value} onChange={value =>this.setState({ value })} onChangeComplete={value=> this.sliderHandler(value)}/>
+           <InputRange minValue={this.state.range.min} maxValue={this.state.range.max} formatLabel={value => `${parseInt(value / 86)} mins`} value={this.state.value} onChange={value =>this.setState({ value })} onChangeComplete={value=> this.sliderHandler(value)}/>
           </div>
             <MyChart chartData = {this.state.chartFilterColor}/>
           </CardMedia>
