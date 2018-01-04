@@ -6,7 +6,7 @@ import InputRange from 'react-input-range';
 import 'react-input-range/lib/css/index.css';
 import {Card, CardHeader, CardMedia} from 'material-ui/Card';
 import './Charts.css'
-import fixtures from '../fixtures/fixture.json'
+import fixtures from '../fixtures/fixtureOneBoat.json'
 
 
 Number.prototype.toRadians = function() {
