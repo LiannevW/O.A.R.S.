@@ -6,7 +6,7 @@ import ShipsEditor from './ShipsEditor'
 import './ShipsContainer.css'
 import List from 'material-ui/List/List';
 import Subheader from 'material-ui/Subheader';
-import { Card } from 'material-ui/Card'
+import { Card, CardText, CardMedia } from 'material-ui/Card'
 import ListItem from 'material-ui/List/ListItem';
 import Avatar from 'material-ui/Avatar';
 import mui from 'material-ui';
