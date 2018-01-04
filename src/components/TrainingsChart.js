@@ -239,7 +239,7 @@ render() {
           <CardMedia expandable={true}>
           <div className= "route">
           <div className='range'>
-           <InputRange minValue={this.state.range.min} maxValue={this.state.range.max} value={this.state.value} onChange={value =>this.setState({ value })} onChangeComplete={value=> this.sliderHandler(value)}/>
+           <InputRange minValue={this.state.range.min} maxValue={this.state.range.max} formatLabel={value => `${parseInt(value / 244)} mins`} value={this.state.value} onChange={value =>this.setState({ value })} onChangeComplete={value=> this.sliderHandler(value)}/>
           </div>
            <MyMap MapPath = {this.state.FilterMap} MapCenter = {this.state.MapCenter}/>
           </div>
@@ -256,7 +256,7 @@ render() {
       />
       <CardMedia expandable={true}>
       <div className='range'>
-       <InputRange minValue={this.state.range.min} maxValue={this.state.range.max} value={this.state.value} onChange={value =>this.setState({ value })} onChangeComplete={value=> this.sliderHandler(value)}/>
+       <InputRange minValue={this.state.range.min} maxValue={this.state.range.max} formatLabel={value => `${parseInt(value / 244)} mins`} value={this.state.value} onChange={value =>this.setState({ value })} onChangeComplete={value=> this.sliderHandler(value)}/>
       </div>
        <MyChart chartData = {this.state.chartFilterColor}/>
       </CardMedia>
