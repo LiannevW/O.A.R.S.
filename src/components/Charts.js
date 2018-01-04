@@ -205,7 +205,7 @@ class Charts extends Component {
             <div className='range'>
                <InputRange minValue={this.state.range.min} maxValue={this.state.range.max} value={this.state.value} onChange={value =>this.setState({ value })} onChangeComplete={value=> this.sliderHandler(value)}/>
             </div>
-            
+
           </CardMedia>
          </Card>
 
