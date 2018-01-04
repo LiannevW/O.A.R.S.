@@ -98,7 +98,7 @@ class Charts extends Component {
             case "1" :  tempColor.push('red'); break;
             case "2" :  tempColor.push('blue'); break;
             case "3" :  tempColor.push('green'); break;
-            case "4" :  tempColor.push('yellow'); break;
+            case "4" :  tempColor.push('steelblue'); break;
           }
           temp.push({
             x: (data[i][0]) / 60000,
@@ -141,18 +141,18 @@ class Charts extends Component {
     const chartRed= chart.filter((point,index) => {if (color[index]==='red'){return true}} )
     const chartBlue= chart.filter((point,index) => {if (color[index]==='blue'){return true}} )
     const chartGreen= chart.filter((point,index) => {if (color[index]==='green'){return true}} )
-    const chartYellow= chart.filter((point,index) => {if (color[index]==='yellow'){return true}} )
+    const chartYellow= chart.filter((point,index) => {if (color[index]==='steelblue'){return true}} )
 
-    return [{color:'red', points: chartRed},{color:'blue', points: chartBlue},{color:'green', points: chartGreen},{color:'yellow', points: chartYellow},]
+    return [{color:'red', points: chartRed},{color:'blue', points: chartBlue},{color:'green', points: chartGreen},{color:'steelblue', points: chartYellow},]
   }
   filterColorMap(map,color) {
     //same code for mappath
     const mapRed= map.filter((point,index) => {if (color[index]==='red'){return true}} )
     const mapBlue= map.filter((point,index) => {if (color[index]==='blue'){return true}} )
     const mapGreen= map.filter((point,index) => {if (color[index]==='green'){return true}} )
-    const mapYellow= map.filter((point,index) => {if (color[index]==='yellow'){return true}} )
+    const mapYellow= map.filter((point,index) => {if (color[index]==='steelblue'){return true}} )
 
-    return [{color:'red', points: mapRed},{color:'blue', points: mapBlue},{color:'green', points: mapGreen},{color:'yellow', points: mapYellow},]
+    return [{color:'red', points: mapRed},{color:'blue', points: mapBlue},{color:'green', points: mapGreen},{color:'steelblue', points: mapYellow},]
   }
   sliderHandler(value){
     if (this.state.range.max<1000){
