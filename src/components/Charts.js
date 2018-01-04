@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import * as XLSX from 'xlsx';
 import MyChart from './Mychart';
 import MyMap from './Mymap';
 import InputRange from 'react-input-range';

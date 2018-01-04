@@ -7,7 +7,9 @@ import { fetchRowers } from '../actions/rowers/fetch'
 import { push } from 'react-router-redux'
 import { connect } from 'react-redux'
 import './RowersList.css'
+import TextField from 'material-ui/TextField';
 import RowersEditor from '../containers/RowersEditor'
+
 class RowersList extends PureComponent {
 
   constructor(props) {
