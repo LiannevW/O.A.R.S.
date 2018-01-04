@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
-import * as XLSX from 'xlsx';
 import MyChart from './Mychart';
 import MyMap from './Mymap';
 import InputRange from 'react-input-range';
 import 'react-input-range/lib/css/index.css';
-import Heat from './Heat';
-import {Card, CardHeader, CardText, CardMedia} from 'material-ui/Card';
+import {Card, CardHeader, CardMedia} from 'material-ui/Card';
 import './Charts.css'
-
+import fixtures from '../fixtures/fixture.json'
 
 Number.prototype.toRadians = function() {
   return this * Math.PI / 180;
@@ -56,10 +54,12 @@ class TrainingsChart extends Component {
         min: 1,
         max: 4
       },
-      fileLoaded:false,
       filterData: [{color: '#090909', points: [{ x:0, y:0 }]}],
     }
-    this.readingExcel = this.readingExcel.bind(this);
+    this.readingExcel = this.readingExcel.bind(this)
+  }
+  componentWillMount() {
+    this.readingExcel()
   }
 
   calculateDistance(lat1,lat2,lon1,lon2){
@@ -75,40 +75,18 @@ class TrainingsChart extends Component {
    var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
 
    var d = (R * c) ;
-  //  console.log("Distance travelled")
-  //  console.log(d);
+
    return d;
  }
-
  compare(a,b) {
     return a[0]-b[0];
 }
-
-
-  readingExcel(){
-    console.log("Loading File");
-    var fileToRead = document.getElementById('file').files[0];
-    const reader = new FileReader();
-    reader.onload = (evt) => {
-        const bstr = evt.target.result;
-        const wb = XLSX.read(bstr, {type:'binary'});
-        const wsname = wb.SheetNames[0];
-        const ws = wb.Sheets[wsname];
-        const data = XLSX.utils.sheet_to_json(ws, {header:1});
-      //   var j = 1;
-      // for (var i=1;i<data.length-1;i++){
-      //     j++;
-      //   if (this.calculateDistance(Number.parseFloat(data[i][3]),Number.parseFloat(data[j][3]),Number.parseFloat(data[i][4]),Number.parseFloat(data[j][4])) < 5)
-      //     {break;}
-      // }
-
-      console.log("Raw data");
-      console.log(data);
+  readingExcel() {
+        const data = fixtures
 
         var temp = [];
         var tempMap = [];
         var tempColor =[];
-        var center = {};
         var j = 1;
         var tempData = [];
 
@@ -128,8 +106,8 @@ class TrainingsChart extends Component {
         tempData.sort(this.compare);
 
 
-        console.log("Data after sort");
-        console.log(tempData);
+        // console.log("Data after sort");
+        // console.log(tempData);
 
         // console.log("Number check");
         // console.log(Number.parseFloat(data[1][3]));
@@ -158,23 +136,11 @@ class TrainingsChart extends Component {
             lat: Number(tempData[i][3]) + Number(tempData[i][8])/100000,
             lng: Number(tempData[i][4]) + Number(tempData[i][8])/100000
           });
-          if(i > tempData.length/2 && i < tempData.length/2 +2){
-            center = {
-              lat: Number(tempData[i][3]),
-              lng: Number(tempData[i][4])
-            };
+          if(i > data.length/2 && i < data.length/2 +2){
+            const center = { lat: 51.988472, lng: 4.373634 }
           }
 
         }
-        //
-        console.log("After calculateDistance");
-        console.log(tempData);
-        // console.log(Number(typeof (data[4][3]) + Number(data[4][8]) - 0.99999));
-        console.log(tempMap);
-        console.log(tempColor);
-        console.log(temp);
-
-
 
 
         this.setState(
@@ -185,21 +151,18 @@ class TrainingsChart extends Component {
             chartFilterColor: this.filterColorChart(temp,tempColor),
             MapPath: tempMap,
             FilterMap: this.filterColorMap(tempMap, tempColor),
-            MapCenter: center,
+            MapCenter: { lat: 51.988472, lng: 4.373634 },
             color: tempColor,
             filterColor: tempColor,
             range: { min: 1, max: temp.length },
             value:{ min: 1, max: temp.length },
             prevValue:{ min: 1, max: temp.length },
-            fileLoaded:true,
             filterData: [{
               color:'red',
               points:temp
             }],
         });
     };
-    reader.readAsBinaryString(fileToRead);
-  }
 
 
   filterColorChart(chart,color){
@@ -261,35 +224,33 @@ class TrainingsChart extends Component {
   }
 
 render() {
-
     return (
       <div className="Charts">
 
        <Card
         expanded= 'true'
-        style= {{ width: '1200px', marginLeft: 200, marginRight: 200, marginTop:-160, flex:1}}>
+        showExpandableButton={true}
+        actAsExpander={true}
+        style= {{ width: '1200px', margin: 'auto', marginTop:130, flex:1}}>
         <CardHeader
          title= "Range"
          titleStyle={{textAlign: "center", marginBottom:"20px"}}
-         showExpandableButton={true}
         />
         <CardMedia expandable={true}>
           <div className='range'>
-          {this.state.fileLoaded ? <InputRange minValue={this.state.range.min} maxValue={this.state.range.max} value={this.state.value} onChange={value =>this.setState({ value })} onChangeComplete={value=> this.sliderHandler(value)}/> : null }
+           <InputRange minValue={this.state.range.min} maxValue={this.state.range.max} value={this.state.value} onChange={value =>this.setState({ value })} onChangeComplete={value=> this.sliderHandler(value)}/>
           </div>
-          <input type="file" id="file"/>
-          <button id="myBtn" onClick={this.readingExcel.bind(this)} >Draw Graph</button>
         </CardMedia>
        </Card>
 
       <Card
-        expanded= 'true'
-        style= {{width: '1200px', marginLeft: 200, marginRigth: 200, marginTop: 10, flex:1}}>
+        style= {{width: '1200px', margin: 'auto', marginTop: 10, flex:1}}>
         <CardHeader
          title= "Route"
          titleStyle={{textAlign: "center",
                       marginBottom:"20px"}}
          showExpandableButton={true}
+         actAsExpander={true}
          />
           <CardMedia expandable={true}>
           <div className= "route">
@@ -297,12 +258,13 @@ render() {
           </div>
           </CardMedia>
        </Card>
-      <Card expanded = 'true'
-        style= {{width: '1200px', marginLeft: 200, marginRight: 200, flex:1}}>
+      <Card
+        style= {{width: '1200px', margin: 'auto', marginTop: 10, flex:1}}>
        <CardHeader
         title= "Velocity"
         titleStyle={{textAlign: "center", marginBottom:"20px"}}
         showExpandableButton={true}
+        actAsExpander={true}
       />
       <CardMedia expandable={true}>
        <MyChart chartData = {this.state.chartFilterColor}/>

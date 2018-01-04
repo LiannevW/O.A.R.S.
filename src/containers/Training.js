@@ -6,6 +6,7 @@ import { fetchOneTraining } from '../actions/trainings/fetch'
 import { Card, CardHeader, CardActions } from 'material-ui/Card'
 import { GridList, GridTile } from 'material-ui/GridList'
 import IconButton from 'material-ui/IconButton'
+import rowboatIcon from '../img/Rowboat_symbol.svg'
 import StarBorder from 'material-ui/svg-icons/toggle/star-border'
 import TrainingsPageChartsLayer from '../components/TrainingsPageChartsLayer'
 import './Training.css'
@@ -54,35 +55,41 @@ class Training extends PureComponent {
     const boatData = [
       {
         boatName: training.boat_1_name,
-        number: 1
+        number: 1,
+        color: 'red'
       },
       {
         boatName: training.boat_2_name,
-        number: 2
+        number: 2,
+        color: 'blue'
       },
       {
         boatName: training.boat_3_name,
-        number: 3
-
+        number: 3,
+        color: 'green'
       },
       {
         boatName: training.boat_4_name,
-        number: 4
+        number: 4,
+        color: 'yellow'
       },
     ]
 
     const listItems = boatData.map((boat) => (
         <li>
-          <button>
+          <button style={{backgroundColor:`${boat.color}`}}>
             <span className="boat" onClick= {this.linkToBoat(training.id, boat.number)}></span>
           </button>
         </li>
     ))
 
     return (
-      <div className= "training-info">
+      <body>
+      <div>
+
         <div>
-          <Card style={{height:'400px', width: '600px', marginLeft: '500px', marginTop: '110px'}}>
+
+          <Card style={{height:'400px', width: '600px', margin: 'auto', marginTop: '120px'}}>
             <CardHeader
               title={` Training of ${training.startdate} `}
               titleStyle={{textAlign: "center",
@@ -106,28 +113,9 @@ class Training extends PureComponent {
            </CardActions>
           </Card>
         </div>
-
-
-        <div style={styles.root}>
-          <GridList style={styles.gridList} cols={2.2}>
-            {boatData.map((boat) => (
-              <GridTile
-                key={boat.number}
-                title={boat.boatName}
-                subtitle={boat.number}
-                actionIcon={<IconButton><StarBorder color="rgb(0, 188, 212)" /></IconButton>}
-                titleStyle={styles.titleStyle}
-                titleBackground="linear-gradient(to top, rgba(0,0,0,0.1) 10%,rgba(0,0,0,0.3) 70%,rgba(0,0,0,0.10) 100%)"
-                onClick= {this.linkToBoat(training.id, boat.number)} >
-              </GridTile>
-            ))}
-          </GridList>
-
-        </div>
-
         <TrainingsPageChartsLayer />
 
-      </div>
+    </body>
     )
   }
 }

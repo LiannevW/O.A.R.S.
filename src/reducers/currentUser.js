@@ -1,14 +1,22 @@
 import { USER_SIGNED_IN } from '../actions/users/log-in'
 import { USER_SIGNED_OUT } from '../actions/users/log-out'
 
+const CURRENT_USER_KEY = 'currentUserEvaluations'
 
-export default (state = null, { type, payload } = {}) => {
+const currentUserFromLocalStorage = JSON.parse(
+  window.localStorage.getItem(CURRENT_USER_KEY) || 'null'
+)
+
+export default (state = currentUserFromLocalStorage, { type, payload } = {}) => {
   switch (type) {
     case USER_SIGNED_IN :
-      return { ...payload }
+      const currentUser = { ...payload }
+      window.localStorage.setItem(CURRENT_USER_KEY, JSON.stringify(currentUser))
+      return currentUser
 
-     case USER_SIGNED_OUT :
-       return null
+    case USER_SIGNED_OUT:
+      window.localStorage.removeItem(CURRENT_USER_KEY)
+      return null
 
     default :
       return state

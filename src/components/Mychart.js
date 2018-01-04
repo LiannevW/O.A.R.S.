@@ -11,8 +11,8 @@ class MyChart extends Component {
               hidePoints ="true"
               xLabel = "time in mins"
               yLabel = "velocity"
-              width={1000}
-              height={400}
+              width={1200}
+              height={550}
               data={this.props.chartData}
           />
       </div>

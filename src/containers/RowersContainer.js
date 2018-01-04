@@ -7,6 +7,8 @@ import avatar from '../img/avatar.png'
 import List from 'material-ui/List/List';
 import ListItem from 'material-ui/List/ListItem';
 import Avatar from 'material-ui/Avatar';
+import Subheader from 'material-ui/Subheader';
+import { Card, CardHeader } from 'material-ui/Card'
 import './RowersContainer.css'
 
 
@@ -22,21 +24,34 @@ class RowersContainer extends PureComponent {
 
   return (
     <div>
-      <div className = 'List'>
-        <List>
-          {this.props.rowers.map((rower) => (
-            <ListItem key={rower.id} leftAvatar={
-               <Avatar src= {avatar} size={30}  />}
-                style={{  margin: '50x', padding: '0,5rem',  }}
+      <Card className='addrower' style={{width: 1200, height:100, margin: 'auto', marginTop: 120,}}>
 
-                onClick={this.linkToOneRower(rower.id)}>{rower.firstname} {rower.lastname}
-            </ListItem>
-          ))}
-        </List>
-      </div>
-      <div className = 'editor'>
-        <RowersEditor />
-      </div>
+      <RowersEditor />
+
+      </Card>
+
+      <Card style={{width: 1200, margin: 'auto', marginTop: 50}} >
+
+          <List style={{margin: 'auto', align: 'center'}}>
+          <Subheader style={{color:'steelblue', fontSize:20}}
+          inset={true}>Rowers</Subheader>
+            {this.props.rowers.sort(function(a, b){
+              if (a.firstname < b.firstname) {
+                return -1
+              } else if (a.firstname > b.firstname) {
+                return 1
+              } else {
+                return 0
+              }
+            }).map((rower) => (
+              <ListItem key={rower.id} leftAvatar={
+                 <Avatar src={avatar} size={30}  />}
+                  style={{  margin: '50x', padding: '0,5rem',  }}
+                  onClick={this.linkToOneRower(rower.id)}>{rower.firstname} {rower.lastname}
+              </ListItem>
+            ))}
+          </List>
+      </Card >
     </div>
     )
   }
