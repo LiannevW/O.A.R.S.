@@ -49,7 +49,7 @@ class BoatPage extends PureComponent {
                            marginLeft:"80px",
                            fontSize:"25px"}}
               titleColor= "steelblue"
-              subtitle=  {`Start time ${training.starttime}  | Training duraton: ${training.duration} `}
+              subtitle=  {`Time ${training.starttime}  | Duration: ${training.duration} `}
               subtitleStyle={{textAlign: "center",
                               marginBottom:"20px",
                               marginLeft:"100px",
