@@ -227,8 +227,7 @@ render() {
 
     return (
       <div className="Charts">
-
-      <Card
+       <Card
         style= {{width: '1200px', margin: 'auto', marginTop: 120, flex:1}}>
         <CardHeader
          title= "Route"

@@ -110,9 +110,9 @@ class Training extends PureComponent {
               </span>
            </CardActions>
           </Card>
-    
-        <TrainingsPageChartsLayer />
 
+        <TrainingsPageChartsLayer />
+      </div>
     </body>
     )
   }

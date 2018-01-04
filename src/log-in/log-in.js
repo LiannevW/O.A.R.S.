@@ -50,7 +50,6 @@ export class LogIn extends PureComponent {
     return (
       <div className= "login">
       <Paper style={ dialogStyle }>
-        <Title content="Log In" level={2} />
 
         <form onSubmit={this.submitForm.bind(this)}>
           <div className="input">

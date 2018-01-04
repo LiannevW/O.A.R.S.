@@ -6,10 +6,11 @@ import ShipsEditor from './ShipsEditor'
 import './ShipsContainer.css'
 import List from 'material-ui/List/List';
 import Subheader from 'material-ui/Subheader';
-import { Card, CardHeader } from 'material-ui/Card'
+import { Card, CardMedia, CardText } from 'material-ui/Card'
 import ListItem from 'material-ui/List/ListItem';
 import Avatar from 'material-ui/Avatar';
-import shipIcon from '../img/ship.svg'
+import mui from 'material-ui';
+import DirectionsBoatIcon from 'react-material-icons/icons/maps/directions-boat'
 
 
 class ShipsContainer extends PureComponent {
@@ -24,14 +25,17 @@ class ShipsContainer extends PureComponent {
   render() {
     return (
     <div>
-      <Card className='addship' style={{width: 1200, height:100, margin: 'auto', marginTop: 120}}>
+      <Card className='addship' style={{width: 1200, height:160, margin: 'auto', marginTop: 120}}>
+      <CardText style= {{flex:1, margin: 'auto', textAlign: 'center', marginTop: -80, color:'steelblue'}}>
+      <h2> Ships </h2>
+      </CardText>
+     <CardMedia mediaStyle= {{margin:'auto', marginTop: -80, marginLeft: -50}}>
       <ShipsEditor />
-      </Card>
+     </CardMedia>
+    </Card>
 
       <Card style={{width: 1200, margin: 'auto', marginTop: 50}} >
           <List style={{margin: 'auto', align: 'center'}}>
-          <Subheader style={{color:'steelblue', fontSize:20}}
-          inset={true}>Ships</Subheader>
           {this.props.ships.sort(function(a, b){
             if (a.name < b.name) {
               return -1
@@ -45,8 +49,7 @@ class ShipsContainer extends PureComponent {
                   key={ship.name}
                   primaryText={ship.name}
                   secondaryText={ship.type}
-                  leftAvatar={
-                     <Avatar src={shipIcon} size={40}  />}
+                  leftIcon={<DirectionsBoatIcon />}
                   style={{  margin: '50x', padding: '0,5rem',}}
                   onClick={this.linktToOneShip(ship.id)}>
               </ListItem>

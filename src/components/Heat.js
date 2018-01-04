@@ -142,7 +142,7 @@ sliderHandler(value){
   // console.log(this.create_data());
 
   render() {console.time("asd")
-
+          
           var data = Heat.randomNumber;
           // console.log("Data_Old = ");
           // console.log(data);
