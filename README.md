@@ -8,5 +8,5 @@ With  OARS  the coach can monitor gps, speed and stroke information of a certain
 
 # Preview
 
-![](https://github.com/LiannevW/O.A.R.S./blob/master/src/fixtures/ScreenShot1%20.png =300x200)
-![](https://github.com/LiannevW/O.A.R.S./blob/master/src/fixtures/ScreenShot2.png =300x200)
+<img src="https://github.com/LiannevW/O.A.R.S./blob/master/src/fixtures/ScreenShot1%20.png" width="300" height="200" />
+<img src="https://github.com/LiannevW/O.A.R.S./blob/master/src/fixtures/ScreenShot2.png" width="300" height="200" />
